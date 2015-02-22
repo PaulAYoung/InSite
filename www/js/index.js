@@ -16,6 +16,26 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+function initializeMap(){
+    var map = new L.Map('map');
+
+    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib = 'Map data © OpenStreetMap contributors';
+    var osm = new L.TileLayer(osmUrl, { attribution: osmAttrib });
+
+
+    map.setView(new L.LatLng(43.069452, -89.411373), 11);
+    map.addLayer(osm);
+    map.invalidateSize()
+
+    navigator.geolocation.getCurrentPosition(function(pos){
+        var lat = pos.coords.latitude;
+        var lon = pos.coords.longitude;
+        map.setView(new L.LatLng(lat, lon),11);
+    });
+}
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -32,9 +52,7 @@ var app = {
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
+    onDeviceReady: initializeMap,
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
