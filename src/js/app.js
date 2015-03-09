@@ -21,3 +21,4 @@ function setup(){
 
 
 document.addEventListener('deviceready', setup, false);
+document.addEventListener('DOMContentLoaded', setup, false);

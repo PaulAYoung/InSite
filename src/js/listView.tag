@@ -11,10 +11,10 @@
 
     <script>
         this.display=false;
-        this.controller = opts.controller;
+        controller = opts.controller;
         var self = this;
 
-        this.controller.on('activate', function(title){
+        controller.on('activate', function(title){
             console.log(title);
             self.display = (title=='List');
             self.update();

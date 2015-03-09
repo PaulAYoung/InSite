@@ -6,7 +6,7 @@
         this.display=false;
         var L = require('leaflet');
 
-        this.controller = opts.controller;
+        controller = opts.controller;
         var self = this;
         
         this.on('mount', function(e){
@@ -20,12 +20,9 @@
 
             this.map.addLayer(osm);
             this.map.invalidateSize()
-
-            this.trigger('activate-control', 'Map');
         });
         
-        this.controller.on('activate', function(title){
-            console.log(title);
+        controller.on('activate', function(title){
             self.display = (title=='Map');
             self.update();
         });

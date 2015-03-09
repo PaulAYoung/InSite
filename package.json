@@ -24,6 +24,7 @@
     "browserify": "^9.0.3",
     "gulp": "^3.8.11",
     "riot": "^2.0.11",
-    "riotify": "0.0.9"
+    "riotify": "0.0.9",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
