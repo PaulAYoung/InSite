@@ -1,6 +1,7 @@
 <map>
     <div name="mapArea" class="mapArea"></div>
 
+    <script>
     // scripts
     var L = require('leaflet');
     
@@ -16,5 +17,6 @@
         this.map.addLayer(osm);
         this.map.invalidateSize()
     });
+    </script>
 
 </map>
