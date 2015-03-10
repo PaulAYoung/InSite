@@ -19,12 +19,12 @@
             this.map.setView(new L.LatLng(43.069452, -89.411373), 11);
 
             this.map.addLayer(osm);
-            this.map.invalidateSize()
         });
         
         controller.on('activate', function(title){
             self.display = (title=='Map');
             self.update();
+            self.map.invalidateSize();
         });
     </script>
 
