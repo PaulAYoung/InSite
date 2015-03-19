@@ -3,6 +3,10 @@ body html{
   width: 100%;
 }
 
+body{
+	padding-top: 50px;
+}
+
 .mapArea {
      background-color: #aaaaaa;
      height: 300px;

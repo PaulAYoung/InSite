@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/PaulAYoung/InSite",
   "dependencies": {
+    "bootstrap": "^3.3.4",
     "cordova": "^4.2.0",
     "leaflet": "^0.7.3"
   },

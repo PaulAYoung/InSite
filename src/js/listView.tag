@@ -1,12 +1,12 @@
 <listview>
-<ul if={ this.display }>
-        <li>Amber's Wish</li>
-        <li>Something</li>
-        <li>Something</li>
-        <li>Something</li>
-        <li>Something</li>
-        <li>Something</li>
-        <li>Something</li>
+<ul class="list-group" if={ this.display }>
+        <li class="list-group-item">Amber's Wish</li>
+        <li class="list-group-item">Something</li>
+        <li class="list-group-item">Something</li>
+        <li class="list-group-item">Something</li>
+        <li class="list-group-item">Something</li>
+        <li class="list-group-item">Something</li>
+        <li class="list-group-item">Something</li>
     </ul>
 
     <script>
