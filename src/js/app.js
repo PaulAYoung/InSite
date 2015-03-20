@@ -3,6 +3,13 @@ var map = require('./map.tag');
 var listView = require('./listView.tag');
 var controls = require('./controls.tag');
 var L = require('leaflet');
+
+// set up jquery/bootstrap
+var jQuery = require('jquery');
+window.jQuery = jQuery;
+window.$ = jQuery;
+var bootstrap = require('bootstrap');
+
 var controller = riot.observable();
 
 function setup(){
