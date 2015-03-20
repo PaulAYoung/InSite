@@ -16,7 +16,7 @@
             var osmAttrib = 'Map data © OpenStreetMap contributors';
             var osm = new L.TileLayer(osmUrl, { attribution: osmAttrib });
 
-            this.map.setView(new L.LatLng(43.069452, -89.411373), 11);
+            this.map.setView(new L.LatLng(37.8899, -122.324721), 15 );
 
             this.map.addLayer(osm);
         });
