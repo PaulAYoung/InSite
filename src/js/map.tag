@@ -6,7 +6,7 @@
         this.display=false;
         var L = require('leaflet');
 
-        controller = opts.controller;
+        var controller = opts.controller;
         var self = this;
         
         this.on('mount', function(e){
@@ -16,12 +16,12 @@
             var osmAttrib = 'Map data © OpenStreetMap contributors';
             var osm = new L.TileLayer(osmUrl, { attribution: osmAttrib });
 
-            this.map.setView(new L.LatLng(43.069452, -89.411373), 11);
+            this.map.setView(new L.LatLng(37.8899, -122.324721), 15 );
 
             this.map.addLayer(osm);
         });
         
-        controller.on('activate', function(title){
+        controller.on('ActivateView', function(title){
             self.display = (title=='Map');
             self.update();
             self.map.invalidateSize();
