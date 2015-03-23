@@ -42,7 +42,7 @@
 
         activate(e){
             var item = e.item
-            controller.trigger('activate', item.title)
+            controller.trigger('ActivateView', item.title)
             this.currentActive = item.title;
             this.update();
         }
