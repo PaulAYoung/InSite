@@ -15,7 +15,7 @@ var controller = riot.observable();
 
 var opts = {
         controller: controller,
-        url: "http://insite.localground.org/api/0/projects/2/?format=json",
+        url: "http://insite.localground.org/api/0/projects/2/?format=jsonp&callback=?",
         controls: [
             {title: "Map"},
             {title: "List"}
