@@ -1,7 +1,7 @@
 <listview>
 <ul class="list-group" if={this.display}>
-    <li each={this.items} class="list-group-item">
-    <item></item>
+    <li each={this.items} class="list-group-item" onclick={parent.selectItem}>
+            <item> </item>
     </li>
 </ul>
 
@@ -21,14 +21,23 @@
             self.items = items;
             self.update();
         });
+
+        selectItem(e) {
+        console.log(e.item)
+        controller.trigger("ItemSelected", e.item)
+        }
+
     </script>
 </listview>
 
 <item>
     <div class="container-fluid">
         <div class="row">
+            test
             <span>{ overlay_type + ': ' + name }</span>
         </div>
     </div>
 
 </item>
+
+

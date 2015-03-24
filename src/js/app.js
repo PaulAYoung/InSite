@@ -4,6 +4,7 @@ var listView = require('./listView.tag');
 var controls = require('./controls.tag');
 var L = require('leaflet');
 var Connector = require('./localground_connector');
+var itemDetail = require('./itemDetail.tag');
 
 // set up jquery/bootstrap
 var jQuery = require('jquery');
