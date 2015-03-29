@@ -11,15 +11,14 @@
         var controller = opts.controller;
         var self = this;
 
-        
-        controller.on('ItemSelected', function(item){
-            console.log(item);
-            self.item = item;
-            controller.trigger("ActivateView", "itemDetail");
-        });
+        controller.on('ActivateView', function(view, item){
+            self.display = (view=='itemDetail');
+            if (controller.itemDict !== null && item in controller.itemDict){
+                self.item = controller.itemDict[item];
+            }else{
+                self.item = {name: "Not found", description: "not found"};
+            }
 
-        controller.on('ActivateView', function(title){
-            self.display = (title=='itemDetail');
             self.update();
         });
 
