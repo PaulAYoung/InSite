@@ -9,6 +9,7 @@
         this.display=false;
         this.items = null;
         var controller = opts.controller;
+        var riot = require('riot');
         var self = this;
 
         controller.on('ActivateView', function(title){
@@ -17,14 +18,14 @@
         });
         
         controller.on('ItemsUpdated', function(items){
-            console.log(items);
             self.items = items;
             self.update();
         });
 
         selectItem(e) {
-        console.log(e.item)
-        controller.trigger("ItemSelected", e.item)
+            var item = e.item
+            controller.trigger("ItemSelected", item)
+            riot.route("itemDetail/" + item.overlay_type + item.id)
         }
 
     </script>

@@ -15,7 +15,7 @@
           <a class="navbar-brand" href="index.html">InSite</a>
 
             <ul class="nav nav-pills">
-              <li role="presentation" each={ opts.controls } onclick={ parent.activate } class={ parent.isActive(title) }><a href="#">{ title }</a></li>
+                <li role="presentation" each={ opts.controls } class={ parent.isActive(title) }><a href={ '#'+  title  }>{ title }</a></li>
             </ul>
         </div>
         <div class="navbar-collapse collapse">

@@ -5,6 +5,7 @@ var controls = require('./controls.tag');
 var L = require('leaflet');
 var Connector = require('./localground_connector');
 var itemDetail = require('./itemDetail.tag');
+var Controller = require('./controller');
 
 // set up jquery/bootstrap
 var jQuery = require('jquery');
@@ -12,7 +13,7 @@ window.jQuery = jQuery;
 window.$ = jQuery;
 var bootstrap = require('bootstrap');
 
-var controller = riot.observable();
+var controller = new Controller();
 
 var opts = {
         controller: controller,
@@ -30,9 +31,7 @@ function setup(){
     
     // set initial view
     controller.trigger('StartApp');
-    controller.trigger('ActivateView', 'Map');
 }
-
 
 document.addEventListener('deviceready', setup, false);
 document.addEventListener('DOMContentLoaded', setup, false);
