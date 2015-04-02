@@ -1,0 +1,334 @@
+[
+    {
+        "id": 7, 
+        "name": "", 
+        "description": "", 
+        "overlay_type": "photo", 
+        "tags": "a", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.32779622077942, 
+                37.89016347485787
+            ]
+        }, 
+        "attribution": "sandra", 
+        "file_name": "nudibranchundersidefrompattyvideo.png", 
+        "caption": "", 
+        "path_large": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvbnVkaWJyYW5jaHVuZGVyc2lkZWZyb21wYXR0eXZpZGVvXzEwMDAucG5n/", 
+        "path_medium": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvbnVkaWJyYW5jaHVuZGVyc2lkZWZyb21wYXR0eXZpZGVvXzUwMC5wbmc=/", 
+        "path_medium_sm": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvbnVkaWJyYW5jaHVuZGVyc2lkZWZyb21wYXR0eXZpZGVvXzI1MC5wbmc=/", 
+        "path_small": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvbnVkaWJyYW5jaHVuZGVyc2lkZWZyb21wYXR0eXZpZGVvXzEyOC5wbmc=/", 
+        "path_marker_lg": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvbnVkaWJyYW5jaHVuZGVyc2lkZWZyb21wYXR0eXZpZGVvXzUwLnBuZw==/", 
+        "path_marker_sm": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvbnVkaWJyYW5jaHVuZGVyc2lkZWZyb21wYXR0eXZpZGVvXzIwLnBuZw==/", 
+        "file_name_orig": "NudibranchUndersidefromPattyvideo.png", 
+        "url": "/api/0/photos/7/"
+    }, 
+    {
+        "id": 6, 
+        "name": "Hobbit House", 
+        "description": "", 
+        "overlay_type": "photo", 
+        "tags": "b", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.32006072998047, 
+                37.891535129870846
+            ]
+        }, 
+        "attribution": "sandra", 
+        "file_name": "hobbithouseimg0290thumbcopy.jpg", 
+        "caption": "", 
+        "path_large": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzEwMDAuanBn/", 
+        "path_medium": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzUwMC5qcGc=/", 
+        "path_medium_sm": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzI1MC5qcGc=/", 
+        "path_small": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzEyOC5qcGc=/", 
+        "path_marker_lg": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzUwLmpwZw==/", 
+        "path_marker_sm": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzIwLmpwZw==/", 
+        "file_name_orig": "hobbithouse-IMG_0290-thumb copy.jpg", 
+        "url": "/api/0/photos/6/"
+    }, 
+    {
+        "id": 5, 
+        "name": "", 
+        "description": "", 
+        "overlay_type": "photo", 
+        "tags": "c", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.32801079750061, 
+                37.889054278351416
+            ]
+        }, 
+        "attribution": "sandra", 
+        "file_name": "oystercatchertempfromweb.jpg", 
+        "caption": "", 
+        "path_large": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3Mvb3lzdGVyY2F0Y2hlcnRlbXBmcm9td2ViXzEwMDAuanBn/", 
+        "path_medium": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3Mvb3lzdGVyY2F0Y2hlcnRlbXBmcm9td2ViXzUwMC5qcGc=/", 
+        "path_medium_sm": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3Mvb3lzdGVyY2F0Y2hlcnRlbXBmcm9td2ViXzI1MC5qcGc=/", 
+        "path_small": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3Mvb3lzdGVyY2F0Y2hlcnRlbXBmcm9td2ViXzEyOC5qcGc=/", 
+        "path_marker_lg": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3Mvb3lzdGVyY2F0Y2hlcnRlbXBmcm9td2ViXzUwLmpwZw==/", 
+        "path_marker_sm": "http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3Mvb3lzdGVyY2F0Y2hlcnRlbXBmcm9td2ViXzIwLmpwZw==/", 
+        "file_name_orig": "oystercatcherTempFromWeb.jpg", 
+        "url": "/api/0/photos/5/"
+    },
+    {
+        "id": 2, 
+        "name": "Urban or Natural Spot?", 
+        "description": "", 
+        "overlay_type": "audio", 
+        "tags": "d", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.32787132263184, 
+                37.89061222900191
+            ]
+        }, 
+        "attribution": "sandra", 
+        "file_name": "pattydonaldurbanornatural.mp3", 
+        "caption": "", 
+        "file_path": "http://insite.localground.org/profile/audio/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9hdWRpby9wYXR0eWRvbmFsZHVyYmFub3JuYXR1cmFsLm1wMw==/", 
+        "file_name_orig": "PattyDonald_urban_or_natural.mp4", 
+        "url": "/api/0/audio/2/"
+    }, 
+    {
+        "id": 1, 
+        "name": "Stephanie's Home", 
+        "description": "", 
+        "overlay_type": "audio", 
+        "tags": "", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.32410550117493, 
+                37.89105251342831
+            ]
+        }, 
+        "attribution": "sandra", 
+        "file_name": "stephanieaudio.mp3", 
+        "caption": "", 
+        "file_path": "http://insite.localground.org/profile/audio/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9hdWRpby9zdGVwaGFuaWVhdWRpby5tcDM=/", 
+        "file_name_orig": "Stephanie_Audio.mp4", 
+        "url": "/api/0/audio/1/"
+    },
+    {
+        "id": 14, 
+        "name": "Cairns", 
+        "description": "Around the world, people mark trails and memorials by stacking rocks into cairns. The dike around the lagoon is a popular place for cairns. Another is the Amphitheater [link to amphitheater]", 
+        "overlay_type": "marker", 
+        "tags": "art, sculpture", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.327751716501, 
+                37.890477151029
+            ]
+        }, 
+        "photo_count": 0, 
+        "audio_count": 1, 
+        "record_count": 0, 
+        "map_image_count": 0, 
+        "color": "FF70B3", 
+        "update_metadata": null, 
+        "url": "/api/0/markers/14/"
+    }, 
+    {
+        "id": 15, 
+        "name": "Tidal Waterfall", 
+        "description": "At high tide, the lagoon fills with water. As the tide recedes, the water level in the lagoon remains higher than surrounding  bay, held in by a rocky dike. The lagoon water pours down over a breach in the dike  into the Bay, forming a unique saltwater waterfall. You can carefully walk across the waterfall over very slippery rocks (use the barnacles for traction) and see limpets, mussels, seaweed, tunicates, sponges, and bright yellow nudibranchs.", 
+        "overlay_type": "marker", 
+        "tags": "nature", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.327830943967, 
+                37.889855724272
+            ]
+        }, 
+        "photo_count": 1, 
+        "audio_count": 0, 
+        "record_count": 0, 
+        "map_image_count": 0, 
+        "color": "FF70B3", 
+        "update_metadata": null, 
+        "url": "/api/0/markers/15/"
+    }, 
+    {
+        "id": 16, 
+        "name": "Oystercatchers", 
+        "description": "Oystercatchers (Haemotopus) can often be seen on the dike around the lagoon, where they eat limpets, mussels, and chitons attached to the rocky shore. They can be identified by their black feathers, red beaks and golden eyes.", 
+        "overlay_type": "marker", 
+        "tags": "birds, wildlife", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.328008801545, 
+                37.88874684091
+            ]
+        }, 
+        "photo_count": 1, 
+        "audio_count": 0, 
+        "record_count": 0, 
+        "map_image_count": 0, 
+        "color": "FF70B3", 
+        "update_metadata": null, 
+        "url": "/api/0/markers/16/"
+    }, 
+    {
+        "id": 17, 
+        "name": "Salt Marsh", 
+        "description": "pickleweed, bumplant, saltgrass, mudsnails can be found here.", 
+        "overlay_type": "marker", 
+        "tags": "nature", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.324150908993, 
+                37.891709142779
+            ]
+        }, 
+        "photo_count": 0, 
+        "audio_count": 0, 
+        "record_count": 0, 
+        "map_image_count": 0, 
+        "color": "FF70B3", 
+        "update_metadata": null, 
+        "url": "/api/0/markers/17/"
+    }, 
+    {
+        "id": 18, 
+        "name": "Sandy's Hobbit House", 
+        "description": "Sandy's Hobbit House was a remarkable structure built out of a living acacia tree, with walls mortared around living branches. For the full tale of this tree house, including architectural drawings, click here [link to page with full story of house from Tree Houses/Tree People boards.", 
+        "overlay_type": "marker", 
+        "tags": "house", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.32395364877, 
+                37.89092184437
+            ]
+        }, 
+        "photo_count": 1, 
+        "audio_count": 1, 
+        "record_count": 0, 
+        "map_image_count": 0, 
+        "color": "FF70B3", 
+        "update_metadata": null, 
+        "url": "/api/0/markers/18/"
+    }, 
+    {
+        "id": 19, 
+        "name": "Art Tree", 
+        "description": "", 
+        "overlay_type": "marker", 
+        "tags": "art", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.322785131474, 
+                37.889595777415
+            ]
+        }, 
+        "photo_count": 0, 
+        "audio_count": 0, 
+        "record_count": 0, 
+        "map_image_count": 0, 
+        "color": "FF70B3", 
+        "update_metadata": null, 
+        "url": "/api/0/markers/19/"
+    }, 
+    {
+        "id": 20, 
+        "name": "Bicycle Art Wall", 
+        "description": "", 
+        "overlay_type": "marker", 
+        "tags": "art, material", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.325103255478, 
+                37.890579870963
+            ]
+        }, 
+        "photo_count": 0, 
+        "audio_count": 0, 
+        "record_count": 0, 
+        "map_image_count": 0, 
+        "color": "FF70B3", 
+        "update_metadata": null, 
+        "url": "/api/0/markers/20/"
+    }, 
+    {
+        "id": 21, 
+        "name": "Billboard House", 
+        "description": "", 
+        "overlay_type": "marker", 
+        "tags": "art, house", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.324965415855, 
+                37.892287489123
+            ]
+        }, 
+        "photo_count": 0, 
+        "audio_count": 0, 
+        "record_count": 0, 
+        "map_image_count": 0, 
+        "color": "FF70B3", 
+        "update_metadata": null, 
+        "url": "/api/0/markers/21/"
+    }, 
+    {
+        "id": 22, 
+        "name": "Brick Chunk Art", 
+        "description": "", 
+        "overlay_type": "marker", 
+        "tags": "art", 
+        "owner": "sandra", 
+        "project_id": 2, 
+        "geometry": {
+            "type": "Point", 
+            "coordinates": [
+                -122.325982107941, 
+                37.888377253782
+            ]
+        }, 
+        "photo_count": 0, 
+        "audio_count": 0, 
+        "record_count": 0, 
+        "map_image_count": 0, 
+        "color": "FF70B3", 
+        "update_metadata": null, 
+        "url": "/api/0/markers/22/"
+        }
+] 
