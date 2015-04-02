@@ -9,14 +9,14 @@
         this.display=false;
         this.items = null;
         this.item_id = null;
+        this._viewID = "itemDetail";
         var controller = opts.controller;
         var self = this;
 
         controller.on('ActivateView', function(view, item){
-            console.log(arguments);
-            self.display = (view=='itemDetail');
+            self.display = (view==self._viewID);
+            if (! self.display){ return;}
             self.item_id = item;
-
             self.loadItem();
         });
         
