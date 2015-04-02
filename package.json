@@ -18,7 +18,6 @@
   "homepage": "https://github.com/PaulAYoung/InSite",
   "dependencies": {
     "bootstrap": "^3.3.4",
-    "cordova": "^4.2.0",
     "jquery": "^2.1.3",
     "leaflet": "^0.7.3"
   },
