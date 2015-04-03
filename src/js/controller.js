@@ -8,7 +8,9 @@ function Controller(){
 
     //make observable
     riot.observable(this);
-    this.itemDict = null;
+    this.itemDict = null; //will map items to key -> typeid eg: photo11
+    this._items = null; // this will always hold all items
+    this.items = null; // this will be updated to only have filtered items
 
     riot.route(this._router.bind(this));
 
@@ -22,6 +24,8 @@ function Controller(){
 
 Controller.prototype = {
     _processItems: function(items){
+        this.items = items;
+        this._items = items;
         var itemDict = {};
         for (i = 0; i<items.length; i++){
             item = items[i];
