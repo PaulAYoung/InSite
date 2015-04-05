@@ -4,7 +4,6 @@
     </div>
 
     <script>
-        console.log("player loaded");
         var controller = opts.controller;
         var self = this;
 
@@ -27,7 +26,6 @@
         });
 
         execCommand(){
-            console.log("player clicked");
             if (self.command === "Play"){
                 self.audio.play();
                 self.command = "Pause";
