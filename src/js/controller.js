@@ -9,6 +9,7 @@ function Controller(){
     //make observable
     riot.observable(this);
     this.itemDict = null;
+    this.itemList = null;
 
     riot.route(this._router.bind(this));
 
@@ -23,6 +24,7 @@ function Controller(){
 Controller.prototype = {
     _processItems: function(items){
         var itemDict = {};
+        this.itemList = items;
         for (i = 0; i<items.length; i++){
             item = items[i];
             itemDict[item.overlay_type + item.id] = item;
