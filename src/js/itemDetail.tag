@@ -15,7 +15,7 @@
 
         controller.on('ActivateView', function(view, item){
             self.display = (view==self._viewID);
-            if (! self.display){ return;}
+            if (! self.display){ self.update(); return;}
             self.item_id = item;
             self.loadItem();
         });
