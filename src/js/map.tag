@@ -11,14 +11,12 @@
         
         this.on('mount', function(e){
             this.map = new L.Map(this.mapArea);
-            
-            var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-            var osmAttrib = 'Map data © OpenStreetMap contributors';
-            var osm = new L.TileLayer(osmUrl, { attribution: osmAttrib });
+            var accessToken = 'pk.eyJ1IjoiYXJkbmFzZWVsIiwiYSI6IkNpTXlHU0UifQ.M20m1nJ01_0olbOTdPJ1oQ'
+            var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v4/ardnaseel.kfgj3f5l/{z}/{x}/{y}.png?access_token='+ accessToken);
+            this.map
+                .addLayer(mapboxTiles)
+                .setView([37.8899, -122.324721], 15 );
 
-            this.map.setView(new L.LatLng(37.8899, -122.324721), 15 );
-
-            this.map.addLayer(osm);
         });
         
         controller.on('ActivateView', function(title){

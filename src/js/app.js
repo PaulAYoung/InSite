@@ -5,6 +5,7 @@ var controls = require('./controls.tag');
 var L = require('leaflet');
 var Connector = require('./localground_connector');
 var itemDetail = require('./itemDetail.tag');
+var audioPlayer = require('./audioPlayer.tag');
 var Controller = require('./controller');
 
 // set up jquery/bootstrap
