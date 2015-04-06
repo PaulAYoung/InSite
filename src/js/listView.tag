@@ -18,7 +18,7 @@
         });
         
         controller.on('ItemsUpdated', function(items){
-            self.items = items;
+            self.items = controller.itemList;
             self.update();
         });
 

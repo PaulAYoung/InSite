@@ -12,6 +12,7 @@
         self.display = false;
 
         controller.on("ItemSelected", function(item){
+                console.log(item);
             if (item.overlay_type === "audio"){
                 self.display = true;
                 self.audio.pause();

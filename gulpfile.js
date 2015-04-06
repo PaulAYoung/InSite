@@ -30,4 +30,4 @@ gulp.task('watch', function(){
     gulp.watch('src/css/*.css', ['buildcss']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['build', 'watch']);

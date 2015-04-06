@@ -27,7 +27,7 @@
         <div class="navbar-collapse2 collapse">
           <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" name="searchbox" class="form-control" placeholder="Search" onclick={ this.search }>
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
@@ -51,6 +51,10 @@
             if (title===this.currentActive){
                 return "active";
             } 
+        }
+
+        search(e){
+            controller.trigger("UpdateFilter", this.searchbox.value);
         }
 
     </script>

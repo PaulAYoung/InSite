@@ -31,7 +31,7 @@ LGConnector.prototype = {
             data.children.photos.data,
             data.children.audio.data
             );
-        this._controller.trigger("ItemsUpdated", processedData);
+        this._controller.trigger("ItemsLoaded", processedData);
     },
     _failure: function(err){
         this._controller.trigger("ErrorGettingData", err);
