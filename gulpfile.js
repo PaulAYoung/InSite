@@ -21,7 +21,12 @@ gulp.task('buildcss', function(){
     .pipe(gulp.dest('www/css'));
 });
 
-gulp.task('build', ['buildjs', 'buildhtml', 'buildcss']); 
+gulp.task('buildresources', function(){
+    return gulp.src('./src/resources/**/*')
+    .pipe(gulp.dest('www'));
+});
+
+gulp.task('build', ['buildjs', 'buildhtml', 'buildcss', 'buildresources']); 
 
 gulp.task('watch', function(){
     gulp.watch('src/js/*.js', ['buildjs']);
