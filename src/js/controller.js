@@ -86,8 +86,6 @@ Controller.prototype = {
 
 
         this._filterItems(this._filter);
-
-        this.trigger("ItemsUpdated", this.itemList);
     },
     _router: function(){
         // routes should be in format view/filter1/filter2/etc ex: map/sites/nature
