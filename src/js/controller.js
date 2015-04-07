@@ -25,7 +25,7 @@ function Controller(){
     }.bind(this));
 
     this.on('UpdateFilter', function(filter){
-        self._filter(filter);
+        self._filterItems(filter);
     });
 }
 

@@ -25,9 +25,9 @@
           </ul>
         </div>
         <div class="navbar-collapse2 collapse">
-          <form class="navbar-form navbar-left" role="search">
+            <form class="navbar-form navbar-left" role="search" onsubmit={ this.search }>
                 <div class="form-group">
-                    <input type="text" name="searchbox" class="form-control" placeholder="Search" onclick={ this.search }>
+                    <input type="text" name="searchbox" class="form-control" placeholder="Search">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
@@ -54,6 +54,8 @@
         }
 
         search(e){
+            e.preventDefault();
+            console.log(this.searchbox.value);
             controller.trigger("UpdateFilter", this.searchbox.value);
         }
 
