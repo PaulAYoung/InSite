@@ -9,6 +9,9 @@
         var $ = require('jquery');
         var controller = opts.controller;
         var self = this;
+        
+        self.mapMarkers = [];
+        
 
         
         this.on('mount', function(e){
@@ -28,15 +31,27 @@
         });
 
         controller.on('ItemsUpdated', function(item){
+            self.clearMarkers();
             
             var markers = controller.markers;
+            var mark;
             // console.log(markers);
             $.each(markers, function(index, value){
                 console.log(value);
-                L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]]).bindPopup(value.name+'<br>'+value.description).addTo(self.map);
+                mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]]).bindPopup(value.name+'<br>'+value.description).addTo(self.map);
+                self.mapMarkers.push(mark);
             });
             //refer to self.map 
         });
+        
+        clearMarkers(){
+            var mark;
+            while (self.mapMarkers.length > 0){
+                mark = self.mapMarkers.pop();
+                self.map.removeLayer(mark);
+            }
+        }
+
 
     </script>
 
