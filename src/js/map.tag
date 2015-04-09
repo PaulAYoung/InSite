@@ -32,7 +32,7 @@
             var markers = controller.markers;
             // console.log(markers);
             $.each(markers, function(index, value){
-                console.log(value);
+                // console.log(value);
                 L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]]).bindPopup(value.name+'<br>'+value.description).addTo(self.map);
             });
             //refer to self.map 
