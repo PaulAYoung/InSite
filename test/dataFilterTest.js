@@ -16,6 +16,14 @@ describe('testData', function(){
 
         filter
     });
+    
+    it("empty list should filter to empty", function(){
+        var filter = new DataFilter([]);
+
+        var filtered = filter.filter('a');
+        assert.equal(0, filtered.length);
+
+    });
 })
 
 
