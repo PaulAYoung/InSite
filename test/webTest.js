@@ -25,7 +25,7 @@ describe("A simple web page test", function(){
     it("clicking listView should make map dissappear", function(done){
         phantom.create(function(ph){
             ph.createPage(function(page){
-                page.open("http://localhost:8080/", function(status){
+                page.open(baseurl, function(status){
                     page.evaluate(function(){
                             location.href = baseurl + "#List";
                             return $("map").is(":empty");
