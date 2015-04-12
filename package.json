@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha"
+    "test": "node_modules/mocha/bin/mocha",
+    "start": "node_modules/http-server/bin/http-server www/ -p 8080"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "browserify": "^9.0.3",
     "chai": "^2.1.2",
     "gulp": "^3.8.11",
+    "http-server": "^0.8.0",
     "mocha": "^2.2.1",
     "phantom": "^0.7.2",
     "riot": "^2.0.11",
