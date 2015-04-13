@@ -21,8 +21,8 @@ function Controller(){
     this.on('ItemsLoaded', this._processItems.bind(this));
 
     this.one('StartApp', function(){
-        riot.route.exec(this._router.bind(this));
-    }.bind(this));
+        riot.route.exec(self._router.bind(self));
+    });
 
     this.on('UpdateFilter', function(filter){
         self._filterItems(filter);
