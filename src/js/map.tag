@@ -35,9 +35,7 @@
             
             var markers = controller.markers;
             var mark;
-            // console.log(markers);
             $.each(markers, function(index, value){
-                console.log(value);
                 mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]]).bindPopup(value.name+'<br>'+value.description).addTo(self.map);
                 self.mapMarkers.push(mark);
             });

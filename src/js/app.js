@@ -13,6 +13,7 @@ var jQuery = require('jquery');
 window.jQuery = jQuery;
 window.$ = jQuery;
 var bootstrap = require('bootstrap');
+var blueimpgallery = require('./blueimp-gallery');
 
 var controller = new Controller();
 

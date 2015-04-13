@@ -26,6 +26,10 @@
         </div>
         <div class="navbar-collapse2 collapse">
             <form class="navbar-form navbar-left" role="search" onsubmit={ this.search }>
+                <ul class="nav navbar-nav">
+                    <li onclick={ this.searchArt }><a href="">People</a></li>
+                    <li><a href="">Art</a></li>
+                  </ul>
                 <div class="form-group">
                     <input type="text" name="searchbox" class="form-control" placeholder="Search">
                 </div>
@@ -57,6 +61,10 @@
             e.preventDefault();
             console.log(this.searchbox.value);
             controller.trigger("UpdateFilter", this.searchbox.value);
+        }
+
+        searchArt(e){
+            controller.trigger("UpdateFilter", "art");
         }
 
     </script>
