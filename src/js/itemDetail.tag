@@ -9,7 +9,7 @@
         </div>
 
         <!-- image slideshow -->
-        <div> 
+        <div show={ item.photo_array != null }> 
             <h4>photos</h4>
             <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
             <div id="blueimp-gallery-carousel" name="gallery" class="blueimp-gallery blueimp-gallery-carousel">
@@ -57,19 +57,19 @@
         var controller = opts.controller;
         var self = this;
         var $ = require('jquery');
-        self.galleryObj = null;
 
-        initGallery(){
+        refreshGallery(){
+            self.slides.innerHTML="";
             var photoList = self.getPhotoList();
-            var gallery = blueimp.Gallery(
-                photoList,
-                {
-                    container: self.gallery,
-                    carousel: true
-                }
-            );
-            console.log(gallery);
-            self.galleryObj = gallery;
+            if (photoList !== false){
+                blueimp.Gallery(
+                    photoList,
+                    {
+                        container: self.gallery,
+                        carousel: true
+                    }
+                );
+            }
         }
 
         controller.on('ActivateView', function(view, item){
@@ -87,14 +87,14 @@
             }else{
                 self.item = {name: "Not found", description: "not found"};
             }
+            console.log(self.item.photo_array);
 
             self.update();
-            self.slides.innerHTML="";
-            self.initGallery();
+            self.refreshGallery();
         }
 
         getPhotoList(){
-            if (typeof self.item.photo_array === 'undefined' || self.item.photo_array === null){return []};
+            if (typeof self.item.photo_array === 'undefined' || self.item.photo_array === null){return false};
             return self.item.photo_array.map(function(id){
                 return {
                     href:controller.itemDict["photo"+id].path_medium,
