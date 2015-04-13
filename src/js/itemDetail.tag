@@ -12,20 +12,14 @@
         <div> 
             <h4>photos</h4>
             <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
-                <div id="blueimp-gallery-carousel" name="gallery" class="blueimp-gallery blueimp-gallery-carousel">
-                    <div class="slides"></div>
+            <div id="blueimp-gallery-carousel" name="gallery" class="blueimp-gallery blueimp-gallery-carousel">
+                    <div name="slides" class="slides"></div>
                         <h3 class="title"></h3>
                         <a class="prev">‹</a>
                         <a class="next">›</a>
                         <a class="play-pause"></a>
                         <ol class="indicator"></ol>
-                </div>
-
-                <div name="images" style="display:none;">
-                    <a href="http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzUwMC5qcGc=/">
-                    </a>
-                    
-                    
+                    </div>
                 </div>
         </div>
 
@@ -66,23 +60,20 @@
         var controller = opts.controller;
         var self = this;
         var $ = require('jquery');
-        window.gallery = $("#blueimp-gallery-carousel");
+        self.galleryObj = null;
 
-        this.on("mount", function(){
-            console.log("loading gallery");
+        initGallery(){
+            var photoList = self.getPhotoList();
             var gallery = blueimp.Gallery(
-                [{
-                    href:"http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzUwMC5qcGc=/",
-                    type: "image/jpeg",
-                    caption: "blahblah"
-                }],
+                photoList,
                 {
                     container: self.gallery,
                     carousel: true
                 }
             );
             console.log(gallery);
-        });
+            self.galleryObj = gallery;
+        }
 
         controller.on('ActivateView', function(view, item){
             self.display = (view==self._viewID);
@@ -101,13 +92,15 @@
             }
 
             self.update();
+            self.slides.innerHTML="";
+            self.initGallery();
         }
 
         getPhotoList(){
-            console.log(self.item.photo_array);
+            if (typeof self.item.photo_array === 'undefined' || self.item.photo_array === null){return []};
             return self.item.photo_array.map(function(id){
                 return {
-                    url:controller.itemDict["photo"+id].path_medium,
+                    href:controller.itemDict["photo"+id].path_medium,
                     caption: controller.itemDict["photo"+id].name
                 }
             });
