@@ -24,6 +24,13 @@ describe('testData', function(){
         assert.equal(0, filtered.length);
 
     });
+
+    it("empty filter should return full list", function(){
+        var filter = new DataFilter(testData);
+
+        var filtered = filter.filter('');
+        assert.equal(testData.length, filtered.length);
+    })
 })
 
 
