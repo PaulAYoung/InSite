@@ -1,6 +1,6 @@
 <itemdetail>
-<div if={this.display}>
-<div id="title"> 
+    <div if={this.display}>
+        <div id="title"> 
             <h1>{item.name}</h1>
         </div>
         <!-- description -->
@@ -13,14 +13,13 @@
             <h4>photos</h4>
             <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
             <div id="blueimp-gallery-carousel" name="gallery" class="blueimp-gallery blueimp-gallery-carousel">
-                    <div name="slides" class="slides"></div>
-                        <h3 class="title"></h3>
-                        <a class="prev">‹</a>
-                        <a class="next">›</a>
-                        <a class="play-pause"></a>
-                        <ol class="indicator"></ol>
-                    </div>
-                </div>
+                <div name="slides" class="slides"></div>
+                <h3 class="title"></h3>
+                <a class="prev">‹</a>
+                <a class="next">›</a>
+                <a class="play-pause"></a>
+                <ol class="indicator"></ol>
+            </div>
         </div>
 
         <!-- tags -->
@@ -47,10 +46,8 @@
                     <div class="col-md-12">My Home
                     </div>
                 </div>
-        
-            
-                </div>
             </div>
+        </div>
 
     <script>
         this.display=false;
