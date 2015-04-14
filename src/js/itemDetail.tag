@@ -24,10 +24,30 @@
                     
                 </div>
 
-                <!-- description -->
-                <div id="description"> 
-                    <h4>{item.description}</h4>
+        </div>
+        <!-- description -->
+        <div id="description"> 
+            <h4>{item.description}</h4>
+        </div>
+
+        <!-- list of stories connected to item -->
+        <div id="audioList"> 
+        <h4>audio list</h4>
+        <!-- insert relevant stories -->
+            <div class="row">
+                <div class="audioItem">
+                    <div class="col-md-12">A Million Dollar View
+                    </div>
                 </div>
+                <div class="audioItem">
+                    <div class="col-md-12">Door of Opportunity
+                    </div>
+                </div>
+                <div class="audioItem">
+                    <div class="col-md-12">My Home
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- tags -->
@@ -38,24 +58,7 @@
             </div>
             <!-- insert taglist here -->
         </div>
-
-        <!-- list of stories connected to item -->
-        <div id="audioList"> 
-        <h4>audio list</h4>
-        <!-- insert relevant stories -->
-            <div class="row">
-                <div class="audioItem">
-                    <div class="col-md-12">A Million Dollar View
-                </div>
-                <div class="audioItem">
-                    <div class="col-md-12">Door of Opportunity
-                </div>
-                <div class="audioItem">
-                    <div class="col-md-12">My Home
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
 
     <script>
         this.display=false;
