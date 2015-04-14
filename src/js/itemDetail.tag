@@ -1,12 +1,9 @@
 <itemdetail>
-<div if={this.display}>
+<div id="itemDetail" if={this.display}>
 <div id="title"> 
             <h1>{item.name}</h1>
         </div>
-        <!-- description -->
-        <div id="description"> 
-            <h4>{item.description}</h4>
-        </div>
+        
 
         <!-- image slideshow -->
         <div> 
@@ -21,11 +18,15 @@
                         <ol class="indicator"></ol>
                 </div>
 
-                <div name="images" style="display:none;">
+                <div name="images">
                     <a href="http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzUwMC5qcGc=/">
                     </a>
                     
-                    
+                </div>
+
+                <!-- description -->
+                <div id="description"> 
+                    <h4>{item.description}</h4>
                 </div>
         </div>
 
@@ -33,7 +34,7 @@
         <div id="tags"> 
             <h4>tags</h4>
             <div class="row">
-                <div class="col-md-4">tag placeholder</div>
+                <div class="col-md-4">{item.tags}</div>
             </div>
             <!-- insert taglist here -->
         </div>
@@ -44,7 +45,7 @@
         <!-- insert relevant stories -->
             <div class="row">
                 <div class="audioItem">
-                    <div class="col-md-12">A Million Dollar View [link to player]
+                    <div class="col-md-12">A Million Dollar View
                 </div>
                 <div class="audioItem">
                     <div class="col-md-12">Door of Opportunity
