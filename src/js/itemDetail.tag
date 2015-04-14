@@ -1,6 +1,6 @@
 <itemdetail>
-<div if={this.display}>
-<div id="title"> 
+    <div if={this.display}>
+        <div id="title"> 
             <h1>{item.name}</h1>
         </div>
         <!-- description -->
@@ -9,24 +9,17 @@
         </div>
 
         <!-- image slideshow -->
-        <div> 
+        <div show={ item.photo_array != null }> 
             <h4>photos</h4>
             <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
-                <div id="blueimp-gallery-carousel" name="gallery" class="blueimp-gallery blueimp-gallery-carousel">
-                    <div class="slides"></div>
-                        <h3 class="title"></h3>
-                        <a class="prev">‹</a>
-                        <a class="next">›</a>
-                        <a class="play-pause"></a>
-                        <ol class="indicator"></ol>
-                </div>
-
-                <div name="images" style="display:none;">
-                    <a href="http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzUwMC5qcGc=/">
-                    </a>
-                    
-                    
-                </div>
+            <div id="blueimp-gallery-carousel" name="gallery" class="blueimp-gallery blueimp-gallery-carousel">
+                <div name="slides" class="slides"></div>
+                <h3 class="title"></h3>
+                <a class="prev">‹</a>
+                <a class="next">›</a>
+                <a class="play-pause"></a>
+                <ol class="indicator"></ol>
+            </div>
         </div>
 
         <!-- tags -->
@@ -53,10 +46,8 @@
                     <div class="col-md-12">My Home
                     </div>
                 </div>
-        
-            
-                </div>
             </div>
+        </div>
 
     <script>
         this.display=false;
@@ -66,23 +57,20 @@
         var controller = opts.controller;
         var self = this;
         var $ = require('jquery');
-        window.gallery = $("#blueimp-gallery-carousel");
 
-        this.on("mount", function(){
-            console.log("loading gallery");
-            var gallery = blueimp.Gallery(
-                [{
-                    href:"http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzUwMC5qcGc=/",
-                    type: "image/jpeg",
-                    caption: "blahblah"
-                }],
-                {
-                    container: self.gallery,
-                    carousel: true
-                }
-            );
-            console.log(gallery);
-        });
+        refreshGallery(){
+            self.slides.innerHTML="";
+            var photoList = self.getPhotoList();
+            if (photoList !== false){
+                blueimp.Gallery(
+                    photoList,
+                    {
+                        container: self.gallery,
+                        carousel: true
+                    }
+                );
+            }
+        }
 
         controller.on('ActivateView', function(view, item){
             self.display = (view==self._viewID);
@@ -99,15 +87,17 @@
             }else{
                 self.item = {name: "Not found", description: "not found"};
             }
+            console.log(self.item.photo_array);
 
             self.update();
+            self.refreshGallery();
         }
 
         getPhotoList(){
-            console.log(self.item.photo_array);
+            if (typeof self.item.photo_array === 'undefined' || self.item.photo_array === null){return false};
             return self.item.photo_array.map(function(id){
                 return {
-                    url:controller.itemDict["photo"+id].path_medium,
+                    href:controller.itemDict["photo"+id].path_medium,
                     caption: controller.itemDict["photo"+id].name
                 }
             });
