@@ -11,7 +11,7 @@
         var self = this;
         var user_marker = false;
         var bulb_latlng = L.latLng(37.8899, -122.324721);
-        var test_latlng = L.latLng(37.890218, -122.315228);
+        var test_latlng = L.latLng(37.890218, -122.315228); //this latlng is within the bulb radius
 
         self.mapMarkers = [];
         
@@ -19,15 +19,18 @@
             this.map = new L.Map(this.mapArea);
             var accessToken = 'pk.eyJ1IjoiYXJkbmFzZWVsIiwiYSI6IkNpTXlHU0UifQ.M20m1nJ01_0olbOTdPJ1oQ'
             var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v4/ardnaseel.kfgj3f5l/{z}/{x}/{y}.png?access_token='+ accessToken);
+            
             this.map
                 .addLayer(mapboxTiles)
-                // .setView(bulb_latlng, 15 );
+                // .setView(setView_by_location, 15 );
+            navigator.geolocation.watchPosition(success, error, options);
 
             var options = {
               enableHighAccuracy: true,
               timeout: 5000,
               maximumAge: 0
             };
+
             function success(pos) {
                 if (user_marker){
                     self.map.removeLayer(location_circle);
@@ -37,28 +40,30 @@
                 var user_location = L.latLng(crd.latitude,crd.longitude);
                 var location_circle = L.circle(user_location, radius).addTo(self.map);
                 user_marker = true;
-                distance_to_bulb = bulb_latlng.distanceTo(user_location);
+                var distance_to_bulb = bulb_latlng.distanceTo(user_location);
+                
+                self.map.setView(setView_by_location(distance_to_bulb, user_location), 15);
+              
               console.log('Your current position is:');
               console.log('Latitude : ' + crd.latitude);
               console.log('Longitude: ' + crd.longitude);
               console.log('More or less ' + crd.accuracy + ' meters.');
               console.log("distance to bulb: "+ distance_to_bulb+"m");
+            };
 
-              //only set map view if location is in within radius of 
-                if (distance_to_bulb <= 1416){
-                    self.map.setView(user_location, 15);
+            //only set map view to user location if user is located is in within 1416 meters of the Albany Bulb.
+            function setView_by_location(distance_to_bulb, user_location){
+               if (distance_to_bulb <= 1416){
+                    return user_location;
                 }
                 else{
-                    self.map.setView(bulb_latlng, 15);
+                    return bulb_latlng;
                 }
-
-            };
+            }
+                
             function error(err) {
               console.warn('ERROR(' + err.code + '): ' + err.message);
             };
-            navigator.geolocation.watchPosition(success, error, options);
-
-            
 
         });
         
