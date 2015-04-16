@@ -1,34 +1,33 @@
 <itemdetail>
-    <div if={this.display}>
+    <div id="itemDetail" if={this.display}>
         <div id="title"> 
             <h1>{item.name}</h1>
         </div>
-        <!-- description -->
-        <div id="description"> 
-            <h4>{item.description}</h4>
-        </div>
+        
 
         <!-- image slideshow -->
         <div show={ item.photo_array != null }> 
             <h4>photos</h4>
             <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
-            <div id="blueimp-gallery-carousel" name="gallery" class="blueimp-gallery blueimp-gallery-carousel">
-                <div name="slides" class="slides"></div>
-                <h3 class="title"></h3>
-                <a class="prev">‹</a>
-                <a class="next">›</a>
-                <a class="play-pause"></a>
-                <ol class="indicator"></ol>
-            </div>
-        </div>
+                <div id="blueimp-gallery-carousel" name="gallery" class="blueimp-gallery blueimp-gallery-carousel">
+                    <div class="slides" name="slides"></div>
+                        <h3 class="title"></h3>
+                        <a class="prev">‹</a>
+                        <a class="next">›</a>
+                        <a class="play-pause"></a>
+                        <ol class="indicator"></ol>
+                </div>
 
-        <!-- tags -->
-        <div id="tags"> 
-            <h4>tags</h4>
-            <div class="row">
-                <div class="col-md-4">tag placeholder</div>
-            </div>
-            <!-- insert taglist here -->
+                <div name="images">
+                    <a href="http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzUwMC5qcGc=/">
+                    </a>
+                    
+                </div>
+
+        </div>
+        <!-- description -->
+        <div id="description"> 
+            <h4>{item.description}</h4>
         </div>
 
         <!-- list of stories connected to item -->
@@ -37,10 +36,12 @@
         <!-- insert relevant stories -->
             <div class="row">
                 <div class="audioItem">
-                    <div class="col-md-12">A Million Dollar View [link to player]
+                    <div class="col-md-12">A Million Dollar View
+                    </div>
                 </div>
                 <div class="audioItem">
                     <div class="col-md-12">Door of Opportunity
+                    </div>
                 </div>
                 <div class="audioItem">
                     <div class="col-md-12">My Home
@@ -48,6 +49,16 @@
                 </div>
             </div>
         </div>
+
+        <!-- tags -->
+        <div id="tags"> 
+            <h4>tags</h4>
+            <div class="row">
+                <div class="col-md-4">{item.tags}</div>
+            </div>
+            <!-- insert taglist here -->
+        </div>
+    </div>
 
     <script>
         this.display=false;
