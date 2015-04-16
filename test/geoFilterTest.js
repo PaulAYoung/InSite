@@ -19,7 +19,7 @@ var assert = require('chai').assert;
 var items = new DataFilter(testData).filter("");
 
 describe("geoFilter", function(){
-    it("should only return all items for big number", function(){
-        geoFilter([-122.32779622077942, 37.89016347485787], items, 9999999999999999999)
+    it("should not return any items for zero max distance", function(){
+        assert.equal(0, geoFilter([1, 1], items, 0).length);
     });
 });
