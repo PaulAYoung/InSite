@@ -4,6 +4,7 @@
  */
 function GeoQuerier(opts){
     this._controller = opts.controller;
+    var self = this;
     
     var options = {
       enableHighAccuracy: true,
@@ -11,10 +12,13 @@ function GeoQuerier(opts){
       maximumAge: 0
     };
     
-    navigator.geolocation.watchPosition(
-            this._success.bind(this),
-            this._error.bind(this),
-            options);
+    console.log("setting watch");
+    this._controller.on("StartApp", function(){
+        navigator.geolocation.watchPosition(
+                self._success.bind(self),
+                self._error.bind(self),
+                options);
+    });
 }
 
 GeoQuerier.prototype = {

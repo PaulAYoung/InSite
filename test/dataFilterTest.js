@@ -4,10 +4,10 @@ var testData = require('./testData.json');
 
 var assert = require('chai').assert;
 
+var filter = new DataFilter(testData);
+
 describe('testData', function(){
     it("should filter by tags", function(){
-        var filter = new DataFilter(testData);
-
         var filtered = filter.filter('a');
         assert.equal(7, filtered[0].id);
 
@@ -19,18 +19,20 @@ describe('testData', function(){
     
     it("empty list should filter to empty", function(){
         var filter = new DataFilter([]);
-
         var filtered = filter.filter('a');
         assert.equal(0, filtered.length);
 
     });
 
     it("empty filter should return full list", function(){
-        var filter = new DataFilter(testData);
-
         var filtered = filter.filter('');
         assert.equal(testData.length, filtered.length);
     })
+
+    it("should also filter by item name", function(){
+        var filtered = filter.filter("Hobbit House");
+        assert.equal(6, filtered[0].id);
+    });
 })
 
 

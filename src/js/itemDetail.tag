@@ -87,7 +87,6 @@
             }else{
                 self.item = {name: "Not found", description: "not found"};
             }
-            console.log(self.item.photo_array);
 
             self.update();
             self.refreshGallery();

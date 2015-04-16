@@ -7,7 +7,9 @@ DataFilter.prototype = {
     filter: function(filter){
         out = [];
         for (var i=0; i< this._data.length; i++){
-            if (this._data[i].tags.indexOf(filter) !== -1){
+            if (this._data[i].tags.indexOf(filter) !== -1 ||
+                this._data[i].name.indexOf(filter) !== -1
+                    ){
                 out.push(this._data[i]);
             }
         }
