@@ -5,7 +5,20 @@ var assert = require('chai').assert;
 
 baseurl = "http://localhost:8080/";
 
+function jsLoaded(){
+    /**
+     * Should be executed in page.evaluate
+     * triggers phantom callback once all scripts have been loaded
+     */
+
+    document.addEventListener("DOMContentLoaded", function(){
+        console.log("calling phantom");
+        window.callPhantom();
+    }, false);
+}
+
 describe("A simple web page test", function(){
+    this.timeout(10000);
     it("title should be InSite", function(done){
         phantom.create(function(ph){
             ph.createPage(function(page){
@@ -13,10 +26,10 @@ describe("A simple web page test", function(){
                     page.evaluate(function(){
                         return document.title;
                     }, function(title){
+                        ph.exit();
                         assert.equal("InSite", title);
+                        done();
                     });
-                    ph.exit();
-                    done();
                 });
             });
         });
@@ -26,18 +39,21 @@ describe("A simple web page test", function(){
         phantom.create(function(ph){
             ph.createPage(function(page){
                 page.open(baseurl, function(status){
-                    page.evaluate(function(){
-                            location.href = baseurl + "#List";
-                            return $("map").is(":empty");
-                        }, function(empty){
-                            console.log("test");
-                            assert.isTrue(empty);
-                        });
-                    ph.exit();
-                    done();
+                    page.onInitialized = function(){
+                        page.onCallback = function() {
+                                page.evaluate(function(){
+                                return test;
+                            }, function(empty){
+                                console.log(empty);
+                                ph.exit();
+                                assert.isTrue(empty);
+                                done();
+                            });
+                        }
+                    }
+                    page.evaluate(jsLoaded);
                 });
             });
         });
     });
-
 });
