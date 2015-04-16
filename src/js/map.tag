@@ -14,6 +14,7 @@
         var test_latlng = L.latLng(37.890218, -122.315228); //this latlng is within the bulb radius
 
         self.mapMarkers = [];
+        self.userMarker = null;
         
         this.on('mount', function(e){
             self.map = new L.Map(self.mapArea);
@@ -36,14 +37,13 @@
 
         controller.on("LocationUpdated", function(pos){
             console.log("location updated");
-            if (user_marker){
-                self.map.removeLayer(location_circle);
+            if (self.userMarker){
+                self.map.removeLayer(self.userMarker);
             }
             var crd = pos.coords;  
             var radius = crd.accuracy / 2;
             var user_location = L.latLng(crd.latitude,crd.longitude);
-            var location_circle = L.circle(user_location, radius).addTo(self.map);
-            user_marker = true;
+            self.userMarker = L.circle(user_location, radius).addTo(self.map);
             var distance_to_bulb = bulb_latlng.distanceTo(user_location);
 
             function setView_by_location(distance_to_bulb, user_location){

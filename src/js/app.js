@@ -28,7 +28,7 @@ var opts = {
     };
 
 var connector = new Connector(opts);
-//var geoQuerier = new GeoQuerier(opts);
+var geoQuerier = new GeoQuerier(opts);
 
 function setup(){
     riot.mount('*', opts);
