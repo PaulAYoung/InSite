@@ -7,6 +7,7 @@ var Connector = require('./localground_connector');
 var itemDetail = require('./itemDetail.tag');
 var audioPlayer = require('./audioPlayer.tag');
 var Controller = require('./controller');
+var GeoQuerier = require('./geoQuerier.js');
 
 // set up jquery/bootstrap
 var jQuery = require('jquery');
@@ -27,6 +28,7 @@ var opts = {
     };
 
 var connector = new Connector(opts);
+var geoQuerier = new GeoQuerier(opts);
 
 function setup(){
     riot.mount('*', opts);
