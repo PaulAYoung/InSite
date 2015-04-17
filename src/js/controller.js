@@ -92,8 +92,11 @@ Controller.prototype = {
         // or view/collection/id ex: list/people/12
         //
         // this makes an array with 'ActivateView' as first arg, and arguments as added on
+
         args = ['ActivateView'].concat(Array.prototype.slice.call(arguments));
-        if (args.length === 1){ args.push('Map');}
+        console.log(args);
+        if (args[1] === ""){ args[1] = 'Map';}
+        console.log(args);
         this.trigger.apply(this, args);
     }
 };
