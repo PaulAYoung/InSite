@@ -15,7 +15,6 @@ window.jQuery = jQuery;
 window.$ = jQuery;
 var bootstrap = require('bootstrap');
 var blueimpgallery = require('./blueimp-gallery');
-// var audiojs = require('./audiojs');
 
 var controller = new Controller();
 
