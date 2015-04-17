@@ -28,12 +28,15 @@
     "browserify": "^9.0.3",
     "chai": "^2.1.2",
     "gulp": "^3.8.11",
+    "gulp-inject": "^1.2.0",
+    "gulp-inject-string": "0.0.2",
     "http-server": "^0.8.0",
     "mocha": "^2.2.1",
     "mock-browser": "^0.90.33",
     "phantom": "^0.7.2",
     "riot": "^2.0.11",
     "riotify": "0.0.9",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "vinyl-transform": "^1.0.0"
   }
 }
