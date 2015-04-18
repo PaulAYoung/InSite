@@ -38,13 +38,12 @@ Controller.prototype = {
         var markers = new Set(this.itemList.map(function(i){
             return i.marker;
         }));
-
+        
         this.markers = [];
 
         for (m of markers){
             this.markers.push(this.itemDict[m])
         }
-
         this.trigger("ItemsUpdated", this.itemList);
     },
     _processItems: function(items){
@@ -94,9 +93,7 @@ Controller.prototype = {
         // this makes an array with 'ActivateView' as first arg, and arguments as added on
 
         args = ['ActivateView'].concat(Array.prototype.slice.call(arguments));
-        console.log(args);
         if (args[1] === ""){ args[1] = 'Map';}
-        console.log(args);
         this.trigger.apply(this, args);
     }
 };

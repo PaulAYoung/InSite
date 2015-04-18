@@ -47,15 +47,6 @@
             var user_location = L.latLng(crd.latitude,crd.longitude);
             self.userMarker = L.circle(user_location, radius).addTo(self.map);
             var distance_to_bulb = bulb_latlng.distanceTo(user_location);
-
-            // function setView_by_location(distance_to_bulb, user_location){
-            //    if (distance_to_bulb <= 1416){
-            //         return user_location;
-            //     }
-            //     else{
-            //         return bulb_latlng;
-            //     }
-            // }
            
             self.map.setView(setViewbyLocation(1416, user_location, bulb_latlng), 15);
           
@@ -79,10 +70,12 @@
             var markers = controller.markers;
             var mark;
             $.each(markers, function(index, value){
-                mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]]).bindPopup(value.name+'<br>'+value.description).addTo(self.map);
-                self.mapMarkers.push(mark);
+                if (typeof value !== "undefined"){
+                    mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]]).bindPopup(value.name+'<br>'+value.description).addTo(self.map);
+                    self.mapMarkers.push(mark); 
+                }
+                
             });
-            //refer to self.map 
         });
         
         clearMarkers(){
