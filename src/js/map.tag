@@ -24,7 +24,7 @@
             
             self.map
                 .addLayer(mapboxTiles)
-                .setView(bulb_latlng, 15 );
+                .setView(bulb_latlng, 16 );
 
             self.update();
             self.map.invalidateSize();
@@ -48,7 +48,7 @@
             self.userMarker = L.circle(user_location, radius).addTo(self.map);
             var distance_to_bulb = bulb_latlng.distanceTo(user_location);
            
-            self.map.setView(setViewbyLocation(1416, user_location, bulb_latlng), 15);
+            self.map.setView(setViewbyLocation(1416, user_location, bulb_latlng), 16);
           
           console.log('Your current position is:');
           console.log('Latitude : ' + crd.latitude);
