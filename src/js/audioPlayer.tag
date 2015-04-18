@@ -1,48 +1,36 @@
 <audioplayer>
-    <audio if={this.display}>
-      <source src="http://insite.localground.org/profile/audio/L3VzZXJkYXRhL21lZGlhL255Ym9ycm9ieW4vYXVkaW8vdGFtYXJhc2lnaHRmb3Jzb3JlZXllcy5tcDM=/">
+    <audio name="player" if={this.display}>
+      <source src={ this.item.file_path }>
     </audio>
 
     <script>
         var controller = opts.controller;
         var self = this;
+        var as = null;
 
-        self.audio = new Audio();
-        self.command = "Play";
         //NEED TO FIX: DISPLAY SHOULD BE SET TO FALSE. 
-        self.display = true;
-        self.url = "http://insite.localground.org/profile/audio/L3VzZXJkYXRhL21lZGlhL255Ym9ycm9ieW4vYXVkaW8vdGFtYXJhc2lnaHRmb3Jzb3JlZXllcy5tcDM=/";
+        self.display = false;
 
-        //initialize audiojs player
-        audiojs.events.ready(function() {
-            var as = audiojs.createAll();
-          });
+        controller.on("playAudio", function(item){
+            self.item = item;
+            // if (as !== null){
 
-        controller.on("ItemSelected", function(item){
-                console.log(item);
+            // }
+            console.log("audio");
             if (item.overlay_type === "audio"){
-                console.log(self.display);
-                self.audio.pause();
+                self.display = true;
 
-                self.audio.src = item.file_path;
-                
                 self.update();
+                audiojs.events.ready(function() {
+                    as = audiojs.createAll();
+                });
+                
             } else {
                 self.display = false;
                 self.update();
             }
         });
 
-        execCommand(){
-            if (self.command === "Play"){
-                self.audio.play();
-                self.command = "Pause";
-            }else{
-                self.audio.pause();
-                self.command = "Play";
-            }
-            self.update();
-        }
     </script>
 
 
