@@ -1,5 +1,6 @@
 var riot = require('riot');
 var DataFilter = require('./dataFilter');
+var geoSort = require('./geoSort.js');
 
 function Controller(){
     /**
@@ -14,11 +15,15 @@ function Controller(){
     this.markers = null;
     this._filterer = new DataFilter();
     this._filter = "";
+    this._loc = null;
     var self = this;
 
     riot.route(this._router.bind(this));
 
-    this.on('ItemsLoaded', this._processItems.bind(this));
+    this.on('ItemsLoaded', function(items){
+        self._processItems(items)
+        self.trigger("ItemsUpdated", this.itemList);
+    });
 
     this.one('StartApp', function(){
         riot.route.exec(self._router.bind(self));
@@ -26,6 +31,21 @@ function Controller(){
 
     this.on('UpdateFilter', function(filter){
         self._filterItems(filter);
+        self.trigger("ItemsUpdated", this.itemList);
+    });
+
+    this.on('LocationUpdated', function(pos){
+        var lat = pos.coords.latitude;
+        var lon = pos.coords.longitude;
+        if (
+            self._loc === null ||
+            self._loc.lat !== lat||
+            self._loc.lon !== lon
+        ){
+                self._loc = {lat: lat, lon:lon};
+                self._geoSort();
+                self.trigger("ItemsUpdated", this.itemList);
+        }
     });
 }
 
@@ -44,7 +64,11 @@ Controller.prototype = {
         for (m of markers){
             this.markers.push(this.itemDict[m])
         }
-        this.trigger("ItemsUpdated", this.itemList);
+
+        if (this._loc !== null){this._geoSort();}
+    },
+    _geoSort: function(){
+        this.markers = geoSort(this._loc, this.markers);
     },
     _processItems: function(items){
         var itemDict = {};
