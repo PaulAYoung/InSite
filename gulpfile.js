@@ -1,9 +1,7 @@
 var gulp = require('gulp');
-var inject = require('gulp-inject-string');
 var riotify = require('riotify');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
-var glob = require("glob");
 
 gulp.task('buildjs', function(){
     return browserify({ entries: ['./src/js/app.js'] })
