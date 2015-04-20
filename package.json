@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "pretest": "npm start &",
+    "test": "mocha || npm stop",
+    "stop": "pkill -f http-server",
     "start": "http-server www/ -p 8080",
     "build": "gulp build"
   },
