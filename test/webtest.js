@@ -6,7 +6,6 @@ describe('basic web tests', function(){
     var browser = new Zombie();
 
     before(function(done){
-        console.log(browser);
         browser.visit("http://localhost:8080/", function(){
             done();
         });
