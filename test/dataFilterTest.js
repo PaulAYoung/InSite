@@ -6,7 +6,7 @@ var assert = require('chai').assert;
 
 var filter = new DataFilter(testData);
 
-describe('testData', function(){
+describe('DataFilter', function(){
     it("should filter by tags", function(){
         var filtered = filter.filter('a');
         assert.equal(7, filtered[0].id);

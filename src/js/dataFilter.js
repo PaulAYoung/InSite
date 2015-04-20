@@ -15,10 +15,6 @@ DataFilter.prototype = {
         }
         return out;
     },
-    geoFilter: function(geom){
-        return this._data;
-    }
-
 };
 
 module.exports = DataFilter
