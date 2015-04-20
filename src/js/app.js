@@ -20,7 +20,7 @@ var controller = new Controller();
 
 var opts = {
         controller: controller,
-        url: "http://insite.localground.org/api/0/projects/2/?format=jsonp&callback=?",
+        url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?",
         controls: [
             {title: "Map"},
             {title: "List"}

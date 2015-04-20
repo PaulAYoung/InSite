@@ -12,6 +12,7 @@
         var user_marker = false;
         var bulb_latlng = L.latLng(37.8899, -122.324721);
         var test_latlng = L.latLng(37.890218, -122.315228); //this latlng is within the bulb radius
+        var setViewbyLocation = require('./setViewbyLocation');
 
         self.mapMarkers = [];
         self.userMarker = null;
@@ -23,7 +24,7 @@
             
             self.map
                 .addLayer(mapboxTiles)
-                .setView([37.8899, -122.324721], 15 );
+                .setView(bulb_latlng, 16 );
 
             self.update();
             self.map.invalidateSize();
@@ -36,6 +37,7 @@
         });
 
         controller.on("LocationUpdated", function(pos){
+
             console.log("location updated");
             if (self.userMarker){
                 self.map.removeLayer(self.userMarker);
@@ -45,17 +47,8 @@
             var user_location = L.latLng(crd.latitude,crd.longitude);
             self.userMarker = L.circle(user_location, radius).addTo(self.map);
             var distance_to_bulb = bulb_latlng.distanceTo(user_location);
-
-            function setView_by_location(distance_to_bulb, user_location){
-               if (distance_to_bulb <= 1416){
-                    return user_location;
-                }
-                else{
-                    return bulb_latlng;
-                }
-            }
            
-            self.map.setView(setView_by_location(distance_to_bulb, user_location), 15);
+            self.map.setView(setViewbyLocation(1416, user_location, bulb_latlng), 16);
           
           console.log('Your current position is:');
           console.log('Latitude : ' + crd.latitude);
@@ -77,10 +70,12 @@
             var markers = controller.markers;
             var mark;
             $.each(markers, function(index, value){
-                mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]]).bindPopup(value.name+'<br>'+value.description).addTo(self.map);
-                self.mapMarkers.push(mark);
+                if (typeof value !== "undefined"){
+                    mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]]).bindPopup(value.name+'<br>'+value.description).addTo(self.map);
+                    self.mapMarkers.push(mark); 
+                }
+                
             });
-            //refer to self.map 
         });
         
         clearMarkers(){

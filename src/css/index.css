@@ -16,6 +16,26 @@ body{
      width: 100%;
 }
 
+/*Audio Player edits*/
+.audiojs{
+  position:fixed;
+  bottom: 0px;
+  height: 100px;
+  width: 100%;
+  background-image: none;
+}
+.audiojs .play-pause{
+  width: 15%;
+  border-right: none;
+}
+.audiojs .scrubber{
+  width:50%;
+}
+.audiojs .time{
+  width:20%;
+  border-left: none;
+}
+
 /*Bootstrap edits*/
 .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
 	padding-right:0px;
@@ -41,3 +61,4 @@ h4{
     float: right;
     margin: 0;
   }
+}

@@ -31,20 +31,12 @@
         </div>
 
         <!-- list of stories connected to item -->
-        <div id="audioList"> 
+        <div id="audioList" if={ this.item.audio_array }> 
         <h4>audio list</h4>
         <!-- insert relevant stories -->
-            <div class="row">
+            <div each={this.getAudio()} onclick={parent.playAudio} class="row">
                 <div class="audioItem">
-                    <div class="col-md-12">A Million Dollar View
-                    </div>
-                </div>
-                <div class="audioItem">
-                    <div class="col-md-12">Door of Opportunity
-                    </div>
-                </div>
-                <div class="audioItem">
-                    <div class="col-md-12">My Home
+                    <div class="col-md-12"> {name}
                     </div>
                 </div>
             </div>
@@ -62,12 +54,21 @@
 
     <script>
         this.display=false;
-        this.items = null;
+        this.item = null;
         this.item_id = null;
         this._viewID = "itemDetail";
         var controller = opts.controller;
         var self = this;
         var $ = require('jquery');
+
+        getAudio(){
+            if (self.item === null || self.item.audio_array === null || typeof self.item.audio_array === "undefined"){
+                return [];
+            }
+            else{
+                return self.item.audio_array.map(function(id){ return controller.itemDict['audio'+id];})
+            }
+        }
 
         refreshGallery(){
             self.slides.innerHTML="";
@@ -111,6 +112,12 @@
                     caption: controller.itemDict["photo"+id].name
                 }
             });
+        }
+
+        playAudio(e) {
+            var item = e.item
+            console.log(item);
+            controller.trigger("playAudio", item)
         }
 
         
