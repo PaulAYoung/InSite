@@ -13,9 +13,6 @@
 
         controller.on("playAudio", function(item){
             self.item = item;
-            // if (as !== null){
-
-            // }
             console.log("audio");
             if (item.overlay_type === "audio"){
                 self.display = true;
@@ -25,6 +22,8 @@
                     as = audiojs.createAll();
                 });
                 
+                $('#audiojs_wrapper0').append("<div id='audioTitle'>test this</div>");
+
             } else {
                 self.display = false;
                 self.update();
