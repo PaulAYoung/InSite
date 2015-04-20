@@ -28,17 +28,6 @@ gulp.task('buildresources', function(){
     .pipe(gulp.dest('www'));
 });
 
-gulp.task('webtests', function(){
-    gulp.src('./src/index.html')
-    .pipe(inject.before("</body>", "tests.tests.js"))
-    .pipe(gulp.dest('www/test.html'));
-
-    browserify( gulp.src('./src/tests/*.js') )
-    .bundle()
-    .pipe(source('tests.js'))
-    .pipe(gulp.dest('www/tests'));
-})
-
 gulp.task('build', ['buildjs', 'buildhtml', 'buildcss', 'buildresources']); 
 
 gulp.task('watch', function(){
