@@ -15,6 +15,13 @@ body{
      margin-right: auto;
      width: 100%;
 }
+/* Welcome edits*/
+#welcome{
+  position:fixed;
+  height: 30%;
+  width: 100%;
+  background-color: black;
+}
 
 /*Audio Player edits*/
 .audiojs{

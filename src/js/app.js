@@ -8,6 +8,7 @@ var itemDetail = require('./itemDetail.tag');
 var audioPlayer = require('./audioPlayer.tag');
 var Controller = require('./controller');
 var GeoQuerier = require('./geoQuerier.js');
+var welcome = require('./welcome.tag');
 
 // set up jquery/bootstrap
 var jQuery = require('jquery');

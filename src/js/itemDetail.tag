@@ -3,8 +3,6 @@
         <div id="title"> 
             <h1>{item.name}</h1>
         </div>
-        
-
         <!-- image slideshow -->
         <div show={ item.photo_array != null }> 
             <h4>photos</h4>
