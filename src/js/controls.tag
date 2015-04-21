@@ -27,6 +27,7 @@
         <div class="navbar-collapse2 collapse">
             <form class="navbar-form navbar-left" role="search" onsubmit={ this.search }>
                 <ul class="nav navbar-nav">
+                    <li onclick={ this.searchHistory }><a href="">History</a></li>
                     <li onclick={ this.searchArt }><a href="">Art</a></li>
                     <li><a href="">People</a></li>
                   </ul>
@@ -64,7 +65,11 @@
         }
 
         searchArt(e){
-            controller.trigger("UpdateFilter", "art");
+            controller.trigger("UpdateFilter", "Art");
+        }
+
+        searchHistory(e){
+            controller.trigger("UpdateFilter", "History");
         }
 
     </script>
