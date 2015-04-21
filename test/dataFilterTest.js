@@ -33,6 +33,11 @@ describe('DataFilter', function(){
         var filtered = filter.filter("Hobbit House");
         assert.equal(6, filtered[0].id);
     });
+
+    it("should be case insensitive", function(){
+        var filtered = filter.filter("q");
+        assert.equal(1, filtered[0].id);
+    });
 })
 
 
