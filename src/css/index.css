@@ -56,11 +56,9 @@ body{
 	padding-right:0px;
 	padding-left:0px;
 }
-
 h1{
   margin-bottom:0px;
 }
-
 h4{
 	margin-top: 5px;
   margin-bottom:10px;
@@ -69,6 +67,31 @@ h4{
 
 #itemDetail {
   margin: 50px;
+}
+
+.navbor-form{
+  margin-top:0px;
+}
+.navbar-toggle{
+  border-color: "";
+  margin: 0px;
+}
+.navbar-toggle-brand{
+  float: left;
+}
+.navbar-brand{
+  height:auto;
+  padding: 0px;
+}
+.form-group{
+  margin-bottom: 0px;
+}
+.form-control{
+  width: 80%;
+  float: left;
+}
+.glypichon-search{
+  float: right;
 }
 
 @media (min-width: 768px) {
