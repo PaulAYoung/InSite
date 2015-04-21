@@ -77,7 +77,15 @@
                         .addTo(self.map);
                     }
                     else{
-                        mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]]).bindPopup(value.name+'<br>'+value.description).addTo(self.map);
+                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
+                            {radius: 8,
+                            fillColor: 'blue',
+                            fillOpacity: 1,
+                            color: 'white',
+                            opacity: 1,
+                            weight: 1})
+                        .bindPopup(value.name+'<br>'+value.description)
+                        .addTo(self.map);
                     }
                     self.mapMarkers.push(mark); 
                 }
