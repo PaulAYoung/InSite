@@ -66,12 +66,19 @@
 
         controller.on('ItemsUpdated', function(item){
             self.clearMarkers();
-            
+            // console.log(item);
             var markers = controller.markers;
             var mark;
             $.each(markers, function(index, value){
                 if (typeof value !== "undefined"){
-                    mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]]).bindPopup(value.name+'<br>'+value.description).addTo(self.map);
+                    if (value.tags.indexOf('label') !== -1){
+                        mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
+                            {icon: L.divIcon({className: 'label', html: value.name})})
+                        .addTo(self.map);
+                    }
+                    else{
+                        mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]]).bindPopup(value.name+'<br>'+value.description).addTo(self.map);
+                    }
                     self.mapMarkers.push(mark); 
                 }
                 

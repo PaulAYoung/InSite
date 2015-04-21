@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "pretest": "npm start &",
+    "test": "mocha || npm stop",
+    "stop": "pkill -f http-server",
     "start": "http-server www/ -p 8080",
     "build": "gulp build"
   },
@@ -31,9 +33,10 @@
     "http-server": "^0.8.0",
     "mocha": "^2.2.1",
     "mock-browser": "^0.90.33",
-    "phantom": "^0.7.2",
     "riot": "^2.0.11",
     "riotify": "0.0.9",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "vinyl-transform": "^1.0.0",
+    "zombie": "^3.1.1"
   }
 }

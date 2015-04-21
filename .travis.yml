@@ -4,5 +4,3 @@ node_js:
 
 before_script:
     - npm run-script build
-    - npm start &
-    - sleep 3

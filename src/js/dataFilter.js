@@ -6,19 +6,16 @@ function DataFilter(data){
 DataFilter.prototype = {
     filter: function(filter){
         out = [];
+        filter = filter.toLowerCase();
         for (var i=0; i< this._data.length; i++){
-            if (this._data[i].tags.indexOf(filter) !== -1 ||
-                this._data[i].name.indexOf(filter) !== -1
+            if (this._data[i].tags.toLowerCase().indexOf(filter) !== -1 ||
+                this._data[i].name.toLowerCase().indexOf(filter) !== -1
                     ){
                 out.push(this._data[i]);
             }
         }
         return out;
     },
-    geoFilter: function(geom){
-        return this._data;
-    }
-
 };
 
 module.exports = DataFilter
