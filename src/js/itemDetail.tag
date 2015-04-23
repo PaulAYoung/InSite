@@ -17,8 +17,6 @@
                 </div>
 
                 <div name="images">
-                    <a href="http://insite.localground.org/profile/photos/L3VzZXJkYXRhL21lZGlhL3NhbmRyYS9waG90b3MvaG9iYml0aG91c2VpbWcwMjkwdGh1bWJjb3B5XzUwMC5qcGc=/">
-                    </a>
                     
                 </div>
 
@@ -34,6 +32,7 @@
         <!-- insert relevant stories -->
             <div each={this.getAudio()} onclick={parent.playAudio} class="row">
                 <div class="audioItem">
+                    <div class="audioIcon"></div>
                     <div class="col-md-12"> {name}
                     </div>
                 </div>
