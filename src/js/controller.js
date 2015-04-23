@@ -1,6 +1,8 @@
 var riot = require('riot');
 var DataFilter = require('./dataFilter');
 var geoSort = require('./geoSort.js');
+var SimpleSet = require('./simpleSet');
+
 
 function Controller(){
     /**
@@ -15,7 +17,7 @@ function Controller(){
     this.markers = null;
     this._filterer = new DataFilter();
     this._filter = "";
-    this._loc = null;
+    this.loc = null;
     var self = this;
 
     riot.route(this._router.bind(this));
@@ -38,11 +40,11 @@ function Controller(){
         var lat = pos.coords.latitude;
         var lon = pos.coords.longitude;
         if (
-            self._loc === null ||
-            self._loc.lat !== lat||
-            self._loc.lon !== lon
+            self.loc === null ||
+            self.loc.lat !== lat||
+            self.loc.lon !== lon
         ){
-                self._loc = {lat: lat, lon:lon};
+                self.loc = {lat: lat, lon:lon};
                 self._geoSort();
                 self.trigger("ItemsUpdated", this.itemList);
         }
@@ -54,21 +56,25 @@ Controller.prototype = {
         this._filter = filter;
         this.itemList = this._filterer.filter(filter);
 
-        var m;
-        var markers = new Set(this.itemList.map(function(i){
+        var markers = new SimpleSet(this.itemList.map(function(i){
             return i.marker;
         }));
+
         
         this.markers = [];
 
-        for (m of markers){
+        var items = markers.items();
+
+        for (var i=0, m, l = items.length;i<l, m=items[i]; i++){
             this.markers.push(this.itemDict[m])
         }
 
-        if (this._loc !== null){this._geoSort();}
+        if (this.loc !== null){this._geoSort();}
     },
     _geoSort: function(){
-        this.markers = geoSort(this._loc, this.markers);
+        if (this.markers !== null){
+            this.markers = geoSort(this.loc, this.markers);
+        }
     },
     _processItems: function(items){
         var itemDict = {};
@@ -97,7 +103,6 @@ Controller.prototype = {
                 markerMap[key]=associated;
             }
         }
-        this.itemDict = itemDict;
 
         // adds marker to each item, should also modify itemList since references are the same
         for (marker in markerMap){
@@ -108,6 +113,7 @@ Controller.prototype = {
         }
 
 
+        this.itemDict = itemDict;
         this._filterItems(this._filter);
     },
     _router: function(){
