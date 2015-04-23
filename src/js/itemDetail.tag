@@ -64,7 +64,9 @@
                 return [];
             }
             else{
-                return self.item.audio_array.map(function(id){ return controller.itemDict['audio'+id];})
+                var z = self.item.audio_array.map(function(id){ return controller.itemDict['audio'+id];})
+                console.log(z);
+                return z
             }
         }
 
