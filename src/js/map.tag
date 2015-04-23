@@ -72,11 +72,13 @@
             $.each(markers, function(index, value){
                 if (typeof value !== "undefined"){
                     if (value.tags.indexOf('label') !== -1){
+                        // Map labels
                         mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
                             {icon: L.divIcon({className: 'label', html: value.name})})
                         .addTo(self.map);
                     }
-                    else{
+                    else if(value.photo_array !== null || value.audio_array !== null){
+                        // markers with content
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
                             {radius: 8,
                             fillColor: 'blue',
@@ -85,6 +87,18 @@
                             opacity: 1,
                             weight: 1})
                         .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
+                        .addTo(self.map);
+                    }
+                    else {
+                        // markers without content
+                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
+                            {radius: 4,
+                            fillColor: 'gray',
+                            fillOpacity: 1,
+                            color: 'white',
+                            opacity: 1,
+                            weight: 1})
+                        .bindPopup(value.name+'<br>'+value.description)
                         .addTo(self.map);
                     }
                     self.mapMarkers.push(mark); 
