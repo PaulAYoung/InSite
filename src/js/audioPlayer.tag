@@ -2,6 +2,9 @@
     <audio name="player" if={this.display}>
       <source src={ this.item.file_path }>
     </audio>
+    <div class="audio-details">
+        { item.name }
+    </div>
 
     <script>
         var controller = opts.controller;
@@ -18,11 +21,18 @@
                 self.display = true;
 
                 self.update();
-                audiojs.events.ready(function() {
-                    as = audiojs.createAll();
-                });
+                if (as === null){
+                    audiojs.events.ready(function() {
+                        as = audiojs.createAll()[0];
+                        window.as = as;
+                    });
+                }else{
+                    as.pause();
+                    as.load(self.item.file_path);
+                }
+
+                as.play();
                 
-                $('#audiojs_wrapper0').append("<div id='audioTitle'>test this</div>");
 
             } else {
                 self.display = false;
