@@ -23,7 +23,17 @@ function GeoQuerier(opts){
 
 GeoQuerier.prototype = {
     _success: function(pos){
-        this._controller.trigger("LocationUpdated", pos);
+
+        var lat = pos.coords.latitude;
+        var lon = pos.coords.longitude;
+
+        if (
+            this._controller.loc === null ||
+            this._controller.loc.lat !== lat||
+            this._controller.loc.lon !== lon
+        ){
+            this._controller.trigger("LocationUpdated", pos);
+        }
     },
     _error: function(err){
         this._controller.trigger("LocationError", err);
