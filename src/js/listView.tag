@@ -12,6 +12,7 @@
         var controller = opts.controller;
         var riot = require('riot');
         var self = this;
+        // console.log(controller.itemDict);
 
         controller.on('ActivateView', function(title){
             self.display = (title=='List');
@@ -20,6 +21,7 @@
         
         controller.on('ItemsUpdated', function(items){
             self.items = controller.markers;
+            console.log(controller.itemDict);
             self.update();
         });
 
@@ -29,16 +31,12 @@
             riot.route("itemDetail/" + item.overlay_type + item.id)
         }
 
-        // this.on('LocationUpdated', function(pos){
-        //     var user_location = L.latLng(pos.coords.latitude, pos.coords.longitude);
-        //     self.update();
-        // })
-        // distanceTo(lat, long){
-        //     var user_location = L.latLng(pos.coords.latitude, pos.coords.longitude);
-        //     console.log(user_location)
-        //     var marker_location= L.latLng(lat, long);
-        //     return user_location.distanceTo(marker_location);
-        // }
+        distanceTo(lat, lon){
+            var user_location_marker = L.latLng(controller.loc['lat'], controller.loc['lon']);
+            var marker_location= L.latLng(lat, lon);
+            //convert distance from meters to ft
+            return String(Math.round(user_location_marker.distanceTo(marker_location) * 3.28084))+" ft";
+        }
 
         getDescription(){
             item_child = [];
@@ -58,15 +56,21 @@
             return text_array.slice(0,19).join(" ");
         }
 
+        getPhoto(photo_array){
+            if (typeof photo_array === 'undefined' || photo_array === null){return false};
+            return controller.itemDict['photo'+photo_array[0]]['path_small'];
+        }
+
     </script>
 </listview>
 
 <item>
     <div class="container-fluid">
         <div class="row">
+            <img src={ parent.getPhoto(photo_array) }> 
             <p>{ name }</p>
             <span>{ parent.shortenText(description) }</span>
-            <span>{ distanceTo(geometry.coordinates[1], geometry.coordinates[0]) }
+            <span>{ parent.distanceTo(geometry.coordinates[1], geometry.coordinates[0]) }
         </div>
     </div>
 
