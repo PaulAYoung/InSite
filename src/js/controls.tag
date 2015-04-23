@@ -6,6 +6,7 @@
             <a class="navbar-brand">InSite</a>
             </button>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span style="color:white; margin-right:.5em;">{ this.filter }</span>
             <span style="color: white;" class="glyphicon glyphicon-search" aria-hidden="true"></span>
             <span class="sr-only">Search:</span>
           </button>
@@ -23,6 +24,7 @@
         <div class="navbar-collapse collapse" name="itemSearch">
             <form class="navbar-form navbar-left" role="search" onsubmit={ this.search }>
                 <ul class="nav navbar-nav">
+                    <li onclick={ this.reset }><a href="">Reset</a></li>
                     <li onclick={ this.searchHistory }><a href="">History</a></li>
                     <li onclick={ this.searchArt }><a href="">Art</a></li>
                     <li onclick={ this.searchPeople }><a href="">People</a></li>
@@ -39,6 +41,7 @@
 
     <script>
         var controller = opts.controller;
+        this.filter = "";
         this.currentActive = opts.controls[0].title;
         window.search = this.itemSearch;
 
@@ -54,10 +57,16 @@
                 return "active";
             } 
         }
-    
+        
         updateFilter(filter){
             controller.trigger("UpdateFilter", filter);
             $(this.itemSearch).collapse("hide");
+
+            if (filter !== ""){
+                this.filter = "Filter: " + filter;
+            }else{
+                this.filter = "";
+            }
         }
 
         search(e){
@@ -66,16 +75,20 @@
             this.updateFilter(this.searchbox.value);
         }
 
+        reset(e){
+            this.updateFilter("");
+        }
+
         searchArt(e){
-            this.updateFilter("art");
+            this.updateFilter("Art");
         }
 
         searchHistory(e){
-            this.updateFilter("history");
+            this.updateFilter("History");
         }
 
         searchPeople(e){
-            this.updateFilter("people");
+            this.updateFilter("People");
         }
     </script>
 </controls>
