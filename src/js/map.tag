@@ -84,7 +84,7 @@
                             color: 'white',
                             opacity: 1,
                             weight: 1})
-                        .bindPopup(value.name+'<br>'+value.description)
+                        .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
                         .addTo(self.map);
                     }
                     self.mapMarkers.push(mark); 

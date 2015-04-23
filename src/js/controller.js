@@ -39,15 +39,10 @@ function Controller(){
     this.on('LocationUpdated', function(pos){
         var lat = pos.coords.latitude;
         var lon = pos.coords.longitude;
-        if (
-            self.loc === null ||
-            self.loc.lat !== lat||
-            self.loc.lon !== lon
-        ){
-                self.loc = {lat: lat, lon:lon};
-                self._geoSort();
-                self.trigger("ItemsUpdated", this.itemList);
-        }
+
+        self.loc = {lat: lat, lon:lon};
+        self._geoSort();
+        self.trigger("ItemsUpdated", this.itemList);
     });
 }
 
