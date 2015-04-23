@@ -20,12 +20,12 @@
                 <li><a href="">About</a></li>
             </ul>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse" name="itemSearch">
             <form class="navbar-form navbar-left" role="search" onsubmit={ this.search }>
                 <ul class="nav navbar-nav">
                     <li onclick={ this.searchHistory }><a href="">History</a></li>
                     <li onclick={ this.searchArt }><a href="">Art</a></li>
-                    <li><a href="">People</a></li>
+                    <li onclick={ this.searchPeople }><a href="">People</a></li>
                   </ul>
                 <div class="form-group">
                     <input type="text" name="searchbox" class="form-control" placeholder="Search">
@@ -40,6 +40,7 @@
     <script>
         var controller = opts.controller;
         this.currentActive = opts.controls[0].title;
+        window.search = this.itemSearch;
 
         activate(e){
             var item = e.item
@@ -53,20 +54,28 @@
                 return "active";
             } 
         }
+    
+        updateFilter(filter){
+            controller.trigger("UpdateFilter", filter);
+            $(this.itemSearch).collapse("hide");
+        }
 
         search(e){
             e.preventDefault();
             console.log(this.searchbox.value);
-            controller.trigger("UpdateFilter", this.searchbox.value);
+            this.updateFilter(this.searchbox.value);
         }
 
         searchArt(e){
-            controller.trigger("UpdateFilter", "Art");
+            this.updateFilter("art");
         }
 
         searchHistory(e){
-            controller.trigger("UpdateFilter", "History");
+            this.updateFilter("history");
         }
 
+        searchPeople(e){
+            this.updateFilter("people");
+        }
     </script>
 </controls>
