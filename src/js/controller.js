@@ -17,7 +17,7 @@ function Controller(){
     this.markers = null;
     this._filterer = new DataFilter();
     this._filter = "";
-    this._loc = null;
+    this.loc = null;
     var self = this;
 
     riot.route(this._router.bind(this));
@@ -40,11 +40,11 @@ function Controller(){
         var lat = pos.coords.latitude;
         var lon = pos.coords.longitude;
         if (
-            self._loc === null ||
-            self._loc.lat !== lat||
-            self._loc.lon !== lon
+            self.loc === null ||
+            self.loc.lat !== lat||
+            self.loc.lon !== lon
         ){
-                self._loc = {lat: lat, lon:lon};
+                self.loc = {lat: lat, lon:lon};
                 self._geoSort();
                 self.trigger("ItemsUpdated", this.itemList);
         }
@@ -69,11 +69,11 @@ Controller.prototype = {
             this.markers.push(this.itemDict[m])
         }
 
-        if (this._loc !== null){this._geoSort();}
+        if (this.loc !== null){this._geoSort();}
     },
     _geoSort: function(){
         if (this.markers !== null){
-            this.markers = geoSort(this._loc, this.markers);
+            this.markers = geoSort(this.loc, this.markers);
         }
     },
     _processItems: function(items){
