@@ -6,11 +6,6 @@
             <a class="navbar-brand">InSite</a>
             </button>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <form class="form-inline">
-              <div class="form-group">
-                <input type="text" class="form-control" id="exampleInputName2" placeholder="search">
-              </div>
-            </form>
             <span style="color: white;" class="glyphicon glyphicon-search" aria-hidden="true"></span>
             <span class="sr-only">Search:</span>
           </button>
