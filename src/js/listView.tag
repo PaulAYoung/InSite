@@ -1,6 +1,6 @@
 <listview>
 <ul class="list-group" if={this.display}>
-    <li each={ this.items } class="list-group-item" onclick={parent.selectItem}>
+    <li each={ this.items } if={ description || photo_array || audio_array } class="list-group-item" onclick={parent.selectItem}>
             <item> </item>
     </li>
 </ul>
