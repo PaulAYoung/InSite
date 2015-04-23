@@ -1,6 +1,8 @@
 var riot = require('riot');
 var DataFilter = require('./dataFilter');
 var geoSort = require('./geoSort.js');
+var SimpleSet = require('./simpleSet');
+
 
 function Controller(){
     /**
@@ -54,21 +56,25 @@ Controller.prototype = {
         this._filter = filter;
         this.itemList = this._filterer.filter(filter);
 
-        var m;
-        var markers = new Set(this.itemList.map(function(i){
+        var markers = new SimpleSet(this.itemList.map(function(i){
             return i.marker;
         }));
+
         
         this.markers = [];
 
-        for (m of markers){
+        var items = markers.items();
+
+        for (var i=0, m, l = items.length;i<l, m=items[i]; i++){
             this.markers.push(this.itemDict[m])
         }
 
         if (this._loc !== null){this._geoSort();}
     },
     _geoSort: function(){
-        this.markers = geoSort(this._loc, this.markers);
+        if (this.markers !== null){
+            this.markers = geoSort(this._loc, this.markers);
+        }
     },
     _processItems: function(items){
         var itemDict = {};
@@ -97,7 +103,6 @@ Controller.prototype = {
                 markerMap[key]=associated;
             }
         }
-        this.itemDict = itemDict;
 
         // adds marker to each item, should also modify itemList since references are the same
         for (marker in markerMap){
@@ -108,6 +113,7 @@ Controller.prototype = {
         }
 
 
+        this.itemDict = itemDict;
         this._filterItems(this._filter);
     },
     _router: function(){
