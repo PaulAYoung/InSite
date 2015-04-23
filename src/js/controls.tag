@@ -45,6 +45,14 @@
         this.currentActive = opts.controls[0].title;
         window.search = this.itemSearch;
 
+        var self = this;
+
+        this.on('mount', function(){
+            $(self.itemSearch).on("shown.bs.collapse", function(){
+                self.searchbox.focus();
+            });
+        });
+
         activate(e){
             var item = e.item
             controller.trigger('ActivateView', item.title)
