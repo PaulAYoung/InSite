@@ -8,60 +8,17 @@ body{
   text-align: left;
 }
 
-.mapArea {
-     background-color: #aaaaaa;
-     height: 100vh;
-     margin-left: auto;
-     margin-right: auto;
-     width: 100%;
-}
-/* Welcome edits*/
-#welcome{
-  position:fixed;
-  height: 30%;
-  width: 100%;
-  background-color: black;
-}
-
-/*Audio Player edits*/
-.audiojs{
-  position:fixed;
-  bottom: 0px;
-  height: 100px;
-  width: 100%;
-  background-image: none;
-}
-.audiojs .play-pause{
-  width: 15%;
-  border-right: none;
-}
-.audiojs .scrubber{
-  width:50%;
-}
-.audiojs .time{
-  width:20%;
-  border-left: none;
-}
-.audio-details{
-  position:fixed;
-  bottom: 30px;
-  color: white;
-  left: 15%;
-  margin: 10px;
-}
-
 /*Bootstrap edits*/
 .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
-	padding-right:0px;
-	padding-left:0px;
+  padding-right:10px;
+  padding-left:10px;
 }
 h1{
   margin-bottom:0px;
 }
 h4{
-	margin-top: 5px;
-  margin-bottom:10px;
-  border-top: 2px solid #ccc;
+  margin-top: 0px;
+  margin-bottom:3px;
 }
 
 #itemDetail {
@@ -99,3 +56,70 @@ h4{
     margin: 0;
   }
 }
+
+/*Other edits*/
+.mapArea {
+     background-color: #aaaaaa;
+     height: 100vh;
+     margin-left: auto;
+     margin-right: auto;
+     width: 100%;
+}
+
+.thumbnail-div{
+  width:90px;
+  height:90px;
+  overflow:hidden;
+  position:relative;
+  display:inline-block;
+  padding:0px;
+}
+.thumbnail-photo{
+    position:absolute;
+    top:50%;
+    min-height:100%;
+    display:block;
+    left:50%;
+    -webkit-transform: translate(-50%, -50%);
+    min-width:100%;
+}
+.description-div{
+  padding-right:0px;
+}
+
+/* Welcome edits*/
+#welcome{
+  position:fixed;
+  height: 30%;
+  width: 100%;
+  background-color: black;
+}
+
+/*Audio Player edits*/
+.audiojs{
+  position:fixed;
+  bottom: 0px;
+  height: 100px;
+  width: 100%;
+  background-image: none;
+}
+.audiojs .play-pause{
+  width: 15%;
+  border-right: none;
+}
+.audiojs .scrubber{
+  width:50%;
+}
+.audiojs .time{
+  width:20%;
+  border-left: none;
+}
+.audio-details{
+  position:fixed;
+  bottom: 30px;
+  color: white;
+  left: 15%;
+  margin: 10px;
+}
+
+
