@@ -11,28 +11,30 @@
         var self = this;
         var as = null;
 
-        //NEED TO FIX: DISPLAY SHOULD BE SET TO FALSE. 
         self.display = false;
 
         controller.on("playAudio", function(item){
             self.item = item;
-            console.log("audio");
             if (item.overlay_type === "audio"){
                 self.display = true;
-
                 self.update();
                 if (as === null){
+                    // console.log($('#audiojs_wrapper0').length);
                     audiojs.events.ready(function() {
                         as = audiojs.createAll()[0];
                         window.as = as;
                     });
+                    $('#audiojs_wrapper0').append("<div id='close_audio' style='float:right;padding:10px'><span class='glyphicon glyphicon-remove' style='color:white'></span></div>");
+                    $('#close_audio').click(function(){
+                        as.pause();
+                        $('#audiojs_wrapper0').hide();
+                    });
                 }else{
                     as.pause();
                     as.load(self.item.file_path);
+                    $('#audiojs_wrapper0').show();
                 }
-
                 as.play();
-                
 
             } else {
                 self.display = false;
