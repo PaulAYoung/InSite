@@ -74,7 +74,7 @@
                     if (value.tags.indexOf('label') !== -1){
                         // Map labels
                         mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {icon: L.divIcon({className: 'label', html: value.name})})
+                            {icon: L.divIcon({className: 'map-labels', html: value.name})})
                         .addTo(self.map);
                     }
                     else if(value.photo_array !== null || value.audio_array !== null){
