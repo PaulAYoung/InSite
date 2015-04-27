@@ -101,6 +101,17 @@
                         .addTo(self.map);
                     }
                     self.mapMarkers.push(mark); 
+
+                    if (controller.filter !== ""){
+                        var match = value.tags.match(RegExp(controller.filter + "(\\d+)"));
+
+                        if (match !== null){
+                            mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
+                                {icon: L.divIcon({className: "tour-labels", html: match[1]})})
+                            .addTo(self.map);
+                            self.mapMarkers.push(mark);
+                        }
+                    }
                 }
                 
             });

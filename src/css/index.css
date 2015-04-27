@@ -167,3 +167,8 @@ h4{
   box-shadow: none;
 }
 
+.tour-labels{
+    text-align: center;
+    color: white;
+    top: -2px;
+}

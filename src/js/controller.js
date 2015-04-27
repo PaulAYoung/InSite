@@ -15,8 +15,8 @@ function Controller(){
     this.itemDict = null;
     this.itemList = null;
     this.markers = null;
-    this._filterer = new DataFilter();
-    this._filter = "";
+    this._dataFilter = new DataFilter();
+    this.filter = "";
     this.loc = null;
     var self = this;
 
@@ -47,9 +47,9 @@ function Controller(){
 }
 
 Controller.prototype = {
-    _filterItems: function(filter){
-        this._filter = filter;
-        this.itemList = this._filterer.filter(filter);
+   _filterItems: function(filter){
+        this.filter = filter;
+        this.itemList = this._dataFilter.filter(filter);
 
         var markers = new SimpleSet(this.itemList.map(function(i){
             return i.marker;
@@ -75,7 +75,7 @@ Controller.prototype = {
         var itemDict = {};
         var markerMap = {};
 
-        this._filterer = new DataFilter(items);
+        this._dataFilter = new DataFilter(items);
         this.itemList = items;
 
         var key, associated, i;
@@ -109,7 +109,7 @@ Controller.prototype = {
 
 
         this.itemDict = itemDict;
-        this._filterItems(this._filter);
+        this._filterItems(this.filter);
     },
     _router: function(){
         // routes should be in format view/filter1/filter2/etc ex: map/sites/nature
