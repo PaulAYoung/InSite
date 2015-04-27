@@ -103,7 +103,7 @@
                     self.mapMarkers.push(mark); 
 
                     if (controller.filter !== ""){
-                        var match = value.tags.match(RegExp(controller.filter + "(\\d+)"));
+                        var match = value.tags.match(RegExp(controller.filter + "(\\d+)", "i"));
 
                         if (match !== null){
                             mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
