@@ -66,6 +66,7 @@
             self.clearMarkers();
             // console.log(item);
             var markers = controller.markers;
+            if (markers === null) { markers = []; }
             var mark;
             $.each(markers, function(index, value){
                 if (typeof value !== "undefined"){
