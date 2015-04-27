@@ -28,8 +28,6 @@
 
             self.update();
             self.map.invalidateSize();
-
-            //only set map view to user location if user is located is in within 1416 meters of the Albany Bulb.
         });
 
         controller.on("LocationError", function(err){

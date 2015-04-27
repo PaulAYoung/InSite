@@ -1,11 +1,10 @@
 <itemdetail>
     <div id="itemDetail" if={this.display}>
         <div id="title"> 
-            <h1>{item.name}</h1>
+            <h2>{item.name}</h2>
         </div>
         <!-- image slideshow -->
         <div show={ item.photo_array != null }> 
-            <h4>photos</h4>
             <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
                 <div id="blueimp-gallery-carousel" name="gallery" class="blueimp-gallery blueimp-gallery-carousel">
                     <div class="slides" name="slides"></div>
@@ -23,17 +22,18 @@
         </div>
         <!-- description -->
         <div id="description"> 
-            <h4>{item.description}</h4>
+            <p>{item.description}</p>
         </div>
 
         <!-- list of stories connected to item -->
         <div id="audioList" if={ this.item.audio_array }> 
-        <h4>audio list</h4>
+        <h4>Stories</h4>
         <!-- insert relevant stories -->
             <div each={this.getAudio()} onclick={parent.playAudio} class="row">
                 <div class="audioItem">
-                    <div class="audioIcon"></div>
-                    <div class="col-md-12"> {name}
+                    <div class="col-md-12">
+                        <span class="glyphicon glyphicon-play"></span>
+                        {name}
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
 
         <!-- tags -->
         <div id="tags"> 
-            <h4>tags</h4>
+            <h4>Tags</h4>
             <div class="row">
                 <div class="col-md-4">{item.tags}</div>
             </div>

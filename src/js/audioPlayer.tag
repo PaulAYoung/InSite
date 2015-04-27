@@ -25,7 +25,7 @@
                         window.as = as;
                     });
                     $('.audio-details').show();
-                    $('#audiojs_wrapper0').append("<div id='close_audio' style='float:right;padding:10px'><span class='glyphicon glyphicon-remove' style='color:white'></span></div>");
+                    $('#audiojs_wrapper0').append("<div id='close_audio' style='float:right;padding:10px;'><span class='glyphicon glyphicon-remove' style='color:white; top:-30px;'></span></div>");
                     $('#close_audio').click(function(){
                         as.pause();
                         $('.audio-details').hide();

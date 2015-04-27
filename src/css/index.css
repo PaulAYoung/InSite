@@ -8,6 +8,10 @@ body{
   text-align: left;
 }
 
+#title, #description, #tags{
+  padding: 10px;
+}
+
 /*Bootstrap edits*/
 .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
   padding-right:10px;
@@ -19,10 +23,6 @@ h1{
 h4{
   margin-top: 0px;
   margin-bottom:3px;
-}
-
-#itemDetail {
-  margin: 50px;
 }
 
 .navbor-form{
@@ -147,7 +147,7 @@ h4{
   border-right: none;
 }
 .audiojs .scrubber{
-  width:48%;
+  width:60%;
 }
 .audiojs .time{
   width:20%;
@@ -162,4 +162,8 @@ h4{
   margin: 10px;
 }
 
+/*blueimp gallery edits*/
+.blueimp-gallery-carousel{
+  box-shadow: none;
+}
 
