@@ -3,6 +3,21 @@
         <div id="title"> 
             <h2>{item.name}</h2>
         </div>
+        <!-- list of stories connected to item -->
+        <div id="audioList" if={ this.item.audio_array }> 
+        <h4>Stories</h4>
+        <!-- insert relevant stories -->
+            <div each={this.getAudio()} onclick={parent.playAudio} class="row">
+                <div class="audioItem">
+                    <div class="col-md-12">
+                        <span class="glyphicon glyphicon-volume-up"></span>
+                        {name}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- image slideshow -->
         <div show={ item.photo_array != null }> 
             <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
@@ -13,11 +28,34 @@
                         <a class="next">›</a>
                         <a class="play-pause"></a>
                         <ol class="indicator"></ol>
+                        <!-- The modal dialog, which will be used to wrap the lightbox content -->
+                        <div class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title"></h4>
+                                    </div>
+                                    <div class="modal-body next"></div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left prev">
+                                            <i class="glyphicon glyphicon-chevron-left"></i>
+                                            Previous
+                                        </button>
+                                        <button type="button" class="btn btn-primary next">
+                                            Next
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                 </div>
 
-                <div name="images">
+                <!-- <div name="images">
                     
-                </div>
+                </div> -->
 
         </div>
         <!-- description -->
@@ -25,19 +63,7 @@
             <p>{item.description}</p>
         </div>
 
-        <!-- list of stories connected to item -->
-        <div id="audioList" if={ this.item.audio_array }> 
-        <h4>Stories</h4>
-        <!-- insert relevant stories -->
-            <div each={this.getAudio()} onclick={parent.playAudio} class="row">
-                <div class="audioItem">
-                    <div class="col-md-12">
-                        <span class="glyphicon glyphicon-play"></span>
-                        {name}
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
         <!-- tags -->
         <div id="tags"> 
