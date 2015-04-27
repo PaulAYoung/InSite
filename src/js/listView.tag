@@ -40,7 +40,7 @@
             var text_array = description.split(" ");
             var shortened_text='';
             for (var i=0; i<text_array.length; i++){
-                if (shortened_text.length < 70){
+                if (shortened_text.length < 50){
                     shortened_text=shortened_text+text_array[i]+" ";
                 }
             }
@@ -52,18 +52,21 @@
             return controller.itemDict['photo'+photo_array[0]]['path_small'];
         }
 
+
     </script>
 </listview>
 
 <item>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-3 col-md-3 thumbnail-div">
-                <img class="thumbnail-photo" src={ parent.getPhoto(photo_array) } > 
+            <div class="col-xs-3 col-md-3">
+                <div class="thumbnail-div">
+                <img class="thumbnail-photo" src={ parent.getPhoto(photo_array) } >
+                </div> 
             </div>
             <div class="col-xs-9 col-md-9">
-                <div class="row">
-                    <div class="description-div col-xs-12 col-md-12">
+                <div class="row description-row">
+                    <div class="col-xs-12 col-md-12">
                         <h4>{ name }</h4>
                         <span if={ this.description }>{ parent.shortenText(description) }</span>
                     </div>

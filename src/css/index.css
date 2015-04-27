@@ -70,15 +70,49 @@ h4{
   width:100px !important;
 }
 
-.thumbnail-div{
-  width:90px;
-  height:90px;
-  overflow:hidden;
-  position:relative;
-  display:inline-block;
-  padding:0px;
+@media (min-width: 401px){
+  .thumbnail-div{
+    width:90px;
+    height: 90px;
+    overflow:hidden;
+    position:relative;
+    display:inline-block;
+    padding:0px;
+  }
+  .thumbnail-photo{
+      position:absolute;
+      top:50%;
+      min-height:100%;
+      display:block;
+      left:50%;
+      -webkit-transform: translate(-50%, -50%);
+      min-width:100%;
+  }
 }
-.thumbnail-photo{
+
+@media (max-width: 400px){
+  .container-fluid{
+    padding-right:0px;
+    padding-left: 0px;
+  }
+  .row{
+    margin-right:0px;
+    margin-left:0px;
+  }
+  .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    padding-right:0px;
+    padding-left:0px;
+    display: inline-block;
+    position: relative;
+  }
+  .thumbnail-div{
+    width:100%;
+    overflow:hidden;
+    position:relative;
+    display:inline-block;
+    padding-top: 100%;
+  }
+  .thumbnail-photo{
     position:absolute;
     top:50%;
     min-height:100%;
@@ -86,9 +120,10 @@ h4{
     left:50%;
     -webkit-transform: translate(-50%, -50%);
     min-width:100%;
-}
-.description-div{
-  padding-right:0px;
+  }
+  .description-row{
+    padding-left:5px;
+  }
 }
 
 /* Welcome edits*/
