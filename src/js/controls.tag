@@ -90,7 +90,7 @@
         }
 
         startTour(){
-            this.updateFilter('tour');
+            this.updateFilter("tour");
         }
 
         searchArt(e){

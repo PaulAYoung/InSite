@@ -64,7 +64,6 @@
 
         controller.on('ItemsUpdated', function(item){
             self.clearMarkers();
-            // console.log(item);
             var markers = controller.markers;
             if (markers === null) { markers = []; }
             var mark;

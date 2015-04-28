@@ -23,7 +23,8 @@ function Controller(){
     riot.route(this._router.bind(this));
 
     this.on('ItemsLoaded', function(items){
-        self._processItems(items)
+        self._processItems(items);
+        self._filterItems('tour');
         self.trigger("ItemsUpdated", this.itemList);
     });
 
