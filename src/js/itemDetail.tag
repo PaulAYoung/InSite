@@ -1,7 +1,7 @@
 <itemdetail>
     <div id="itemDetail" if={this.display}>
         <div id="title"> 
-            <h2>{item.name}</h2>
+            <h3 style="margin-top: 0px">{item.name}</h3>
         </div>
         <!-- list of stories connected to item -->
         <div id="audioList" if={ this.item.audio_array }> 
@@ -11,7 +11,8 @@
                 <div class="audioItem">
                     <div class="col-md-12">
                         <span class="glyphicon glyphicon-volume-up"></span>
-                        {name}
+                        <strong>{name}</strong> - {attribution}<br>
+                        <p style="margin-left:18px">{description}</p>
                     </div>
                 </div>
             </div>

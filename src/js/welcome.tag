@@ -15,6 +15,11 @@
         var self = this;
         self.display = true;
 
+        // controller.on('ActivateView', function(title){
+        //     self.display = false;
+        //     self.update();
+        // });
+
         hideWelcome(e){
             self.display = false;
         }

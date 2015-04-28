@@ -79,7 +79,7 @@
                     else if(value.photo_array !== null || value.audio_array !== null){
                         // markers with content
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 8,
+                            {radius: 10,
                             fillColor: 'blue',
                             fillOpacity: 1,
                             color: 'white',
