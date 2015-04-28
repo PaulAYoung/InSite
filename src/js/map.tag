@@ -46,7 +46,7 @@
             self.userMarker = L.circle(user_location, radius).addTo(self.map);
             var distance_to_bulb = bulb_latlng.distanceTo(user_location);
            
-            self.map.setView(setViewbyLocation(1416, user_location, bulb_latlng), 16);
+            // self.map.setView(setViewbyLocation(1416, user_location, bulb_latlng), 16);
           
           console.log('Your current position is:');
           console.log('Latitude : ' + crd.latitude);
@@ -91,7 +91,7 @@
                     else {
                         // markers without content
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 4,
+                            {radius: 6,
                             fillColor: 'gray',
                             fillOpacity: 1,
                             color: 'white',
@@ -108,6 +108,7 @@
                         if (match !== null){
                             mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
                                 {icon: L.divIcon({className: "tour-labels", html: match[1]})})
+                            .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
                             .addTo(self.map);
                             self.mapMarkers.push(mark);
                         }
