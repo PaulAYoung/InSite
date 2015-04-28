@@ -5,18 +5,33 @@
     </div>
 
     <div id="welcome-footer" if={ this.display }>
-        <button id="tour-button" class="btn btn-primary" type="submit">Take a Tour</button>
-        <p>or click <span class="glyphicon glyphicon-search"></span> to explore on your own</p>
+        <button id="tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Start Tour</button>
+        <p onclick={ this.hideWelcome } id="hideWelcome">or go straight to map</p>
     </div>
 
     <script>
         var controller = opts.controller;
+        var $ = require('jquery');
         var self = this;
         self.display = true;
 
-        this.on('mount', function(e){
-            self.display = true;
-        });
+        hideWelcome(e){
+            self.display = false;
+        }
+
+        startTour(){
+            this.updateFilter('tour');
+            self.display=false;
+        }
+
+        updateFilter(filter){
+            controller.trigger("UpdateFilter", filter);
+        }
+
+        // $('#mapArea').click(function(){
+        //     self.display=false;
+        // });
+
 
     </script>
     

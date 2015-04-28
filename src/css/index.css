@@ -32,6 +32,11 @@ body{
 #tour-button{
   float: right;
 }
+#hideWelcome{
+  clear: both;
+  float: right;
+  text-decoration: underline;
+}
 
 #title, #description, #tags{
   padding: 10px;

@@ -15,9 +15,10 @@
                 <li role="presentation" each={ opts.controls } class={ parent.isActive(title) }><a href={ '#'+  title  }>{ title }</a></li>
             </ul>
         </div>
-        <div class="navbar-collapse1 collapse">
+        <div class="navbar-collapse1 collapse" name="itemSearch2">
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Home</a><li>
+                <li onclick={ this.startTour }><a href="">Take Tour</a></li>
                 <li><a href="">About</a></li>
             </ul>
         </div>
@@ -69,6 +70,7 @@
         updateFilter(filter){
             controller.trigger("UpdateFilter", filter);
             $(this.itemSearch).collapse("hide");
+            $(this.itemSearch2).collapse("hide");
 
             if (filter !== ""){
                 this.filter = "Filter: " + filter;
@@ -87,6 +89,10 @@
             this.updateFilter("");
         }
 
+        startTour(){
+            this.updateFilter('tour');
+        }
+
         searchArt(e){
             this.updateFilter("Art");
         }
@@ -98,5 +104,6 @@
         searchPeople(e){
             this.updateFilter("People");
         }
+
     </script>
 </controls>
