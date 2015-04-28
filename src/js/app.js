@@ -1,5 +1,6 @@
 var riot = require('riot');
 var map = require('./map.tag');
+var welcome = require('./welcome.tag');
 var listView = require('./listView.tag');
 var controls = require('./controls.tag');
 var L = require('leaflet');

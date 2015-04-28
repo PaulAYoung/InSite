@@ -8,6 +8,31 @@ body{
   text-align: left;
 }
 
+#welcome-header{
+  position: fixed;
+  width: 100%;
+  height: 150px;
+  background-color: rgb(33, 207, 88);
+  padding-right:20px;
+  padding-left:20px;
+  color:white;
+  z-index:1001;
+}
+
+#welcome-footer{
+  position:fixed;
+  width: 100%;
+  height: 100px;
+  bottom: 0px;
+  z-index:1001;
+  background-color: rgb(33, 207, 88);
+  color: white;
+  padding: 20px
+}
+#tour-button{
+  float: right;
+}
+
 #title, #description, #tags{
   padding: 10px;
 }
