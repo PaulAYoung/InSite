@@ -43,8 +43,9 @@ function Controller(){
         var lon = pos.coords.longitude;
 
         self.loc = {lat: lat, lon:lon};
-        self._geoSort();
+        // self._geoSort();
         self.trigger("ItemsUpdated", this.itemList);
+        console.log('items updated');
     });
 }
 
