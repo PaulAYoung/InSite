@@ -74,7 +74,7 @@
                     <div class="col-xs-9 col-md-9">
                          <!-- add two line breaks if there is no description so the distance text aligns to the bottom of div-->
                         <span if={ this.description == false }><br></span>
-                        <span if={ this.audio_array } class="glyphicon glyphicon-volume-up"></span>
+                        <span if={ this.audio_array } class="glyphicon glyphicon-volume-up">x{this.audio_array.length }</span>
                     </div>
                     <div class="col-xs-3 col-md-3">
                         <!-- add two line breaks if there is no description so the distance text aligns to the bottom of div-->

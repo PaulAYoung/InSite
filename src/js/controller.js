@@ -35,7 +35,7 @@ function Controller(){
 
     this.on('UpdateFilter', function(filter){
         self._filterItems(filter);
-        self.trigger("ItemsUpdated", this.itemList);
+        // self.trigger("ItemsUpdated", this.itemList);
     });
 
     this.on('LocationUpdated', function(pos){
@@ -44,8 +44,8 @@ function Controller(){
 
         self.loc = {lat: lat, lon:lon};
         // self._geoSort();
-        self.trigger("ItemsUpdated", this.itemList);
-        console.log('items updated');
+        // self.trigger("ItemsUpdated", this.itemList);
+        // console.log('items updated');\
     });
 }
 
@@ -70,10 +70,10 @@ Controller.prototype = {
         //if filter is 'tour', then sort by tour stop #
         if (this.loc !== null){
             if (this.filter === 'tour'){
-                console.log('filter is tour');
                 this._tourSort();
             }
-            else{ this._geoSort();}
+            else{ this._geoSort();
+            console.log('geosorting');}
         }
 
     },

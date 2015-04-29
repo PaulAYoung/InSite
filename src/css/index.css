@@ -11,10 +11,9 @@ body{
 #welcome-header{
   position: fixed;
   width: 100%;
-  height: 150px;
+  height: 120px;
   background-color: rgb(33, 207, 88);
-  padding-right:20px;
-  padding-left:20px;
+  padding:20px;
   color:white;
   z-index:1001;
 }
@@ -31,10 +30,13 @@ body{
 }
 #tour-button{
   float: right;
+  clear: both;
 }
 #hideWelcome{
   clear: both;
   float: right;
+  top: -10px;
+  right: -10px
 }
 
 #title, #description, #tags{
@@ -48,6 +50,7 @@ body{
 }
 h1{
   margin-bottom:0px;
+  margin-top: 0px;
 }
 h4{
   margin-top: 0px;
@@ -78,6 +81,16 @@ h4{
 .glypichon-search{
   float: right;
 }
+.houseIcon{
+  color: rgb(27, 247, 247);
+  font-size: 1.4em;
+  -webkit-text-stroke: 1px white;
+}
+
+.artIcon{
+  color: rgb(237, 96, 253);
+  font-size: 1.4em;
+}
 
 @media (min-width: 768px) {
   .navbar-nav {
@@ -95,7 +108,7 @@ h4{
      width: 100%;
 }
 .map-labels{
-  color:black;
+  color:white;
   width:100px !important;
 }
 

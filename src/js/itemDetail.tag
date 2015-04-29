@@ -104,7 +104,8 @@
                     photoList,
                     {
                         container: self.gallery,
-                        carousel: true
+                        carousel: true, 
+                        startSlideshow: false
                     }
                 );
             }
