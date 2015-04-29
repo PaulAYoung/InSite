@@ -35,7 +35,6 @@ body{
 #hideWelcome{
   clear: both;
   float: right;
-  text-decoration: underline;
 }
 
 #title, #description, #tags{

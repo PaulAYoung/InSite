@@ -1,6 +1,7 @@
 var riot = require('riot');
 var DataFilter = require('./dataFilter');
 var geoSort = require('./geoSort.js');
+var tourSort = require('./tourSort.js');
 var SimpleSet = require('./simpleSet');
 
 
@@ -65,11 +66,25 @@ Controller.prototype = {
             this.markers.push(this.itemDict[m])
         }
 
-        if (this.loc !== null){this._geoSort();}
+        //if filter is 'tour', then sort by tour stop #
+        if (this.loc !== null){
+            if (this.filter === 'tour'){
+                console.log('filter is tour');
+                this._tourSort();
+            }
+            else{ this._geoSort();}
+        }
+
     },
     _geoSort: function(){
         if (this.markers !== null){
             this.markers = geoSort(this.loc, this.markers);
+        }
+    },
+    _tourSort: function(){
+        if (this.markers !== null){
+            this.markers = tourSort(this.markers);
+            console.log(this.markers);
         }
     },
     _processItems: function(items){

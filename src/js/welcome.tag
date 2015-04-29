@@ -6,7 +6,7 @@
 
     <div id="welcome-footer" if={ this.display }>
         <button id="tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Start Tour</button>
-        <p onclick={ this.hideWelcome } id="hideWelcome">or go straight to map</p>
+        <span onclick={ this.hideWelcome } class="glyphicon glyphicon-remove" id="hideWelcome">x</span>
     </div>
 
     <script>
