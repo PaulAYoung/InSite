@@ -35,7 +35,7 @@ function Controller(){
 
     this.on('UpdateFilter', function(filter){
         self._filterItems(filter);
-        // self.trigger("ItemsUpdated", this.itemList);
+        self.trigger("ItemsUpdated", this.itemList);
     });
 
     this.on('LocationUpdated', function(pos){
