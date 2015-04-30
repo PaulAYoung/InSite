@@ -52,8 +52,15 @@ body{
   padding: 10px;
 }
 
-.locateIcon > svg{
-  fill: white;
+.locateIcon{
+  width: 25px;
+  position: relative;
+  top: -2px;
+}
+.mapIcon{
+  width: 28px;
+  position: relative;
+  top: -2px;
 }
 
 .tourstop-info{
