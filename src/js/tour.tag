@@ -29,7 +29,6 @@
         });
         
         selectItem(index){
-            console.log("select item");
             controller.trigger("SetMapView", L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);
             controller.trigger("ItemSelected", "marker" + controller.markers[self.tourIndex].id);
         }
