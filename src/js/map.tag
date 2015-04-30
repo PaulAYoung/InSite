@@ -24,7 +24,6 @@
         var self = this;
         var user_marker = false;
         var bulb_latlng = L.latLng(37.8899, -122.324721);
-        var test_latlng = L.latLng(37.890218, -122.315228); //this latlng is within the bulb radius
         var setViewbyLocation = require('./setViewbyLocation');
 
         self.mapMarkers = [];
@@ -71,38 +70,14 @@
             self.map.setView(L.latLng(controller.loc.lat, controller.loc.lon), 18);
         });
 
-        controller.on('StartTour', function(index){
-            self.tourDisplay = true;
-            window.tourIndex=index;
-            window.tourLength=controller.markers.length;
-            self.setMapViewbyTourIndex(index);
-            self.update();
-            // console.log(controller.markers);
-        });
-
-        setMapViewbyTourIndex(index){
-            self.map.setView(L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);
-        }
-
-        updateTour(){
-            window.tourIndex++;
-            self.setMapViewbyTourIndex(window.tourIndex);
-        }
-
-        displayTourName(){
-            console.log(window.tourIndex);
-            return controller.markers[window.tourIndex].name;
-        }
-
-        endTour(){
-            self.tourDisplay=false;
-            self.map.setView(bulb_latlng, 16 );
-        }
-        
         controller.on('ActivateView', function(title){
             self.display = ('Map Welcome'.indexOf(title) !== -1);
             self.update();
             self.map.invalidateSize();
+        });
+
+        controller.on("SetMapView", function(){
+            self.map.setView.apply(self.map, arguments);
         });
 
         controller.on('ItemsUpdated', function(item){
@@ -171,6 +146,7 @@
                 
             });
         });
+
         
         clearMarkers(){
             var mark;

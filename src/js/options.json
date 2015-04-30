@@ -1,0 +1,10 @@
+{
+    url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?",
+    tours: [
+        'tour'
+        ],
+    startLoc: {
+        lat: 37.8899,
+        lon: -122.324721
+    }
+};

@@ -46,7 +46,6 @@
     <script>
         var controller = opts.controller;
         this.filter = "";
-        this.currentActive = opts.controls[0].title;
         window.search = this.itemSearch;
 
         var self = this;

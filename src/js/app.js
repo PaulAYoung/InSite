@@ -1,8 +1,11 @@
 var riot = require('riot');
+
 var map = require('./map.tag');
 var welcome = require('./welcome.tag');
 var listView = require('./listView.tag');
 var controls = require('./controls.tag');
+var tour = require('./tour.tag');
+
 var L = require('leaflet');
 var Connector = require('./localground_connector');
 var itemDetail = require('./itemDetail.tag');
@@ -18,16 +21,12 @@ window.$ = jQuery;
 var bootstrap = require('bootstrap');
 var blueimpgallery = require('./blueimp-gallery');
 
+var opts = require('./options.json');
+
 var controller = new Controller();
 
-var opts = {
-        controller: controller,
-        url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?",
-        controls: [
-            {title: "Map"},
-            {title: "List"}
-        ]
-    };
+opts.controller = controller;
+
 
 var connector = new Connector(opts);
 var geoQuerier = new GeoQuerier(opts);
