@@ -20,7 +20,6 @@
         <div class="navbar-collapse1 collapse" name="itemSearch2">
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Home</a><li>
-                <li onclick={ this.startTour }><a href="">Take Tour</a></li>
                 <li><a href="">About</a></li>
             </ul>
         </div>
@@ -28,6 +27,7 @@
             <form class="navbar-form navbar-left" role="search" onsubmit={ this.search }>
                 <ul class="nav navbar-nav">
                     <li onclick={ this.reset }><a href="">Full Map</a></li>
+                    <li onclick={ this.startTour }><a href="">Tour Highlights</a></li>
                     <li onclick={ this.searchHistory }><a href="">History</a></li>
                     <li onclick={ this.searchArt }><a href=""><span class="glyphicon glyphicon-asterisk"></span>  Art</a></li>
                     <li onclick={ this.searchPeople }><a href=""><span class="glyphicon glyphicon-home"></span>  People</a></li>

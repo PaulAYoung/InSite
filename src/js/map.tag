@@ -1,9 +1,12 @@
 <map>
-    <div name="mapArea" class="mapArea" if={ this.display }></div>
-    <div onclick={ this.updateTour } if={ this.tourDisplay } style="position:fixed;color:white;right:0px;top:470px">
-        <span>Next Tour Stop</span>
-        <span class="glyphicon glyphicon-chevron-right" ></span>
+    <div if={ this.tourDisplay } class="tourstop-info">
+        <div onclick={ this.updateTour }>
+            <p>{ parent.displayTourName }</p>
+            <span>Next Tour Stop</span>
+            <span class="glyphicon glyphicon-chevron-right" ></span>
+        </div>
     </div>
+    <div name="mapArea" class="mapArea" if={ this.display }></div>
     <script>
         // scripts
         this.display=false;
@@ -66,6 +69,7 @@
             self.tourDisplay = true;
             self.update()
             self.setMapViewbyTourIndex(index);
+            // console.log(controller.markers);
             window.tourIndex=index+1;
             window.tourLength=controller.markers.length;
         });
@@ -79,6 +83,10 @@
 
         updateTour(){
             self.setMapViewbyTourIndex(window.tourIndex);
+        }
+
+        displayTourName(){
+            console.log(controller.markers[window.tourIndex].name);
         }
         
         controller.on('ActivateView', function(title){
