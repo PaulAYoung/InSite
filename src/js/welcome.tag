@@ -23,6 +23,11 @@
         //     self.update();
         // });
 
+        controller.on('ActivateView', function(title){
+            self.display = (title=='Welcome');
+            self.update();
+        });
+
         hideWelcome(e){
             self.display = false;
         }

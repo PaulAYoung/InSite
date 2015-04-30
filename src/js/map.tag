@@ -90,7 +90,7 @@
         }
         
         controller.on('ActivateView', function(title){
-            self.display = (title=='Map');
+            self.display = ('Map Welcome'.indexOf(title) !== -1);
             self.update();
             self.map.invalidateSize();
         });
