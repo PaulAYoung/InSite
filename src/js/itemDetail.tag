@@ -113,14 +113,18 @@
 
         controller.on('ActivateView', function(view, item){
             self.display = (view==self._viewID);
-            if (! self.display){ self.update(); return;}
-            self.item_id = item;
-            self.loadItem();
+            self.loadItem(item);
         });
-        
+
+        controller.on('ItemSelected', function(item){
+            self.loadItem(item);
+        });
+
         // controller.on('ItemsUpdated', function(){self.loadItem();});
         
-        loadItem(){
+        loadItem(item){
+            if (! self.display){ self.update(); return;}
+            self.item_id = item;
             if (controller.itemDict !== null && self.item_id in controller.itemDict){
                 self.item = controller.itemDict[self.item_id];
             }else{

@@ -23,18 +23,20 @@
         controller.on('StartTour', function(index){
             self.display = true;
             self.tourIndex=index;
-            self.setMapViewbyTourIndex(index);
+            self.selectItem(index);
             self.update();
             console.log("tour started");
         });
         
-        setMapViewbyTourIndex(index){
+        selectItem(index){
+            console.log("select item");
             controller.trigger("SetMapView", L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);
+            controller.trigger("ItemSelected", "marker" + controller.markers[self.tourIndex].id);
         }
 
         updateTour(){
             self.tourIndex++;
-            self.setMapViewbyTourIndex(self.tourIndex);
+            self.selectItem(self.tourIndex);
             self.update();
         }
 
