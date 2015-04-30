@@ -3,7 +3,7 @@
         <h1>Welcome to the Albany Bulb</h1>
         <p>Listen to audio stories and explore</p>
     </div>
-
+    <div if={ this.display } onclick={ this.hideWelcome } id="exit-welcome"></div>
     <div id="welcome-footer" if={ this.display }>
         <span onclick={ this.hideWelcome } id="hideWelcome" class="glyphicon glyphicon-remove"></span>
         <div id="welcome-footer-content">
@@ -16,12 +16,11 @@
         var controller = opts.controller;
         var $ = require('jquery');
         var self = this;
-        self.display = true;
 
-        // controller.on('ActivateView', function(title){
-        //     self.display = false;
-        //     self.update();
-        // });
+        controller.on('ActivateView', function(title){
+            self.display = (title=='Welcome');
+            self.update();
+        });
 
         controller.on('ActivateView', function(title){
             self.display = (title=='Welcome');
@@ -46,11 +45,6 @@
         updateFilter(filter){
             controller.trigger("UpdateFilter", filter);
         }
-
-        // $('#mapArea').click(function(){
-        //     self.display=false;
-        // });
-
 
     </script>
     
