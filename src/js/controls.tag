@@ -12,7 +12,8 @@
           </button>
           
             <ul class="nav nav-pills">
-                <li role="presentation" each={ opts.controls } class={ parent.isActive(title) }><a href={ '#'+  title  }>{ title }</a></li>
+                <li role="presentation"  ><a href='#Map'>Map</a></li>
+                <li role="presentation"  ><a href='#List'>List</a></li>
                 <li role="presentation" onclick={ this.locateMe }><a href=""><span class="glyphicon glyphicon-record" style="color:white;"></span></a></li> 
                 <!--<object type="image/svg+xml" data="fonts/noun_40972_cc.svg" style="width:30px;margin:7px;"></object>-->
             </ul>
