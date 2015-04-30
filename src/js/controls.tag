@@ -12,10 +12,9 @@
           </button>
           
             <ul class="nav nav-pills">
-                <li role="presentation"  ><a href='#Map'><span style="color:white;" class="glyphicon glyphicon-map-marker"></span></a></li>
-                <li role="presentation"  ><a href='#List'><span style="color:white;" class="glyphicon glyphicon-align-justify"></span></a></li>
-                <li role="presentation" onclick={ this.locateMe }><a href=""><span class="glyphicon glyphicon-record" style="color:white;"></span></a></li> 
-               <!--  <li role="presentation" onclick={ this.locateMe }><a href=""><object onclick={ this.locateMe } class="locateIcon" type="image/svg+xml" data="fonts/noun_40972_cc.svg" style="width:30px;margin:7px;"></object></a></li> -->
+                <li role="presentation"  ><a href='#Map'><img class="mapIcon" src="fonts/noun_24173_cc.svg"></img></a></li>
+                <li role="presentation"  ><a href='#List'><span style="color:white;" class="glyphicon glyphicon-list"></span></a></li>
+                <li role="presentation" onclick={ this.locateMe }><a href=""><img class="locateIcon" src="fonts/noun_40972_cc.svg"></img></a></li>
             </ul>
         </div>
         <div class="navbar-collapse1 collapse" name="itemSearch2">
