@@ -1,12 +1,18 @@
 <map>
-    <div if={ this.tourDisplay } class="tourstop-info">
-        <div onclick={ this.updateTour }>
-            <p>{ parent.displayTourName }</p>
-            <span>Next Tour Stop</span>
-            <span class="glyphicon glyphicon-chevron-right" ></span>
+    <div if={ this.display }>
+        <div if={ this.tourDisplay } class="tourstop-info">
+            <div onclick={ this.updateTour }>
+                <p>{ this.displayTourName() }</p>
+                <span>Next Tour Stop</span>
+                <span class="glyphicon glyphicon-chevron-right" ></span>
+            </div>
+            <div onclick={ this.endTour }>
+                <span class="glyphicon glyphicon-remove"></span>
+                <span>Exit Tour</span>
+            </div>
         </div>
+        <div name="mapArea" class="mapArea"></div>
     </div>
-    <div name="mapArea" class="mapArea" if={ this.display }></div>
     <script>
         // scripts
         this.display=false;
@@ -67,26 +73,30 @@
 
         controller.on('StartTour', function(index){
             self.tourDisplay = true;
-            self.update()
-            self.setMapViewbyTourIndex(index);
-            // console.log(controller.markers);
-            window.tourIndex=index+1;
+            window.tourIndex=index;
             window.tourLength=controller.markers.length;
+            self.setMapViewbyTourIndex(index);
+            self.update();
+            // console.log(controller.markers);
         });
 
         setMapViewbyTourIndex(index){
             self.map.setView(L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);
-            if (window.tourIndex<window.tourLength){
-                window.tourIndex++;
-            }
         }
 
         updateTour(){
+            window.tourIndex++;
             self.setMapViewbyTourIndex(window.tourIndex);
         }
 
         displayTourName(){
-            console.log(controller.markers[window.tourIndex].name);
+            console.log(window.tourIndex);
+            return controller.markers[window.tourIndex].name;
+        }
+
+        endTour(){
+            self.tourDisplay=false;
+            self.map.setView(bulb_latlng, 16 );
         }
         
         controller.on('ActivateView', function(title){
