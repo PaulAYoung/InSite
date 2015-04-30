@@ -136,7 +136,7 @@ Controller.prototype = {
         // this makes an array with 'ActivateView' as first arg, and arguments as added on
 
         args = ['ActivateView'].concat(Array.prototype.slice.call(arguments));
-        if (args[1] === ""){ args[1] = 'Map';}
+        if (args[1] === ""){ args[1] = 'Welcome';}
         this.trigger.apply(this, args);
     }
 };
