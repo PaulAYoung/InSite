@@ -25,10 +25,10 @@
         <div class="navbar-collapse collapse" name="itemSearch">
             <form class="navbar-form navbar-left" role="search" onsubmit={ this.search }>
                 <ul class="nav navbar-nav">
-                    <li onclick={ this.reset }><a href="">Reset</a></li>
+                    <li onclick={ this.reset }><a href="">Full Map</a></li>
                     <li onclick={ this.searchHistory }><a href="">History</a></li>
-                    <li onclick={ this.searchArt }><a href="">Art</a></li>
-                    <li onclick={ this.searchPeople }><a href="">People</a></li>
+                    <li onclick={ this.searchArt }><a href=""><span class="glyphicon glyphicon-asterisk"></span>  Art</a></li>
+                    <li onclick={ this.searchPeople }><a href=""><span class="glyphicon glyphicon-home"></span>  People</a></li>
                   </ul>
                 <div class="form-group">
                     <input type="text" name="searchbox" class="form-control" placeholder="Search">

@@ -1,12 +1,14 @@
 <welcome>
     <div id="welcome-header" if={ this.display }>
         <h1>Welcome to the Albany Bulb</h1>
+        <p>Listen to audio stories and explore</p>
     </div>
 
     <div id="welcome-footer" if={ this.display }>
-        <span onclick={ this.hideWelcome } class="glyphicon glyphicon-remove" id="hideWelcome"></span>
-        <p style="float:right;">Listen to audio stories and explore</p>
-        <button id="tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Start Tour</button>
+        <div id="welcome-footer-content">
+            <button id="tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Take a Tour</button> or 
+            <button id="tour-button" class="btn btn-primary" onclick={ this.fullMap } type="submit">Explore Full Map</button>
+        </div>
     </div>
 
     <script>
@@ -26,6 +28,12 @@
 
         startTour(){
             this.updateFilter('tour');
+            controller.trigger('StartTour',0)
+            self.display=false;
+        }
+
+        fullMap(){
+            self.updateFilter("")
             self.display=false;
         }
 

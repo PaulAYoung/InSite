@@ -36,6 +36,7 @@ function Controller(){
     this.on('UpdateFilter', function(filter){
         self._filterItems(filter);
         self.trigger("ItemsUpdated", this.itemList);
+        // console.log('filter updated: '+ this.itemList);
     });
 
     this.on('LocationUpdated', function(pos){
@@ -71,6 +72,7 @@ Controller.prototype = {
         if (this.loc !== null){
             if (this.filter === 'tour'){
                 this._tourSort();
+                console.log('toursorting');
             }
             else{ this._geoSort();
             console.log('geosorting');}
@@ -85,7 +87,6 @@ Controller.prototype = {
     _tourSort: function(){
         if (this.markers !== null){
             this.markers = tourSort(this.markers);
-            console.log(this.markers);
         }
     },
     _processItems: function(items){

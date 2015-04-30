@@ -1,9 +1,13 @@
 <map>
     <div name="mapArea" class="mapArea" if={ this.display }></div>
-
+    <div onclick={ this.updateTour } if={ this.tourDisplay } style="position:fixed;color:white;right:0px;top:470px">
+        <span>Next Tour Stop</span>
+        <span class="glyphicon glyphicon-chevron-right" ></span>
+    </div>
     <script>
         // scripts
         this.display=false;
+        this.tourDisplay=false;
         var L = require('leaflet');
         L.Icon.Default.imagePath = 'leaflet_images/'
         var $ = require('jquery');
@@ -55,6 +59,24 @@
           console.log("distance to bulb: "+ distance_to_bulb+"m");
         });
 
+        controller.on('StartTour', function(index){
+            self.tourDisplay = true;
+            self.update()
+            self.setMapViewbyTourIndex(index);
+            window.tourIndex=index+1;
+            window.tourLength=controller.markers.length;
+        })
+
+        setMapViewbyTourIndex(index){
+            self.map.setView(L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);
+            if (window.tourIndex<window.tourLength){
+                window.tourIndex++;
+            }
+        }
+
+        updateTour(){
+            self.setMapViewbyTourIndex(window.tourIndex);
+        }
         
         controller.on('ActivateView', function(title){
             self.display = (title=='Map');
@@ -90,7 +112,7 @@
                     else if(value.photo_array !== null || value.audio_array !== null){
                         // markers with content
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 8,
+                            {radius: 10,
                             fillColor: 'blue',
                             fillOpacity: 1,
                             color: 'white',

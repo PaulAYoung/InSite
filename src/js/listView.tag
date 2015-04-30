@@ -20,7 +20,7 @@
         
         controller.on('ItemsUpdated', function(items){
             self.items = controller.markers;
-            console.log('items updated items:', self.items);
+            // console.log('items updated items:', self.items);
             self.update();
         });
 
