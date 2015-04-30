@@ -43,10 +43,12 @@ function Controller(){
         var lat = pos.coords.latitude;
         var lon = pos.coords.longitude;
 
-        self.loc = {lat: lat, lon:lon};
-        self._geoSort();
-        self.trigger("ItemsUpdated", this.itemList);
-        // console.log('items updated');\
+        if (self.loc === null || L.latLng(lat, lon).distanceTo(L.latLng(self.loc)) > 5){
+
+            self.loc = {lat: lat, lon:lon};
+            self._geoSort();
+            self.trigger("ItemsUpdated", this.itemList);
+        }
     });
 }
 
@@ -68,16 +70,18 @@ Controller.prototype = {
             this.markers.push(this.itemDict[m])
         }
 
-        //if filter is 'tour', then sort by tour stop #
-        if (this.loc !== null){
-            if (this.filter === 'tour'){
-                this._tourSort();
-                console.log('toursorting');
-            }
-            else{ this._geoSort();
-            console.log('geosorting');}
+        this._sort();
+
+    },
+    _sort: function(){
+        if (this.filter === 'tour'){
+            this._tourSort();
+            return ;
         }
 
+        if (this.loc !== null){
+            this._geoSort();
+        }
     },
     _geoSort: function(){
         if (this.markers !== null){
