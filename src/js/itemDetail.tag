@@ -118,7 +118,7 @@
             self.loadItem();
         });
         
-        controller.on('ItemsUpdated', function(){self.loadItem();});
+        // controller.on('ItemsUpdated', function(){self.loadItem();});
         
         loadItem(){
             if (controller.itemDict !== null && self.item_id in controller.itemDict){

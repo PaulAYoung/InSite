@@ -40,7 +40,6 @@
 
         controller.on("LocationUpdated", function(pos){
 
-            console.log("location updated");
             if (self.userMarker){
                 self.map.removeLayer(self.userMarker);
             }
@@ -59,13 +58,17 @@
           console.log("distance to bulb: "+ distance_to_bulb+"m");
         });
 
+        controller.on("LocateMe", function(){
+            self.map.setView(L.latLng(controller.loc.lat, controller.loc.lon), 18);
+        });
+
         controller.on('StartTour', function(index){
             self.tourDisplay = true;
             self.update()
             self.setMapViewbyTourIndex(index);
             window.tourIndex=index+1;
             window.tourLength=controller.markers.length;
-        })
+        });
 
         setMapViewbyTourIndex(index){
             self.map.setView(L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);

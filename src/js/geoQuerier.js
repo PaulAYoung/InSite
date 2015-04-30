@@ -9,10 +9,9 @@ function GeoQuerier(opts){
     var options = {
       enableHighAccuracy: true,
       timeout: 5000,
-      maximumAge: 0
+      maximumAge: 10000
     };
     
-    console.log("setting watch");
     this._controller.on("StartApp", function(){
         navigator.geolocation.watchPosition(
                 self._success.bind(self),
