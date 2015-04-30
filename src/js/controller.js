@@ -27,6 +27,7 @@ function Controller(){
         self._processItems(items);
         self._filterItems('tour');
         self.trigger("ItemsUpdated", this.itemList);
+        riot.route.exec(self._router.bind(self));
     });
 
     this.one('StartApp', function(){

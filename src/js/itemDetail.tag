@@ -120,8 +120,6 @@
             self.loadItem(item);
         });
 
-        // controller.on('ItemsUpdated', function(){self.loadItem();});
-        
         loadItem(item){
             if (! self.display){ self.update(); return;}
             self.item_id = item;
