@@ -34,11 +34,21 @@ SimpleSet.prototype = {
     remove: function(item){
         delete this._set[item];
     },
+    /**
+     * Adds all items in passed array or set
+     *
+     * @param - items - array or set of items to add.
+     *
+     */
     addAll: function(items){
+        if (items instanceof SimpleSet){items = items.items();}
         for (var i=0; i<items.length; i++){
             this.add(items[i]);
         }
     },
+    /**
+     * Returns array of items in set
+     */
     items: function(){
         return Object.keys(this._set);
     }

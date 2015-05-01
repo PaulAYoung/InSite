@@ -37,4 +37,11 @@ describe("simple set", function(){
         set.remove("b");
         assert.isFalse(set.contains("b"));
     });
+
+    it("should allow another set to be added", function(){
+        var set = new SimpleSet(itemsA);
+        set.addAll(new SimpleSet(itemsB));
+
+        assert.includeMembers(set.items(), itemsB);
+    });
 })
