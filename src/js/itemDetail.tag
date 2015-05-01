@@ -3,6 +3,17 @@
         <div id="title"> 
             <h3 style="margin-top: 0px">{item.name}</h3>
         </div>
+
+        <div id="nextTour" style="float:right;" if={ this.tourDisplay } onclick={ this.updateTour }>
+            <p>Next Tour Stop<span class="glyphicon glyphicon-chevron-right"></span></p>
+            <br>
+        </div> 
+
+        <!-- description -->
+        <div id="description"> 
+            <p>{item.description}</p>
+        </div>
+
         <!-- list of stories connected to item -->
         <div id="audioList" if={ this.item.audio_array }> 
         <h4>Stories</h4>
@@ -53,19 +64,8 @@
                         </div>
 
                 </div>
-
-                <!-- <div name="images">
-                    
-                </div> -->
-
         </div>
-        <!-- description -->
-        <div id="description"> 
-            <p>{item.description}</p>
-        </div>
-
-        
-
+    
         <!-- tags -->
         <div id="tags"> 
             <h4>Tags</h4>
@@ -78,6 +78,7 @@
 
     <script>
         this.display=false;
+        this.tourDisplay=false;
         this.item = null;
         this.item_id = null;
         this._viewID = "itemDetail";
@@ -119,6 +120,12 @@
         controller.on('ItemSelected', function(item){
             self.loadItem(item);
         });
+
+        controller.on('StartTour', function(index){
+            self.tourDisplay=true;
+            controller.trigger('showTourDiv', 0);
+            console.log('showtourdiv triggered');
+        })
 
         loadItem(item){
             if (! self.display){ self.update(); return;}

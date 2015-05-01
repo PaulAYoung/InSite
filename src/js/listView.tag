@@ -12,6 +12,8 @@
         var controller = opts.controller;
         var riot = require('riot');
         var self = this;
+        // var shortenText = require('./shortenText');
+        var showAppropriateUnit = require('./showAppropriateUnit');
 
         controller.on('ActivateView', function(title){
             self.display = (title=='List');
@@ -34,11 +36,17 @@
             var user_location_marker = L.latLng(controller.loc['lat'], controller.loc['lon']);
             var marker_location= L.latLng(lat, lon);
             //convert distance from meters to ft
-            return String(Math.round(user_location_marker.distanceTo(marker_location) * 3.28084))+" ft";
+            return showAppropriateUnit(user_location_marker.distanceTo(marker_location));
+            // return String(Math.round(user_location_marker.distanceTo(marker_location) * 3.28084))+" ft";
         }
 
-        shortenText(description){
-            var text_array = description.split(" ");
+        getPhoto(photo_array){
+            if (typeof photo_array === 'undefined' || photo_array === null){return false};
+            return controller.itemDict['photo'+photo_array[0]]['path_small'];
+        }
+
+        shortenText(text){
+            var text_array = text.split(" ");
             var shortened_text='';
             for (var i=0; i<text_array.length; i++){
                 if (shortened_text.length < 50){
@@ -47,12 +55,6 @@
             }
             return shortened_text+"...";
         }
-
-        getPhoto(photo_array){
-            if (typeof photo_array === 'undefined' || photo_array === null){return false};
-            return controller.itemDict['photo'+photo_array[0]]['path_small'];
-        }
-
 
     </script>
 </listview>

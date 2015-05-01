@@ -1,7 +1,7 @@
 <tour>
     <div if={ this.display } class="tourstop-info">
+        <p style="text-decoration:underline;" onclick={ this.itemDetailURL }>{ this.displayTourName() }</p>
         <div onclick={ this.updateTour }>
-            <p>{ this.displayTourName() }</p>
             <span>Next Tour Stop</span>
             <span class="glyphicon glyphicon-chevron-right" ></span>
         </div>
@@ -13,6 +13,7 @@
 
     <script>
         this.display=false;
+        var riot = require('riot');
         var controller = opts.controller;
         var self = this;
 
@@ -28,9 +29,25 @@
             console.log("tour started");
         });
         
+        controller.on('showTourDiv', function(bool){
+            console.log('showtourdiv received');
+            if (bool===0){
+                self.display=false;
+            }
+            else if (bool===1){
+                self.display=true;
+            }
+        }
+
         selectItem(index){
             controller.trigger("SetMapView", L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);
             controller.trigger("ItemSelected", "marker" + controller.markers[self.tourIndex].id);
+            //if listview is active
+            // riot.route("#itemDetail/marker" + controller.markers[self.tourIndex].id);
+        }
+
+        itemDetailURL(){
+            riot.route("#itemDetail/marker" + controller.markers[self.tourIndex].id);
         }
 
         updateTour(){
