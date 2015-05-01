@@ -31,4 +31,10 @@ describe("simple set", function(){
         set.add("q");
         assert.isTrue(set.contains("q"));
     });
+
+    it("should be able to remove individual items", function(){
+        var set = new SimpleSet(itemsA);
+        set.remove("b");
+        assert.isFalse(set.contains("b"));
+    });
 })
