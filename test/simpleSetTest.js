@@ -25,4 +25,10 @@ describe("simple set", function(){
         var items = set.items();
         assert.includeMembers(itemsA, set.items())
     });
+
+    it("should be able to add individual items", function(){
+        var set = new SimpleSet(itemsA);
+        set.add("q");
+        assert.isTrue(set.contains("q"));
+    });
 })

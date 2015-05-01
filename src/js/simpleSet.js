@@ -11,9 +11,12 @@ function SimpleSet(items){
 
 SimpleSet.prototype = {
     contains: function(item){return item in this._set;},
+    add: function(item){
+        this._set[item] = true;
+    },
     addAll: function(items){
         for (var i=0; i<items.length; i++){
-            this._set[items[i]] = true;
+            this.add(items[i]);
         }
     },
     items: function(){
