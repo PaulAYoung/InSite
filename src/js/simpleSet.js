@@ -17,6 +17,19 @@ SimpleSet.prototype = {
      */
     contains: function(item){return item in this._set;},
     /**
+     * Returns true if all items are in set
+     *
+     * @param - items - set or array of items to be checked
+     *
+     */
+    containsAll: function(items){
+        if (items instanceof SimpleSet){items = items.items();}
+        for (var i=0; i<items.length; i++){
+            if (!this.contains(items[i])){ return false; }
+        }
+        return true;
+    },
+    /**
      * Adds a single item to set
      *
      * @param - item - item to be added
@@ -65,5 +78,6 @@ SimpleSet.prototype = {
         return Object.keys(this._set);
     }
 }
+
 
 module.exports = SimpleSet;

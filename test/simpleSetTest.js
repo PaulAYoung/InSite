@@ -52,5 +52,13 @@ describe("simple set", function(){
         assert.isFalse(set.contains("a"));
         assert.isFalse(set.contains("b"));
     });
+
+    it("should check if set contains other set", function(){
+        var set = new SimpleSet(itemsA);
+        set.addAll(new SimpleSet(itemsB));
+
+        assert.isTrue(set.containsAll(["a", "b", "d", "e"]));
+        assert.isTrue(set.containsAll(new SimpleSet(["a", "b", "d", "e"])));
+    });
     
 })
