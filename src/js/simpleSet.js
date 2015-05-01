@@ -23,8 +23,8 @@ SimpleSet.prototype = {
      *
      */
     containsAll: function(items){
-        if (items instanceof SimpleSet){items = items.items();}
-        for (var i=0; i<items.length; i++){
+        items = getItems(items);
+        for (var i=0, l=items.length; i<l; i++){
             if (!this.contains(items[i])){ return false; }
         }
         return true;
@@ -54,8 +54,8 @@ SimpleSet.prototype = {
      *
      */
     addAll: function(items){
-        if (items instanceof SimpleSet){items = items.items();}
-        for (var i=0; i<items.length; i++){
+        items = getItems(items);
+        for (var i=0, l=items.length; i<l; i++){
             this.add(items[i]);
         }
     },
@@ -66,8 +66,8 @@ SimpleSet.prototype = {
      *
      */
     removeAll: function(items){
-        if (items instanceof SimpleSet){items = items.items();}
-        for (var i=0; i<items.length; i++){
+        items = getItems(items);
+        for (var i=0, l=items.length; i<l; i++){
             this.remove(items[i]);
         }
     },
@@ -79,5 +79,9 @@ SimpleSet.prototype = {
     }
 }
 
+function getItems(items){
+        if (items instanceof SimpleSet){return items.items();}
+        else { return items }
+}
 
 module.exports = SimpleSet;
