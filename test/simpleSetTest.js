@@ -44,4 +44,13 @@ describe("simple set", function(){
 
         assert.includeMembers(set.items(), itemsB);
     });
+
+    it("should allow another set to be removed", function(){
+        var set = new SimpleSet(itemsA);
+        set.removeAll(new SimpleSet(["a", "b"]));
+
+        assert.isFalse(set.contains("a"));
+        assert.isFalse(set.contains("b"));
+    });
+    
 })

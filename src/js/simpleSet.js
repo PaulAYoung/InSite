@@ -47,6 +47,18 @@ SimpleSet.prototype = {
         }
     },
     /**
+     * Removes all given items from set
+     *
+     * @param - items - array or set of items to remove.
+     *
+     */
+    removeAll: function(items){
+        if (items instanceof SimpleSet){items = items.items();}
+        for (var i=0; i<items.length; i++){
+            this.remove(items[i]);
+        }
+    },
+    /**
      * Returns array of items in set
      */
     items: function(){
