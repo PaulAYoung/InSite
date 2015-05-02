@@ -22,8 +22,8 @@ describe('tourSort', function(){
         expect([{'tags':'tour1'}, {'tags':'tour2'}, {'tags':'tour3'}]).to.deep.equal(tourSort([{'tags': 'tour3'}, {'tags':'tour2'}, {'tags':'tour1'}], 'tour'));
     });
 
-    // it("should sort an array based on the number after the base term", function(){
-    //     expect([{'tags':'tour1'}, {'tags':'hello, tour2'}, {'tags':'tour3, blah'}]).to.deep.equal(tourSort([{'tags':'tour3, blah'}, {'tags':'hello, tour2'}, {'tags':'tour1'}], 'tour'));
-    // });
+    it("should sort an array based on the number after the base term", function(){
+        expect([{'tags':'tour1'}, {'tags':'hello, tour2'}, {'tags':'tour3, blah'}]).to.deep.equal(tourSort([{'tags':'tour3, blah'}, {'tags':'hello, tour2'}, {'tags':'tour1'}], 'tour'));
+    });
 
 })
