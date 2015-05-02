@@ -12,9 +12,9 @@ describe('shortenText', function(){
         assert.equal('Sandra is ...', shortenText('Sandra is cool', 12));
     });
 
-    // it("should not add ... after text that is already below character count", function(){
-    //     assert.equal('Sandra is cool', shortenText('Sandra is cool', 14));
-    // });
+    it("should not add ... after text that is already below character count", function(){
+        assert.equal('Sandra is cool', shortenText('Sandra is cool', 14));
+    });
 })
 
 
