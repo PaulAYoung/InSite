@@ -56,6 +56,7 @@
         endTour(){
             controller.trigger("SetMapView", L.latLng(opts.startLoc), 16);
             controller.trigger("OnTour", false);
+            // controller.trigger('UpddateFilter', 'tour');
             self.display=false;
         }
 

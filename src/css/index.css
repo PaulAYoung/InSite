@@ -47,9 +47,7 @@ body{
   margin-right: -50%;
   transform: translate(-50%, -50%);
 }
-#tour-button{
-  
-}
+
 #hideWelcome{
   clear: both;
   float: right;
@@ -70,6 +68,12 @@ body{
   width: 28px;
   position: relative;
   top: -2px;
+}
+#map-tour-button{
+  position: fixed;
+  bottom: 0px;
+  z-index: 1001;
+  margin: 20px;
 }
 
 .tourstop-info{
