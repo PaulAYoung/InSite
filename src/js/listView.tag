@@ -13,7 +13,7 @@
         var riot = require('riot');
         var self = this;
         // var shortenText = require('./shortenText');
-        var showAppropriateUnit = require('./showAppropriateUnit');
+        var convertToUSDistance = require('./convertToUSDistance');
 
         controller.on('ActivateView', function(title){
             self.display = (title=='List');
@@ -36,7 +36,8 @@
             var user_location_marker = L.latLng(controller.loc['lat'], controller.loc['lon']);
             var marker_location= L.latLng(lat, lon);
             //convert distance from meters to ft
-            return showAppropriateUnit(user_location_marker.distanceTo(marker_location));
+            var distance_m = user_location_marker.distanceTo(marker_location)
+            return String(convertToUSDistance(distance_m).num)+" "+convertToUSDistance(distance_m).unit;
             // return String(Math.round(user_location_marker.distanceTo(marker_location) * 3.28084))+" ft";
         }
 
@@ -45,15 +46,20 @@
             return controller.itemDict['photo'+photo_array[0]]['path_small'];
         }
 
-        shortenText(text){
-            var text_array = text.split(" ");
-            var shortened_text='';
-            for (var i=0; i<text_array.length; i++){
-                if (shortened_text.length < 50){
-                    shortened_text=shortened_text+text_array[i]+" ";
-                }
+      shortenText(text, characterCount){
+            if (text.length <= characterCount){
+                return text;
             }
-            return shortened_text+"...";
+            else{
+                var text_array = text.split(" ");
+                var shortened_text='';
+                for (var i=0; i<text_array.length; i++){
+                    if (shortened_text.length < characterCount && (shortened_text+text_array[i]).length <= characterCount){
+                        shortened_text=shortened_text+text_array[i]+" ";
+                    }
+                }
+                return shortened_text+"...";
+            }
         }
 
     </script>
@@ -71,7 +77,7 @@
                 <div class="row description-row">
                     <div class="col-xs-12 col-md-12">
                         <h4>{ name }</h4>
-                        <span if={ this.description }>{ parent.shortenText(description) }</span>
+                        <span if={ this.description }>{ parent.shortenText(description, 50) }</span>
                     </div>
                     <div class="col-xs-9 col-md-9">
                          <!-- add two line breaks if there is no description so the distance text aligns to the bottom of div-->

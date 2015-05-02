@@ -29,15 +29,15 @@
             console.log("tour started");
         });
         
-        controller.on('showTourDiv', function(bool){
-            console.log('showtourdiv received');
-            if (bool===0){
-                self.display=false;
-            }
-            else if (bool===1){
-                self.display=true;
-            }
-        }
+        // controller.on('showTourDiv', function(bool){
+        //     console.log('showtourdiv received');
+        //     if (bool===0){
+        //         self.display=false;
+        //     }
+        //     else if (bool===1){
+        //         self.display=true;
+        //     }
+        // });
 
         selectItem(index){
             controller.trigger("SetMapView", L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);
