@@ -1,11 +1,11 @@
 <tour>
     <div if={ this.display } class="tourstop-info">
-        <p style="text-decoration:underline;" onclick={ this.itemDetailURL }>{ this.displayTourName() }</p>
-        <div onclick={ this.updateTour }>
+        <h4 style="text-decoration:underline;" onclick={ this.itemDetailURL }>{ this.displayTourName() }</h4>
+        <div style="position:relative;bottom:-20px;float:left;clear:both;" onclick={ this.updateTour }>
             <span>Next Tour Stop</span>
             <span class="glyphicon glyphicon-chevron-right" ></span>
         </div>
-        <div onclick={ this.endTour }>
+        <div style="float:right;position:relative;bottom:-20px;" onclick={ this.endTour }>
             <span class="glyphicon glyphicon-remove"></span>
             <span>Exit Tour</span>
         </div>
