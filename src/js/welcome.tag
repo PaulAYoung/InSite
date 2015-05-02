@@ -22,17 +22,13 @@
             self.update();
         });
 
-        controller.on('ActivateView', function(title){
-            self.display = (title=='Welcome');
-            self.update();
-        });
-
         hideWelcome(e){
             self.display = false;
         }
 
         startTour(){
             this.updateFilter('tour');
+            controller.trigger('OnTour',true);
             controller.trigger('StartTour',0)
             self.display=false;
         }

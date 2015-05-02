@@ -4,10 +4,10 @@
             <h3 style="margin-top: 0px">{item.name}</h3>
         </div>
 
-        <div id="nextTour" style="float:right;" if={ this.tourDisplay } onclick={ this.updateTour }>
+        <!-- <div id="nextTour" style="float:right;" if={ this.tourDisplay } onclick={ this.updateTour }>
             <p>Next Tour Stop<span class="glyphicon glyphicon-chevron-right"></span></p>
             <br>
-        </div> 
+        </div>  -->
 
         <!-- description -->
         <div id="description"> 
@@ -78,7 +78,7 @@
 
     <script>
         this.display=false;
-        this.tourDisplay=false;
+        // this.tourDisplay=false;
         this.item = null;
         this.item_id = null;
         this._viewID = "itemDetail";
@@ -121,11 +121,23 @@
             self.loadItem(item);
         });
 
-        controller.on('StartTour', function(index){
-            self.tourDisplay=true;
-            controller.trigger('showTourDiv', 0);
-            console.log('showtourdiv triggered');
-        })
+        // controller.on('StartTour', function(index){
+        //     self.tourDisplay=true;
+        //     controller.trigger('showTourDiv', 0);
+        //     console.log('showtourdiv triggered');
+        // })
+
+        controller.on('OnTour', function(bool){
+            console.log('itemdetailontour '+ bool);
+            if (bool){
+                $('itemDetail').css({"position":"relative","top":"100px"});
+                $('listview').css({"position":"relative","top":"100px"});
+            }
+            else{
+                $('itemDetail').css({"position":"relative","top":"0px"});
+                $('listview').css({"position":"relative","top":"0px"});
+            }
+        });
 
         loadItem(item){
             if (! self.display){ self.update(); return;}

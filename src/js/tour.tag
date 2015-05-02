@@ -21,23 +21,15 @@
 
         this.on("mount", function(){console.log("tour tag loaded");});
 
+        controller.on('OnTour', function(bool){
+            self.display=bool;
+        });
+
         controller.on('StartTour', function(index){
-            self.display = true;
             self.tourIndex=index;
             self.selectItem(index);
             self.update();
-            console.log("tour started");
         });
-        
-        // controller.on('showTourDiv', function(bool){
-        //     console.log('showtourdiv received');
-        //     if (bool===0){
-        //         self.display=false;
-        //     }
-        //     else if (bool===1){
-        //         self.display=true;
-        //     }
-        // });
 
         selectItem(index){
             controller.trigger("SetMapView", L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);
@@ -63,6 +55,7 @@
 
         endTour(){
             controller.trigger("SetMapView", L.latLng(opts.startLoc), 16);
+            controller.trigger("OnTour", false);
             self.display=false;
         }
 
