@@ -7,6 +7,9 @@ body{
 	padding-top: 50px;
   text-align: left;
 }
+#itemDetail{
+  position:relative;
+}
 .leaflet-control-container{
   display:none;
 }
@@ -44,15 +47,6 @@ body{
   margin-right: -50%;
   transform: translate(-50%, -50%);
 }
-#tour-button{
-  
-}
-#hideWelcome{
-  clear: both;
-  float: right;
-  top: -10px;
-  right: -10px
-}
 
 #title, #description, #tags{
   padding: 10px;
@@ -67,6 +61,12 @@ body{
   width: 28px;
   position: relative;
   top: -2px;
+}
+#map-tour-button{
+  position: fixed;
+  bottom: 0px;
+  z-index: 1001;
+  margin: 20px;
 }
 
 .tourstop-info{
@@ -233,7 +233,7 @@ h4{
 }
 .audio-details{
   position:fixed;
-  bottom: 20px;
+  bottom: 24px;
   color: white;
   left: 15%;
   margin: 10px;

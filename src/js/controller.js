@@ -91,7 +91,7 @@ Controller.prototype = {
     },
     _tourSort: function(){
         if (this.markers !== null){
-            this.markers = tourSort(this.markers);
+            this.markers = tourSort(this.markers, 'tour');
         }
     },
     _processItems: function(items){
