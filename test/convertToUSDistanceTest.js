@@ -15,10 +15,10 @@ describe('convertToUSDistance', function(){
         assert.equal('mi', convertToUSDistance(305.1048).unit);
     });
 
-    // it("1000 ft (304.8m) should return 1000 ft", function(){
-    //     assert.equal(1000, convertToUSDistance(304.8).num);
-    //     assert.equal('ft', convertToUSDistance(304.8).unit);
-    // });
+    it("1000 ft (304.8m) should return 1000 ft", function(){
+        assert.equal(1000, convertToUSDistance(304.8).num);
+        assert.equal('ft', convertToUSDistance(304.8).unit);
+    });
 
 })
 
