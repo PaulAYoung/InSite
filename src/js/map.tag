@@ -12,7 +12,7 @@
         var controller = opts.controller;
         var self = this;
         var user_marker = false;
-        var bulb_latlng = L.latLng(37.8899, -122.324721);
+        var startLatLng = L.latLng(opts.startLoc);
         var setViewbyLocation = require('./setViewbyLocation');
 
         self.mapMarkers = [];
@@ -25,7 +25,7 @@
             
             self.map
                 .addLayer(mapboxTiles)
-                .setView(bulb_latlng, 16 );
+                .setView(startLatLng, 16 );
 
             self.update();
             self.map.invalidateSize();
@@ -44,9 +44,9 @@
             var radius = crd.accuracy / 2;
             var user_location = L.latLng(crd.latitude,crd.longitude);
             self.userMarker = L.circle(user_location, radius).addTo(self.map);
-            var distance_to_bulb = bulb_latlng.distanceTo(user_location);
+            var distance_to_bulb = startLatLng.distanceTo(user_location);
            
-            // self.map.setView(setViewbyLocation(1416, user_location, bulb_latlng), 16);
+            // self.map.setView(setViewbyLocation(1416, user_location, startLatLng), 16);
           
           console.log('Your current position is:');
           console.log('Latitude : ' + crd.latitude);

@@ -97,7 +97,7 @@
 
         applyFilter(e){
             var item = e.item;
-            this.updateFilter(item.name);
+            this.updateFilter(item.filter);
         }
     </script>
 </controls>

@@ -44,6 +44,7 @@
             }
             else{
                 self.tourButtonDisplay=false;
+                self.display =false;
                 self.update();
             }
         });
