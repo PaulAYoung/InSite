@@ -93,22 +93,32 @@
                             {icon: L.divIcon({className: 'map-labels', html: value.name})})
                         .addTo(self.map);
                     }
-                    else if (value.tags.indexOf('People') !== -1 && value.tags.indexOf('tour') == -1){
-                        mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                                {icon: L.divIcon({className: "houseIcon", html: '<span class="glyphicon glyphicon-home"></span>'})})
-                            .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
-                            .addTo(self.map);
+                    else if (value.tags.indexOf('People') !== -1){
+                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
+                            {radius: 12,
+                            fillColor: 'blue',
+                            fillOpacity: 1,
+                            color: 'white',
+                            opacity: 1,
+                            weight: 1})
+                        .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
+                        .addTo(self.map);
                     }
-                    else if (value.tags.indexOf('Art') !== -1 && value.tags.indexOf('tour') == -1){
-                        mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                                {icon: L.divIcon({className: "artIcon", html: '<span class="glyphicon glyphicon-asterisk"></span>'})})
-                            .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
-                            .addTo(self.map);
+                    else if (value.tags.indexOf('Art') !== -1){
+                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
+                            {radius: 12,
+                            fillColor: 'blue',
+                            fillOpacity: 1,
+                            color: 'white',
+                            opacity: 1,
+                            weight: 1})
+                        .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
+                        .addTo(self.map);
                     }
                     else if(value.photo_array !== null || value.audio_array !== null){
                         // markers with content
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 10,
+                            {radius: 12,
                             fillColor: 'blue',
                             fillOpacity: 1,
                             color: 'white',
