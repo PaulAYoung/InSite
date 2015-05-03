@@ -50,12 +50,6 @@
 
         var self = this;
 
-        this.on('mount', function(){
-            $(self.itemSearch).on("shown.bs.collapse", function(){
-                self.searchbox.focus();
-            });
-        });
-
         activate(e){
             var item = e.item
             controller.trigger('ActivateView', item.title)

@@ -70,7 +70,9 @@
         <div id="tags"> 
             <h4>Tags</h4>
             <div class="row">
-                <div class="col-md-4">{item.tags}</div>
+                <div class="col-md-4">
+                    <span each={ getTags() } class=item-tag onclick={ parent.setFilter }>{ tag }</span>
+                </div>
             </div>
             <!-- insert taglist here -->
         </div>
@@ -83,6 +85,8 @@
         this.item_id = null;
         this._viewID = "itemDetail";
         var controller = opts.controller;
+        var tourMatcher = new RegExp("^(" + opts.tours.join("|") + ")\\d+$");
+        console.log(tourMatcher);
         var self = this;
         var $ = require('jquery');
 
@@ -95,6 +99,29 @@
                 console.log(z);
                 return z
             }
+        }
+
+        getTags(){
+            if (self.item !== null && typeof self.item !== 'undefined' && self.item.tags !== null && typeof self.item.tags !== "undefined"){
+                return self.item.tags.split(",").map(function(tag){
+                    tag = tag.trim();
+                    var match = tag.match(tourMatcher);
+                    if (match !== null){
+                        console.log("match found");
+                        console.log(match[1]);
+                        tag =  match[1];
+                    }
+                    return {tag: tag};
+                });
+            } else {
+                return [];
+            }
+        }
+
+        setFilter(e){
+            var item = e.item;
+            controller.trigger("UpdateFilter", item.tag);
+            controller.trigger("ActivateView", "Map");
         }
 
         refreshGallery(){
