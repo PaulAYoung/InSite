@@ -1,29 +1,18 @@
 <map>
     <div if={ this.display }>
-        <div if={ this.tourDisplay } class="tourstop-info">
-            <div onclick={ this.updateTour }>
-                <p>{ this.displayTourName() }</p>
-                <span>Next Tour Stop</span>
-                <span class="glyphicon glyphicon-chevron-right" ></span>
-            </div>
-            <div onclick={ this.endTour }>
-                <span class="glyphicon glyphicon-remove"></span>
-                <span>Exit Tour</span>
-            </div>
-        </div>
         <div name="mapArea" class="mapArea"></div>
     </div>
+
     <script>
         // scripts
         this.display=false;
-        this.tourDisplay=false;
         var L = require('leaflet');
         L.Icon.Default.imagePath = 'leaflet_images/'
         var $ = require('jquery');
         var controller = opts.controller;
         var self = this;
         var user_marker = false;
-        var bulb_latlng = L.latLng(37.8899, -122.324721);
+        var startLatLng = L.latLng(opts.startLoc);
         var setViewbyLocation = require('./setViewbyLocation');
 
         self.mapMarkers = [];
@@ -36,7 +25,7 @@
             
             self.map
                 .addLayer(mapboxTiles)
-                .setView(bulb_latlng, 16 );
+                .setView(startLatLng, 16 );
 
             self.update();
             self.map.invalidateSize();
@@ -55,9 +44,9 @@
             var radius = crd.accuracy / 2;
             var user_location = L.latLng(crd.latitude,crd.longitude);
             self.userMarker = L.circle(user_location, radius).addTo(self.map);
-            var distance_to_bulb = bulb_latlng.distanceTo(user_location);
+            var distance_to_bulb = startLatLng.distanceTo(user_location);
            
-            // self.map.setView(setViewbyLocation(1416, user_location, bulb_latlng), 16);
+            // self.map.setView(setViewbyLocation(1416, user_location, startLatLng), 16);
           
           console.log('Your current position is:');
           console.log('Latitude : ' + crd.latitude);
@@ -156,7 +145,6 @@
                 
             });
         });
-
         
         clearMarkers(){
             var mark;
@@ -165,8 +153,6 @@
                 self.map.removeLayer(mark);
             }
         }
-
-
     </script>
 
 </map>

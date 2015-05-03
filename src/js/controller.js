@@ -18,6 +18,7 @@ function Controller(){
     this.markers = null;
     this._dataFilter = new DataFilter();
     this.filter = "";
+    this.onTour = false;
     this.loc = null;
     var self = this;
 
@@ -75,7 +76,7 @@ Controller.prototype = {
 
     },
     _sort: function(){
-        if (this.filter === 'tour'){
+        if (this.onTour){
             this._tourSort();
             return ;
         }
@@ -91,7 +92,7 @@ Controller.prototype = {
     },
     _tourSort: function(){
         if (this.markers !== null){
-            this.markers = tourSort(this.markers);
+            this.markers = tourSort(this.markers, 'tour');
         }
     },
     _processItems: function(items){

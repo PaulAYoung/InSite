@@ -1,10 +1,31 @@
 {
     url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?",
     tours: [
-        'tour'
+        'tour',
+        'otherTour'
         ],
     startLoc: {
         lat: 37.8899,
         lon: -122.324721
-    }
+    },
+    highlightedFilters: [
+        {
+            name: "Full Map",
+            filter: "",
+        },
+        {
+            name: "Tour Highlights",
+            filter: "tour"
+        },
+        {
+            name: "Art",
+            filter: "Art",
+            iconClass: "glyphicon glyphicon-asterisk"
+        },
+        {
+            name: "People",
+            filter: "People",
+            iconClass: "glyphicon glyphicon-home"
+        }
+    ]
 };

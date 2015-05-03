@@ -3,6 +3,17 @@
         <div id="title"> 
             <h3 style="margin-top: 0px">{item.name}</h3>
         </div>
+
+        <!-- <div id="nextTour" style="float:right;" if={ this.tourDisplay } onclick={ this.updateTour }>
+            <p>Next Tour Stop<span class="glyphicon glyphicon-chevron-right"></span></p>
+            <br>
+        </div>  -->
+
+        <!-- description -->
+        <div id="description"> 
+            <p>{item.description}</p>
+        </div>
+
         <!-- list of stories connected to item -->
         <div id="audioList" if={ this.item.audio_array }> 
         <h4>Stories</h4>
@@ -53,24 +64,15 @@
                         </div>
 
                 </div>
-
-                <!-- <div name="images">
-                    
-                </div> -->
-
         </div>
-        <!-- description -->
-        <div id="description"> 
-            <p>{item.description}</p>
-        </div>
-
-        
-
+    
         <!-- tags -->
         <div id="tags"> 
             <h4>Tags</h4>
             <div class="row">
-                <div class="col-md-4">{item.tags}</div>
+                <div class="col-md-4">
+                    <span each={ getTags() } class=item-tag onclick={ parent.setFilter }>{ tag }</span>
+                </div>
             </div>
             <!-- insert taglist here -->
         </div>
@@ -78,10 +80,13 @@
 
     <script>
         this.display=false;
+        // this.tourDisplay=false;
         this.item = null;
         this.item_id = null;
         this._viewID = "itemDetail";
         var controller = opts.controller;
+        var tourMatcher = new RegExp("^(" + opts.tours.join("|") + ")\\d+$");
+        console.log(tourMatcher);
         var self = this;
         var $ = require('jquery');
 
@@ -94,6 +99,29 @@
                 console.log(z);
                 return z
             }
+        }
+
+        getTags(){
+            if (self.item !== null && typeof self.item !== 'undefined' && self.item.tags !== null && typeof self.item.tags !== "undefined"){
+                return self.item.tags.split(",").map(function(tag){
+                    tag = tag.trim();
+                    var match = tag.match(tourMatcher);
+                    if (match !== null){
+                        console.log("match found");
+                        console.log(match[1]);
+                        tag =  match[1];
+                    }
+                    return {tag: tag};
+                });
+            } else {
+                return [];
+            }
+        }
+
+        setFilter(e){
+            var item = e.item;
+            controller.trigger("UpdateFilter", item.tag);
+            controller.trigger("ActivateView", "Map");
         }
 
         refreshGallery(){
@@ -118,6 +146,24 @@
 
         controller.on('ItemSelected', function(item){
             self.loadItem(item);
+        });
+
+        // controller.on('StartTour', function(index){
+        //     self.tourDisplay=true;
+        //     controller.trigger('showTourDiv', 0);
+        //     console.log('showtourdiv triggered');
+        // })
+
+        controller.on('OnTour', function(bool){
+            console.log('itemdetailontour '+ bool);
+            if (bool){
+                $('itemDetail').css({"position":"relative","top":"100px"});
+                $('listview').css({"position":"relative","top":"100px"});
+            }
+            else{
+                $('itemDetail').css({"position":"relative","top":"0px"});
+                $('listview').css({"position":"relative","top":"0px"});
+            }
         });
 
         loadItem(item){

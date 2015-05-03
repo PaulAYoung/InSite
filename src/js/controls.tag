@@ -26,11 +26,20 @@
         <div class="navbar-collapse collapse" name="itemSearch">
             <form class="navbar-form navbar-left" role="search" onsubmit={ this.search }>
                 <ul class="nav navbar-nav">
+<<<<<<< HEAD
                     <li onclick={ this.reset }><a href="">Full Map</a></li>
                     <li onclick={ this.startTour }><a href="">Tour Highlights</a></li>
                     <li onclick={ this.searchHistory }><a href="">History</a></li>
                     <li onclick={ this.searchArt }><a href="">Art</a></li>
                     <li onclick={ this.searchPeople }><a href="">People</a></li>
+=======
+                    <li each={ opts.highlightedFilters } onclick={ parent.applyFilter } >
+                        <a href="">
+                            <span if= { iconClass } class={ iconClass }></span>
+                            { name }
+                        </a>
+                    </li>
+>>>>>>> a7b3ee6744ce235ef3b9e758c82491fd4a857c08
                   </ul>
                 <div class="form-group">
                     <input type="text" name="searchbox" class="form-control" placeholder="Search">
@@ -48,12 +57,6 @@
         window.search = this.itemSearch;
 
         var self = this;
-
-        this.on('mount', function(){
-            $(self.itemSearch).on("shown.bs.collapse", function(){
-                self.searchbox.focus();
-            });
-        });
 
         activate(e){
             var item = e.item
@@ -94,21 +97,9 @@
             this.updateFilter("");
         }
 
-        startTour(){
-            this.updateFilter("tour");
+        applyFilter(e){
+            var item = e.item;
+            this.updateFilter(item.filter);
         }
-
-        searchArt(e){
-            this.updateFilter("Art");
-        }
-
-        searchHistory(e){
-            this.updateFilter("History");
-        }
-
-        searchPeople(e){
-            this.updateFilter("People");
-        }
-
     </script>
 </controls>

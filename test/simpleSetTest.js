@@ -25,4 +25,40 @@ describe("simple set", function(){
         var items = set.items();
         assert.includeMembers(itemsA, set.items())
     });
+
+    it("should be able to add individual items", function(){
+        var set = new SimpleSet(itemsA);
+        set.add("q");
+        assert.isTrue(set.contains("q"));
+    });
+
+    it("should be able to remove individual items", function(){
+        var set = new SimpleSet(itemsA);
+        set.remove("b");
+        assert.isFalse(set.contains("b"));
+    });
+
+    it("should allow another set to be added", function(){
+        var set = new SimpleSet(itemsA);
+        set.addAll(new SimpleSet(itemsB));
+
+        assert.includeMembers(set.items(), itemsB);
+    });
+
+    it("should allow another set to be removed", function(){
+        var set = new SimpleSet(itemsA);
+        set.removeAll(new SimpleSet(["a", "b"]));
+
+        assert.isFalse(set.contains("a"));
+        assert.isFalse(set.contains("b"));
+    });
+
+    it("should check if set contains other set", function(){
+        var set = new SimpleSet(itemsA);
+        set.addAll(new SimpleSet(itemsB));
+
+        assert.isTrue(set.containsAll(["a", "b", "d", "e"]));
+        assert.isTrue(set.containsAll(new SimpleSet(["a", "b", "d", "e"])));
+    });
+    
 })
