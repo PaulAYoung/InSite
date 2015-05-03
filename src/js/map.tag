@@ -84,10 +84,10 @@
                     }
                     else if (value.tags.indexOf('People') !== -1){
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 12,
-                            fillColor: 'blue',
+                            {radius: 14,
+                            fillColor: '#64d3aa',
                             fillOpacity: 1,
-                            color: 'white',
+                            color: '#eeffcc',
                             opacity: 1,
                             weight: 1})
                         .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
@@ -95,10 +95,10 @@
                     }
                     else if (value.tags.indexOf('Art') !== -1){
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 12,
-                            fillColor: 'blue',
+                            {radius: 14,
+                            fillColor: '#8f4c54',
                             fillOpacity: 1,
-                            color: 'white',
+                            color: '#eeffcc',
                             opacity: 1,
                             weight: 1})
                         .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
@@ -107,10 +107,10 @@
                     else if(value.photo_array !== null || value.audio_array !== null){
                         // markers with content
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 12,
-                            fillColor: 'blue',
+                            {radius: 14,
+                            fillColor: '#648ed3',
                             fillOpacity: 1,
-                            color: 'white',
+                            color: '#eeffcc',
                             opacity: 1,
                             weight: 1})
                         .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
@@ -120,9 +120,9 @@
                         // markers without content
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
                             {radius: 6,
-                            fillColor: 'gray',
+                            fillColor: '#d3d7e3',
                             fillOpacity: 1,
-                            color: 'white',
+                            color: '#d3d7e3',
                             opacity: 1,
                             weight: 1})
                         .bindPopup(value.name+'<br>'+value.description)
