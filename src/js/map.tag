@@ -1,12 +1,11 @@
 <map>
     <div if={ this.display }>
         <div name="mapArea" class="mapArea"></div>
-        <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Start Tour</button>
     </div>
+
     <script>
         // scripts
         this.display=false;
-        this.tourButtonDisplay=false;
         var L = require('leaflet');
         L.Icon.Default.imagePath = 'leaflet_images/'
         var $ = require('jquery');
@@ -135,30 +134,7 @@
                 }
                 
             });
-            
-            if (controller.filter === "tour"){
-                self.tourButtonDisplay=true;
-                self.update();
-            }
-            else{
-                self.tourButtonDisplay=false;
-                self.update();
-            }
-            
         });
-
-        controller.on('OnTour', function(bool){
-            if (bool){
-                self.tourButtonDisplay=false;
-                self.update();
-            }
-            else{
-                if (controller.filter==="tour"){
-                    self.tourButtonDisplay=true;
-                    self.update();
-                }
-            }
-        })
         
         clearMarkers(){
             var mark;
@@ -167,14 +143,6 @@
                 self.map.removeLayer(mark);
             }
         }
-
-        startTour(){
-            controller.trigger('OnTour',true);
-            controller.trigger('StartTour',0)
-            self.tourButtonDisplay=false;
-            self.update()
-        }
-
     </script>
 
 </map>

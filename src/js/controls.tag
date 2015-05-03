@@ -26,11 +26,12 @@
         <div class="navbar-collapse collapse" name="itemSearch">
             <form class="navbar-form navbar-left" role="search" onsubmit={ this.search }>
                 <ul class="nav navbar-nav">
-                    <li onclick={ this.reset }><a href="">Full Map</a></li>
-                    <li onclick={ this.startTour }><a href="">Tour Highlights</a></li>
-                    <li onclick={ this.searchHistory }><a href="">History</a></li>
-                    <li onclick={ this.searchArt }><a href=""><span class="glyphicon glyphicon-asterisk"></span>  Art</a></li>
-                    <li onclick={ this.searchPeople }><a href=""><span class="glyphicon glyphicon-home"></span>  People</a></li>
+                    <li each={ opts.highlightedFilters } onclick={ parent.applyFilter } >
+                        <a href="">
+                            <span if= { iconClass } class={ iconClass }></span>
+                            { name }
+                        </a>
+                    </li>
                   </ul>
                 <div class="form-group">
                     <input type="text" name="searchbox" class="form-control" placeholder="Search">
@@ -94,21 +95,9 @@
             this.updateFilter("");
         }
 
-        startTour(){
-            this.updateFilter("tour");
+        applyFilter(e){
+            var item = e.item;
+            this.updateFilter(e.name);
         }
-
-        searchArt(e){
-            this.updateFilter("Art");
-        }
-
-        searchHistory(e){
-            this.updateFilter("History");
-        }
-
-        searchPeople(e){
-            this.updateFilter("People");
-        }
-
     </script>
 </controls>
