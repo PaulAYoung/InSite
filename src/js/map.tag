@@ -70,6 +70,7 @@
         });
 
         controller.on('ItemsUpdated', function(item){
+            console.log(item);
             self.clearMarkers();
             var markers = controller.markers;
             if (markers === null) { markers = []; }

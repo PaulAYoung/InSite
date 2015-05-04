@@ -26,7 +26,7 @@ function Controller(){
 
     this.on('ItemsLoaded', function(items){
         self._processItems(items);
-        self._filterItems('tour');
+        self._filterItems('generaltour');
         self.trigger("ItemsUpdated", this.itemList);
         riot.route.exec(self._router.bind(self));
     });
@@ -57,8 +57,8 @@ function Controller(){
 Controller.prototype = {
    _filterItems: function(filter){
         this.filter = filter;
+        console.log(filter);
         this.itemList = this._dataFilter.filter(filter);
-
         var markers = new SimpleSet(this.itemList.map(function(i){
             return i.marker;
         }));
@@ -79,10 +79,12 @@ Controller.prototype = {
         if (this.onTour){
             this._tourSort();
             return ;
+            console.log('toursorting');
         }
 
         if (this.loc !== null){
             this._geoSort();
+            console.log('geosorting');
         }
     },
     _geoSort: function(){
@@ -92,7 +94,7 @@ Controller.prototype = {
     },
     _tourSort: function(){
         if (this.markers !== null){
-            this.markers = tourSort(this.markers, 'tour');
+            this.markers = tourSort(this.markers, 'generaltour');
         }
     },
     _processItems: function(items){
