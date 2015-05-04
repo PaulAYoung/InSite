@@ -26,7 +26,6 @@ function Controller(){
 
     this.on('ItemsLoaded', function(items){
         self._processItems(items);
-        self._filterItems('generaltour');
         self.trigger("ItemsUpdated", this.itemList);
         riot.route.exec(self._router.bind(self));
     });

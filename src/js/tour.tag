@@ -38,7 +38,7 @@
         });
 
         controller.on('ItemsUpdated', function(){
-            if (tours.contains(controller.filter)){
+            if (tours.contains(controller.filter) && self.display==false){
                 self.tourButtonDisplay=true;
                 self.update();
             }
@@ -81,7 +81,7 @@
         }
 
         endTour(){
-            controller.trigger("SetMapView", L.latLng(opts.startLoc), 16);
+            controller.trigger("SetMapView", L.latLng(opts.mapOpts.startLoc), opts.mapOpts.startZoom);
             controller.trigger("OnTour", false);
             self.tourButtonDisplay=true;
             self.display=false;
