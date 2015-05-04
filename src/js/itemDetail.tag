@@ -137,7 +137,9 @@
                     {
                         container: self.gallery,
                         carousel: true, 
-                        startSlideshow: false
+                        startSlideshow: false,
+                        prevClass: 'prev',
+                        nextClass: 'next'
                     }
                 );
             }
