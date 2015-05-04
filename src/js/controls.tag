@@ -20,7 +20,7 @@
         <div class="navbar-collapse1 collapse" name="itemSearch2">
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Home</a><li>
-                <li><a href="">About</a></li>
+                <li><a href="#itemDetail/{opts.aboutMarkerID}">About</a></li>
             </ul>
         </div>
         <div class="navbar-collapse collapse" name="itemSearch">
