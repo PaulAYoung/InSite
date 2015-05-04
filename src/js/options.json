@@ -20,12 +20,12 @@
         {
             name: "Art",
             filter: "Art",
-            iconClass: "glyphicon glyphicon-asterisk"
+            // iconClass: "glyphicon glyphicon-asterisk"
         },
         {
             name: "People",
             filter: "People",
-            iconClass: "glyphicon glyphicon-home"
+            // iconClass: "glyphicon glyphicon-home"
         }
     ]
 };
