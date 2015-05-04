@@ -1,31 +1,42 @@
 <itemdetail>
     <div id="itemDetail" if={this.display}>
-        <div id="title"> 
-            <h3 style="margin-top: 0px">{item.name}</h3>
-        </div>
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+            <div class="panel-heading" id="title">
+                <h3 style="margin-top: 0px">{item.name}
+                </h3>
+            </div>
+          
+            <div class="panel-body">
+                <div id="mapThumbnail">
+                </div>
+                <div id="description"> 
+                    <p>{item.description}</p>
+                </div>
+            </div>
+               
 
         <!-- <div id="nextTour" style="float:right;" if={ this.tourDisplay } onclick={ this.updateTour }>
             <p>Next Tour Stop<span class="glyphicon glyphicon-chevron-right"></span></p>
             <br>
         </div>  -->
-
-        <!-- description -->
-        <div id="description"> 
-            <p>{item.description}</p>
-        </div>
+     
 
         <!-- list of stories connected to item -->
-        <div id="audioList" if={ this.item.audio_array }> 
-        <h4>Stories</h4>
-        <!-- insert relevant stories -->
-            <div each={this.getAudio()} onclick={parent.playAudio} class="row">
-                <div class="audioItem">
-                    <div class="col-md-12">
-                        <span class="glyphicon glyphicon-volume-up"></span>
-                        <strong>{name}</strong> - {attribution}<br>
-                        <p style="margin-left:18px">{description}</p>
+            <div id="audioList" if={ this.item.audio_array }> 
+                
+            <!-- insert relevant stories -->
+                <ul class="list-group">
+                    <div each={this.getAudio()} onclick={parent.playAudio}>
+                        <li class="list-group-item audioItem">
+                        <!-- <div class="col-md-12"> -->
+                            <span class="glyphicon glyphicon-volume-up"></span>
+                            <strong>{name}</strong> - {attribution}<br>
+                            <p style="margin-left:18px">{description}</p>
+                        <!-- </div> -->
+                        </li>
                     </div>
-                </div>
+                </ul>
             </div>
         </div>
 
@@ -67,15 +78,14 @@
         </div>
     
         <!-- tags -->
-        <div id="tags"> 
+        <!-- <div id="tags"> 
             <h4>Tags</h4>
             <div class="row">
                 <div class="col-md-4">
-                    <span each={ getTags() } class=item-tag onclick={ parent.setFilter }>{ tag }</span>
+                    <span each={ getTags() } class=item-tag onclick={ parent.setFilter }> { tag } </span>
                 </div>
             </div>
-            <!-- insert taglist here -->
-        </div>
+        </div> -->
     </div>
 
     <script>
@@ -195,8 +205,54 @@
             controller.trigger("playAudio", item)
         }
 
-        
+        // map thumbnail scripts
+        this.display=false;
+        var L = require('leaflet');
+        L.Icon.Default.imagePath = 'leaflet_images/'
+        var $ = require('jquery');
+        var controller = opts.controller;
+        var self = this;
+        var user_marker = false;
+        var startLatLng = L.latLng(opts.startLoc);
+        var setViewbyLocation = require('./setViewbyLocation');
 
+        self.mapMarkers = [];
+        self.userMarker = null;
+        
+        this.on('mount', function(e){
+            self.map = new L.Map(self.mapThumbnail);
+            var accessToken = 'pk.eyJ1IjoiYXJkbmFzZWVsIiwiYSI6IkNpTXlHU0UifQ.M20m1nJ01_0olbOTdPJ1oQ'
+            var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v4/ardnaseel.kfgj3f5l/{z}/{x}/{y}.png?access_token='+ accessToken);
+            
+            self.map
+                .addLayer(mapboxTiles)
+                .setView(startLatLng, 16 );
+
+            self.update();
+            self.map.invalidateSize();
+        });  
+
+        controller.on("LocationUpdated", function(pos){
+
+            if (self.userMarker){
+                self.map.removeLayer(self.userMarker);
+            }
+            var crd = pos.coords;  
+            var radius = crd.accuracy / 2;
+            var user_location = L.latLng(crd.latitude,crd.longitude);
+            self.userMarker = L.circle(user_location, radius).addTo(self.map);
+            var distance_to_bulb = startLatLng.distanceTo(user_location);
+           
+            // self.map.setView(setViewbyLocation(1416, user_location, startLatLng), 16);
+          
+          console.log('Your current position is:');
+          console.log('Latitude : ' + crd.latitude);
+          console.log('Longitude: ' + crd.longitude);
+          console.log('More or less ' + crd.accuracy + ' meters.');
+          console.log("distance to bulb: "+ distance_to_bulb+"m");
+        });    
+        
+        
     </script>
 </itemdetail>
 

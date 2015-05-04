@@ -4,8 +4,10 @@ body html{
 }
 
 body{
-	padding-top: 50px;
+	padding-top: 40px;
+  padding-left: 10px;
   text-align: left;
+  background-color: ;
 }
 #itemDetail{
   position:relative;
@@ -50,6 +52,7 @@ body{
 
 #title, #description, #tags{
   padding: 10px;
+  padding-top: 10px;
 }
 
 .locateIcon{
@@ -85,12 +88,18 @@ body{
   padding-left:10px;
 }
 h1{
-  margin-bottom:0px;
-  margin-top: 0px;
+  /*margin-bottom:0px;
+  margin-top: 0px;*/
 }
 h4{
   margin-top: 0px;
   margin-bottom:3px;
+  padding-left: 20px;
+}
+
+.panel {
+  padding-top: 10px;
+  margin-top: 10px;
 }
 
 .navbor-form{
@@ -125,6 +134,17 @@ h4{
 .artIcon{
   color: rgb(237, 96, 253);
   font-size: 1.6em;
+}
+
+#mapThumbnail {
+  height: 10%;
+  width: 60%;
+  margin-right: 50px;
+  margin-left: 50px; 
+  position: relative;
+  border-color:black;
+  border-radius: 1px;
+
 }
 
 @media (min-width: 768px) {
@@ -231,7 +251,7 @@ h4{
   border-left: none;
   padding: 0px;
 }
-.audio-details{
+.list-details{
   position:fixed;
   bottom: 24px;
   color: white;
