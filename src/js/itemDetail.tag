@@ -8,20 +8,13 @@
             </div>
           
             <div class="panel-body">
-                <div id="mapThumbnail">
+                <div name="mapThumbnail">
                 </div>
                 <div id="description"> 
                     <p>{item.description}</p>
                 </div>
             </div>
-               
-
-        <!-- <div id="nextTour" style="float:right;" if={ this.tourDisplay } onclick={ this.updateTour }>
-            <p>Next Tour Stop<span class="glyphicon glyphicon-chevron-right"></span></p>
-            <br>
-        </div>  -->
      
-
         <!-- list of stories connected to item -->
             <div id="audioList" if={ this.item.audio_array }> 
                 
@@ -78,14 +71,14 @@
         </div>
     
         <!-- tags -->
-        <!-- <div id="tags"> 
+        <div id="tags"> 
             <h4>Tags</h4>
             <div class="row">
                 <div class="col-md-4">
                     <span each={ getTags() } class=item-tag onclick={ parent.setFilter }> { tag } </span>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 
     <script>
@@ -95,9 +88,10 @@
         this.item_id = null;
         this._viewID = "itemDetail";
         var controller = opts.controller;
-        var tourMatcher = new RegExp("^(" + opts.tours.join("|") + ")\\d+$");
+        var tourMatcher = new RegExp("^(" + opts.tours.map(function(v){ return v.filter }).join("|") + ")\\d+$");
         console.log(tourMatcher);
         var self = this;
+        var riot = require('riot');
         var $ = require('jquery');
 
         getAudio(){
@@ -131,7 +125,7 @@
         setFilter(e){
             var item = e.item;
             controller.trigger("UpdateFilter", item.tag);
-            controller.trigger("ActivateView", "Map");
+            riot.route("#Map");
         }
 
         refreshGallery(){
@@ -143,7 +137,9 @@
                     {
                         container: self.gallery,
                         carousel: true, 
-                        startSlideshow: false
+                        startSlideshow: false,
+                        prevClass: 'prev',
+                        nextClass: 'next'
                     }
                 );
             }
@@ -158,14 +154,8 @@
             self.loadItem(item);
         });
 
-        // controller.on('StartTour', function(index){
-        //     self.tourDisplay=true;
-        //     controller.trigger('showTourDiv', 0);
-        //     console.log('showtourdiv triggered');
-        // })
 
         controller.on('OnTour', function(bool){
-            console.log('itemdetailontour '+ bool);
             if (bool){
                 $('itemDetail').css({"position":"relative","top":"100px"});
                 $('listview').css({"position":"relative","top":"100px"});
@@ -213,7 +203,7 @@
         var controller = opts.controller;
         var self = this;
         var user_marker = false;
-        var startLatLng = L.latLng(opts.startLoc);
+        var startLatLng = L.latLng(opts.mapOpts.startLoc);
         var setViewbyLocation = require('./setViewbyLocation');
 
         self.mapMarkers = [];
@@ -221,8 +211,7 @@
         
         this.on('mount', function(e){
             self.map = new L.Map(self.mapThumbnail);
-            var accessToken = 'pk.eyJ1IjoiYXJkbmFzZWVsIiwiYSI6IkNpTXlHU0UifQ.M20m1nJ01_0olbOTdPJ1oQ'
-            var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v4/ardnaseel.kfgj3f5l/{z}/{x}/{y}.png?access_token='+ accessToken);
+            var mapboxTiles = L.tileLayer(opts.mapOpts.tileUrl);
             
             self.map
                 .addLayer(mapboxTiles)
@@ -251,7 +240,7 @@
           console.log('More or less ' + crd.accuracy + ' meters.');
           console.log("distance to bulb: "+ distance_to_bulb+"m");
         });    
-        
+
         
     </script>
 </itemdetail>

@@ -24,6 +24,7 @@ var blueimpgallery = require('./blueimp-gallery');
 var opts = require('./options.json');
 
 var controller = new Controller();
+controller.filter = opts.startFilter
 
 opts.controller = controller;
 

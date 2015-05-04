@@ -26,7 +26,6 @@ function Controller(){
 
     this.on('ItemsLoaded', function(items){
         self._processItems(items);
-        self._filterItems('tour');
         self.trigger("ItemsUpdated", this.itemList);
         riot.route.exec(self._router.bind(self));
     });
@@ -36,9 +35,9 @@ function Controller(){
     });
 
     this.on('UpdateFilter', function(filter){
+        self.onTour = false;
         self._filterItems(filter);
         self.trigger("ItemsUpdated", this.itemList);
-        // console.log('filter updated: '+ this.itemList);
     });
 
     this.on('LocationUpdated', function(pos){
@@ -48,17 +47,21 @@ function Controller(){
         if (self.loc === null || L.latLng(lat, lon).distanceTo(L.latLng(self.loc)) > 5){
 
             self.loc = {lat: lat, lon:lon};
-            self._geoSort();
+            self._sort();
             self.trigger("ItemsUpdated", this.itemList);
         }
     });
+
+    this.on('OnTour', function(bool){
+        self.onTour=bool;
+    })
 }
 
 Controller.prototype = {
    _filterItems: function(filter){
         this.filter = filter;
+        console.log(filter);
         this.itemList = this._dataFilter.filter(filter);
-
         var markers = new SimpleSet(this.itemList.map(function(i){
             return i.marker;
         }));
@@ -88,11 +91,15 @@ Controller.prototype = {
     _geoSort: function(){
         if (this.markers !== null){
             this.markers = geoSort(this.loc, this.markers);
+            console.log('geosorting');
+            console.log(this.markers);
         }
     },
     _tourSort: function(){
         if (this.markers !== null){
-            this.markers = tourSort(this.markers, 'tour');
+            this.markers = tourSort(this.markers, this.filter);
+            console.log('toursorting');
+            console.log(this.markers);
         }
     },
     _processItems: function(items){
