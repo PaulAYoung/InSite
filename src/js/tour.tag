@@ -1,11 +1,12 @@
 <tour>
     <div if={ this.display } class="tourstop-info">
-        <h4 onclick={ this.itemDetailURL }>{ this.displayTourStopNumber()}:<br> { this.displayTourStopName() }</h4>
-        <div style="position:relative;bottom:-20px;float:left;clear:both;" onclick={ this.updateTour }>
+        <h4 onclick={ this.itemDetailURL }>{ this.displayTourStopNumber()}: { this.displayTourStopName() }</h4>
+        <p style="float:right;" class="distance">{ this.distanceTo() }</p>
+        <div style="position:relative;float:left;clear:both;" onclick={ this.updateTour }>
             <span>Next Tour Stop</span>
             <span class="glyphicon glyphicon-chevron-right" ></span>
         </div>
-        <div style="float:right;position:relative;bottom:-20px;" onclick={ this.endTour }>
+        <div style="float:right;position:relative;" onclick={ this.endTour }>
             <span class="glyphicon glyphicon-remove"></span>
             <span>Exit Tour</span>
         </div>
@@ -14,7 +15,8 @@
 
     <script>
         var SimpleSet = require('./simpleSet.js');
-
+        var L = require('leaflet');
+        var convertToUSDistance = require('./convertToUSDistance');
         this.display=false;
         var riot = require('riot');
         var controller = opts.controller;
@@ -33,6 +35,8 @@
             self.display=true;
             self.tourButtonDisplay=false;
             self.tourIndex=index;
+            self.tourLength=controller.itemList.length;
+            console.log(controller.markers.length);
             self.selectItem(index);
             self.update();
         });
@@ -66,9 +70,11 @@
         }
 
         updateTour(){
-            self.tourIndex++;
-            self.selectItem(self.tourIndex);
-            self.update();
+            if (self.tourIndex<self.tourLength-1){
+                self.tourIndex++;
+                self.selectItem(self.tourIndex);
+                self.update();
+            }
         }
 
         tourName(){
@@ -76,13 +82,22 @@
         }
 
         displayTourStopNumber(){
-            if (controller.markers !== null) {return 'Tour Stop '+String(self.tourIndex);}
+            if (controller.markers !== null) {return 'Tour Stop '+String(self.tourIndex+1);}
             else {return "";}
         }
 
         displayTourStopName(){
             if (controller.markers !== null) {return controller.markers[self.tourIndex].name;}
             else {return "";}
+        }
+
+        distanceTo(){
+            var user_location_marker = L.latLng(controller.loc['lat'], controller.loc['lon']);
+            var marker_location= L.latLng(controller.markers[self.tourIndex].geometry.coordinates[1], controller.markers[self.tourIndex].geometry.coordinates[0]);
+            //convert distance from meters to ft
+            var distance_m = user_location_marker.distanceTo(marker_location)
+            return String(convertToUSDistance(distance_m).num)+" "+convertToUSDistance(distance_m).unit;
+            // return String(Math.round(user_location_marker.distanceTo(marker_location) * 3.28084))+" ft";
         }
 
         endTour(){
