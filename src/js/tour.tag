@@ -27,11 +27,13 @@
 
         this.on("mount", function(){console.log("tour tag loaded");});
 
-        controller.on('OnTour', function(bool){
-            self.display=bool;
-        });
+        // controller.on('OnTour', function(bool){
+        //     self.display=bool;
+        // });
+
 
         controller.on('StartTour', function(index){
+            self.display=true;
             self.tourIndex=index;
             self.selectItem(index);
             self.update();
@@ -94,7 +96,6 @@
         endTour(){
             controller.trigger("SetMapView", L.latLng(opts.startLoc), 16);
             controller.trigger("OnTour", false);
-            // controller.trigger('UpddateFilter', 'tour');
             self.display=false;
         }
 

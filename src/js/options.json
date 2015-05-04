@@ -2,7 +2,8 @@
     url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?",
     tours: [
         'tour',
-        'otherTour'
+        'arttour', 
+        'peopletour'
         ],
     startLoc: {
         lat: 37.8899,
