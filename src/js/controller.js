@@ -81,8 +81,8 @@ Controller.prototype = {
     _sort: function(){
         if (this.onTour){
             this._tourSort();
-            return ;
             console.log('toursorting');
+            return ;
         }
 
         if (this.loc !== null){
