@@ -46,7 +46,7 @@ function Controller(){
         if (self.loc === null || L.latLng(lat, lon).distanceTo(L.latLng(self.loc)) > 5){
 
             self.loc = {lat: lat, lon:lon};
-            self._geoSort();
+            self._sort();
             self.trigger("ItemsUpdated", this.itemList);
         }
     });
@@ -80,23 +80,25 @@ Controller.prototype = {
     _sort: function(){
         if (this.onTour){
             this._tourSort();
-            console.log('toursorting');
             return ;
         }
 
         if (this.loc !== null){
             this._geoSort();
-            console.log('geosorting');
         }
     },
     _geoSort: function(){
         if (this.markers !== null){
             this.markers = geoSort(this.loc, this.markers);
+            console.log('geosorting');
+            console.log(this.markers);
         }
     },
     _tourSort: function(){
         if (this.markers !== null){
             this.markers = tourSort(this.markers, this.filter);
+            console.log('toursorting');
+            console.log(this.markers);
         }
     },
     _processItems: function(items){

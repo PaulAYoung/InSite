@@ -29,8 +29,7 @@
 
         controller.on('StartTour', function(index){
             controller.trigger('OnTour',true);
-            console.log(controller.onTour);
-            controller._sort();
+            controller._tourSort();
             self.display=true;
             self.tourButtonDisplay=false;
             self.tourIndex=index;
