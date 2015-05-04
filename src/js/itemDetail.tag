@@ -88,7 +88,7 @@
         this.item_id = null;
         this._viewID = "itemDetail";
         var controller = opts.controller;
-        var tourMatcher = new RegExp("^(" + opts.tours.join("|") + ")\\d+$");
+        var tourMatcher = new RegExp("^(" + opts.tours.map(function(v){ return v.filter }).join("|") + ")\\d+$");
         console.log(tourMatcher);
         var self = this;
         var riot = require('riot');

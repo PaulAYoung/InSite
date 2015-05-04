@@ -34,7 +34,7 @@
                     <li onclick={ this.searchPeople }><a href="">People</a></li> -->
                     <li each={ opts.highlightedFilters } onclick={ parent.applyFilter } >
                         <a href="">
-                            <span if= { iconClass } class={ iconClass }></span>
+                            <span if={ iconClass } class={ iconClass }></span>
                             { name }
                         </a>
                     </li>
@@ -96,8 +96,10 @@
         }
 
         applyFilter(e){
+            e.preventDefault();
             var item = e.item;
             this.updateFilter(item.filter);
+            return false;
         }
     </script>
 </controls>

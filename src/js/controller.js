@@ -35,6 +35,7 @@ function Controller(){
     });
 
     this.on('UpdateFilter', function(filter){
+        self.onTour = false;
         self._filterItems(filter);
         self.trigger("ItemsUpdated", this.itemList);
     });

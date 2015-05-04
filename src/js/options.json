@@ -1,9 +1,9 @@
 {
     url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?",
     tours: [
-        'generaltour',
-        'arttour', 
-        'peopletour'
+        {filter: 'generaltour', name:"Albany Bulb"},
+        {filter: 'arttour',  name:"Art"},
+        {filter: 'peopletour', name:"People"}
         ],
     mapOpts:{
         startLoc: {

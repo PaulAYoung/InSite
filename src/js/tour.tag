@@ -21,7 +21,7 @@
         this.tourButtonDisplay=false;
         var self = this;
 
-        var tours = new SimpleSet(opts.tours);
+        var tours = new SimpleSet(opts.tours.map(function(v){ return v.filter; }));
 
         self.tourIndex = 0;
 
@@ -38,14 +38,14 @@
         });
 
         controller.on('ItemsUpdated', function(){
-            if (tours.contains(controller.filter) && self.display==false){
+            self.display = false;
+            if (tours.contains(controller.filter)){
                 self.tourButtonDisplay=true;
-                self.update();
             }
             else{
                 self.tourButtonDisplay=false;
-                self.update();
             }
+            self.update();
         })
 
         startTour(){
