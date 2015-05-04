@@ -38,7 +38,6 @@ function Controller(){
     this.on('UpdateFilter', function(filter){
         self._filterItems(filter);
         self.trigger("ItemsUpdated", this.itemList);
-        // console.log('filter updated: '+ this.itemList);
     });
 
     this.on('LocationUpdated', function(pos){
@@ -52,6 +51,10 @@ function Controller(){
             self.trigger("ItemsUpdated", this.itemList);
         }
     });
+
+    this.on('OnTour', function(bool){
+        self.onTour=bool;
+    })
 }
 
 Controller.prototype = {
@@ -94,7 +97,7 @@ Controller.prototype = {
     },
     _tourSort: function(){
         if (this.markers !== null){
-            this.markers = tourSort(this.markers, 'generaltour');
+            this.markers = tourSort(this.markers, this.filter);
         }
     },
     _processItems: function(items){

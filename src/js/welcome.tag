@@ -26,8 +26,6 @@
         }
 
         startTour(){
-            controller.onTour=true;
-            this.updateFilter('generaltour');
             controller.trigger('StartTour',0)
             self.display=false;
         }

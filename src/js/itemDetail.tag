@@ -14,14 +14,7 @@
                     <p>{item.description}</p>
                 </div>
             </div>
-               
-
-        <!-- <div id="nextTour" style="float:right;" if={ this.tourDisplay } onclick={ this.updateTour }>
-            <p>Next Tour Stop<span class="glyphicon glyphicon-chevron-right"></span></p>
-            <br>
-        </div>  -->
      
-
         <!-- list of stories connected to item -->
             <div id="audioList" if={ this.item.audio_array }> 
                 
@@ -78,14 +71,14 @@
         </div>
     
         <!-- tags -->
-        <!-- <div id="tags"> 
+        <div id="tags"> 
             <h4>Tags</h4>
             <div class="row">
                 <div class="col-md-4">
                     <span each={ getTags() } class=item-tag onclick={ parent.setFilter }> { tag } </span>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 
     <script>
@@ -158,14 +151,8 @@
             self.loadItem(item);
         });
 
-        // controller.on('StartTour', function(index){
-        //     self.tourDisplay=true;
-        //     controller.trigger('showTourDiv', 0);
-        //     console.log('showtourdiv triggered');
-        // })
 
         controller.on('OnTour', function(bool){
-            console.log('itemdetailontour '+ bool);
             if (bool){
                 $('itemDetail').css({"position":"relative","top":"100px"});
                 $('listview').css({"position":"relative","top":"100px"});

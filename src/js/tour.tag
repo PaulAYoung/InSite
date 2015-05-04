@@ -1,6 +1,6 @@
 <tour>
     <div if={ this.display } class="tourstop-info">
-        <h4 style="text-decoration:underline;" onclick={ this.itemDetailURL }>{ this.displayTourName() }</h4>
+        <h4 style="text-decoration:underline;" onclick={ this.itemDetailURL }>{ this.displayTourStopName() }</h4>
         <div style="position:relative;bottom:-20px;float:left;clear:both;" onclick={ this.updateTour }>
             <span>Next Tour Stop</span>
             <span class="glyphicon glyphicon-chevron-right" ></span>
@@ -10,7 +10,7 @@
             <span>Exit Tour</span>
         </div>
     </div>
-    <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Start Tour</button>
+    <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Start { this.tourName() }</button>
 
     <script>
         var SimpleSet = require('./simpleSet.js');
@@ -27,46 +27,29 @@
 
         this.on("mount", function(){console.log("tour tag loaded");});
 
-        // controller.on('OnTour', function(bool){
-        //     self.display=bool;
-        // });
-
-
         controller.on('StartTour', function(index){
+            controller.trigger('OnTour',true);
+            controller._sort();
             self.display=true;
+            self.tourButtonDisplay=false;
             self.tourIndex=index;
             self.selectItem(index);
             self.update();
         });
 
-        controller.on("UpdateFilter", function(filter){
-            if (tours.contains(filter)){
+        controller.on('ItemsUpdated', function(){
+            if (tours.contains(controller.filter)){
                 self.tourButtonDisplay=true;
                 self.update();
             }
             else{
                 self.tourButtonDisplay=false;
-                self.display =false;
                 self.update();
-            }
-        });
-
-        controller.on('OnTour', function(bool){
-            if (bool){
-                self.tourButtonDisplay=false;
-                self.update();
-            }
-            else{
-                if (tours.contains(controller.filter)){
-                    self.tourButtonDisplay=true;
-                    self.update();
-                }
             }
         })
 
         startTour(){
-            controller.trigger('OnTour',true);
-            controller.trigger('StartTour',0)
+            controller.trigger('StartTour',0);
             self.tourButtonDisplay=false;
             self.update()
         }
@@ -88,7 +71,11 @@
             self.update();
         }
 
-        displayTourName(){
+        tourName(){
+            return controller.filter;
+        }
+
+        displayTourStopName(){
             if (controller.markers !== null) {return controller.markers[self.tourIndex].name;}
             else {return "";}
         }
@@ -96,6 +83,7 @@
         endTour(){
             controller.trigger("SetMapView", L.latLng(opts.startLoc), 16);
             controller.trigger("OnTour", false);
+            self.tourButtonDisplay=true;
             self.display=false;
         }
 
