@@ -19,17 +19,20 @@
             filter: "",
         },
         {
-            name: "Tour Highlights",
-            filter: "tour"
+            name: "Highlights",
+            filter: "generaltour",
+            tour: "generaltour"
         },
         {
             name: "Art",
             filter: "Art",
+            tour: "arttour"
             // iconClass: "glyphicon glyphicon-asterisk"
         },
         {
             name: "Former Residents",
-            filter: "Former Residents",
+            filter: "People",
+            tour: "peopletour"
             // iconClass: "glyphicon glyphicon-home"
         }
     ],

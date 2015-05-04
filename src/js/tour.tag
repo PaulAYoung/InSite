@@ -11,7 +11,7 @@
             <span>Exit Tour</span>
         </div>
     </div>
-    <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Start { this.tourName() }</button>
+    <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Start { this.tourName() } Tour</button>
 
     <script>
         var SimpleSet = require('./simpleSet.js');
@@ -21,9 +21,16 @@
         var riot = require('riot');
         var controller = opts.controller;
         this.tourButtonDisplay=false;
+        var previousFilter="";
         var self = this;
 
-        var tours = new SimpleSet(opts.tours.map(function(v){ return v.filter; }));
+        // var tours = new SimpleSet(opts.tours.map(function(v){ return v.filter; }));
+        var tours = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.tour; }));
+        var tour_filter = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.filter; }));
+        var tourDict = {};
+        for (var i=0, l=opts.highlightedFilters.length, tour; i<l, tour=opts.highlightedFilters[i]; i++){
+            tourDict[tour.filter] = tour;
+        }
 
         self.tourIndex = 0;
 
@@ -43,7 +50,7 @@
 
         controller.on('ItemsUpdated', function(){
             self.display = false;
-            if (tours.contains(controller.filter)){
+            if (tour_filter.contains(controller.filter) && controller.filter!== ""){
                 self.tourButtonDisplay=true;
             }
             else{
@@ -53,6 +60,10 @@
         })
 
         startTour(){
+            if (controller.filter in tourDict){
+                previousFilter = controller.filter;
+                controller.trigger("UpdateFilter", tourDict[controller.filter].tour);
+            }
             controller.trigger('StartTour',0);
             self.tourButtonDisplay=false;
             self.update()
@@ -78,7 +89,7 @@
         }
 
         tourName(){
-            return controller.filter;
+            return tourDict[controller.filter].name;
         }
 
         displayTourStopNumber(){
@@ -103,6 +114,7 @@
         endTour(){
             controller.trigger("SetMapView", L.latLng(opts.mapOpts.startLoc), opts.mapOpts.startZoom);
             controller.trigger("OnTour", false);
+            controller.trigger("UpdateFilter", previousFilter);
             self.tourButtonDisplay=true;
             self.display=false;
         }
