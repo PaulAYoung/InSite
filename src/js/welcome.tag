@@ -20,6 +20,11 @@
             self.display = (title=='Welcome');
             self.update();
         });
+    
+        controller.on("UpdateFilter", function(){
+                self.hideWelcome();
+                self.update();
+        });
 
         hideWelcome(e){
             self.display = false;
