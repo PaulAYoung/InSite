@@ -28,8 +28,8 @@
             // iconClass: "glyphicon glyphicon-asterisk"
         },
         {
-            name: "People",
-            filter: "People",
+            name: "Former Residents",
+            filter: "Former Residents",
             // iconClass: "glyphicon glyphicon-home"
         }
     ],
