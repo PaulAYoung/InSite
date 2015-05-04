@@ -33,5 +33,6 @@
             // iconClass: "glyphicon glyphicon-home"
         }
     ],
-    startFilter: "generaltour"
+    startFilter: "generaltour",
+    aboutMarkerID: "marker467"
 };
