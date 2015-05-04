@@ -4,7 +4,7 @@ var L = require('leaflet');
 
 function tourSort(items, base){
     return items.sort(function(a,b){
-        return regex(a, base) > regex(b, base);
+        return regex(a, base) - regex(b, base);
     });
 }
 
