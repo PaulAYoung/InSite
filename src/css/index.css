@@ -5,9 +5,9 @@ body html{
 
 body{
 	padding-top: 40px;
-  padding-left: 10px;
+  /*padding-left: 10px;
   text-align: left;
-  background-color: ;
+  background-color: ;*/
 }
 #itemDetail{
   position:relative;
@@ -88,13 +88,13 @@ body{
   padding-left:10px;
 }
 h1{
-  /*margin-bottom:0px;
-  margin-top: 0px;*/
+  margin-bottom:0px;
+  margin-top: 0px;
 }
 h4{
   margin-top: 0px;
   margin-bottom:3px;
-  padding-left: 20px;
+  /*padding-left: 20px;*/
 }
 
 .panel {

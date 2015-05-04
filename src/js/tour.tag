@@ -1,6 +1,6 @@
 <tour>
     <div if={ this.display } class="tourstop-info">
-        <h4 style="text-decoration:underline;" onclick={ this.itemDetailURL }>{ this.displayTourStopName() }</h4>
+        <h4 onclick={ this.itemDetailURL }>{ this.displayTourStopNumber()}:<br> { this.displayTourStopName() }</h4>
         <div style="position:relative;bottom:-20px;float:left;clear:both;" onclick={ this.updateTour }>
             <span>Next Tour Stop</span>
             <span class="glyphicon glyphicon-chevron-right" ></span>
@@ -29,6 +29,7 @@
 
         controller.on('StartTour', function(index){
             controller.trigger('OnTour',true);
+            console.log(controller.onTour);
             controller._sort();
             self.display=true;
             self.tourButtonDisplay=false;
@@ -73,6 +74,11 @@
 
         tourName(){
             return controller.filter;
+        }
+
+        displayTourStopNumber(){
+            if (controller.markers !== null) {return 'Tour Stop '+String(self.tourIndex);}
+            else {return "";}
         }
 
         displayTourStopName(){
