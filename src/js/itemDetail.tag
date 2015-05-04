@@ -8,7 +8,7 @@
             </div>
           
             <div class="panel-body">
-                <div id="mapThumbnail">
+                <div name="mapThumbnail">
                 </div>
                 <div id="description"> 
                     <p>{item.description}</p>
@@ -91,6 +91,7 @@
         var tourMatcher = new RegExp("^(" + opts.tours.join("|") + ")\\d+$");
         console.log(tourMatcher);
         var self = this;
+        var riot = require('riot');
         var $ = require('jquery');
 
         getAudio(){
@@ -124,7 +125,7 @@
         setFilter(e){
             var item = e.item;
             controller.trigger("UpdateFilter", item.tag);
-            controller.trigger("ActivateView", "Map");
+            riot.route("#Map");
         }
 
         refreshGallery(){
@@ -202,7 +203,7 @@
         var controller = opts.controller;
         var self = this;
         var user_marker = false;
-        var startLatLng = L.latLng(opts.startLoc);
+        var startLatLng = L.latLng(opts.mapOpts.startLoc);
         var setViewbyLocation = require('./setViewbyLocation');
 
         self.mapMarkers = [];
@@ -210,8 +211,7 @@
         
         this.on('mount', function(e){
             self.map = new L.Map(self.mapThumbnail);
-            var accessToken = 'pk.eyJ1IjoiYXJkbmFzZWVsIiwiYSI6IkNpTXlHU0UifQ.M20m1nJ01_0olbOTdPJ1oQ'
-            var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v4/ardnaseel.kfgj3f5l/{z}/{x}/{y}.png?access_token='+ accessToken);
+            var mapboxTiles = L.tileLayer(opts.mapOpts.tileUrl);
             
             self.map
                 .addLayer(mapboxTiles)
@@ -240,7 +240,7 @@
           console.log('More or less ' + crd.accuracy + ' meters.');
           console.log("distance to bulb: "+ distance_to_bulb+"m");
         });    
-        
+
         
     </script>
 </itemdetail>

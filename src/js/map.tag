@@ -12,7 +12,7 @@
         var controller = opts.controller;
         var self = this;
         var user_marker = false;
-        var startLatLng = L.latLng(opts.startLoc);
+        var startLatLng = L.latLng(opts.mapOpts.startLoc);
         var setViewbyLocation = require('./setViewbyLocation');
 
         self.mapMarkers = [];
@@ -20,12 +20,12 @@
         
         this.on('mount', function(e){
             self.map = new L.Map(self.mapArea);
-            var accessToken = 'pk.eyJ1IjoiYXJkbmFzZWVsIiwiYSI6IkNpTXlHU0UifQ.M20m1nJ01_0olbOTdPJ1oQ'
-            var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v4/ardnaseel.kfgj3f5l/{z}/{x}/{y}.png?access_token='+ accessToken);
+            var mapboxTiles = L.tileLayer(opts.mapOpts.tileUrl);
             
+            console.log(startLatLng);
             self.map
                 .addLayer(mapboxTiles)
-                .setView(startLatLng, 16 );
+                .setView(startLatLng, opts.mapOpts.startZoom);
 
             self.update();
             self.map.invalidateSize();
