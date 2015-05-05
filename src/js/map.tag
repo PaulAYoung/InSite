@@ -14,10 +14,11 @@
         var user_marker = false;
         var startLatLng = L.latLng(opts.mapOpts.startLoc);
         var setViewbyLocation = require('./setViewbyLocation');
+        var shortenText = require('./shortenText');
 
         self.mapMarkers = [];
         self.userMarker = null;
-        
+
         this.on('mount', function(e){
             self.map = new L.Map(self.mapArea);
             var mapboxTiles = L.tileLayer(opts.mapOpts.tileUrl);
@@ -72,6 +73,7 @@
         controller.on('ItemsUpdated', function(item){
             self.clearMarkers();
             var markers = controller.markers;
+            console.log(markers);
             if (markers === null) { markers = []; }
             var mark;
             $.each(markers, function(index, value){
@@ -82,41 +84,7 @@
                             {icon: L.divIcon({className: 'map-labels', html: value.name})})
                         .addTo(self.map);
                     }
-                    else if (value.tags.indexOf('People') !== -1){
-                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 14,
-                            fillColor: '#64d3aa',
-                            fillOpacity: 1,
-                            color: '#eeffcc',
-                            opacity: 1,
-                            weight: 1})
-                        .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
-                        .addTo(self.map);
-                    }
-                    else if (value.tags.indexOf('Art') !== -1){
-                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 14,
-                            fillColor: '#8f4c54',
-                            fillOpacity: 1,
-                            color: '#eeffcc',
-                            opacity: 1,
-                            weight: 1})
-                        .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
-                        .addTo(self.map);
-                    }
-                    else if(value.photo_array !== null || value.audio_array !== null){
-                        // markers with content
-                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 14,
-                            fillColor: '#648ed3',
-                            fillOpacity: 1,
-                            color: '#eeffcc',
-                            opacity: 1,
-                            weight: 1})
-                        .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
-                        .addTo(self.map);
-                    }
-                    else {
+                    else if(value.description === "" && value.photo_array === null && value.audio_array === null){
                         // markers without content
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
                             {radius: 6,
@@ -128,6 +96,41 @@
                         .bindPopup(value.name+'<br>'+value.description)
                         .addTo(self.map);
                     }
+                    else if (value.tags.indexOf('People') !== -1){
+                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
+                            {radius: 14,
+                            fillColor: '#64d3aa',
+                            fillOpacity: 1,
+                            color: '#eeffcc',
+                            opacity: 1,
+                            weight: 1})
+                        .bindPopup(bindPopup(value))
+                        .addTo(self.map);
+                    }
+                    else if (value.tags.indexOf('Art') !== -1){
+                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
+                            {radius: 14,
+                            fillColor: '#8f4c54',
+                            fillOpacity: 1,
+                            color: '#eeffcc',
+                            opacity: 1,
+                            weight: 1})
+                        .bindPopup(bindPopup(value))
+                        .addTo(self.map);
+                    }
+                    else{
+                        // markers with content
+                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
+                            {radius: 14,
+                            fillColor: '#648ed3',
+                            fillOpacity: 1,
+                            color: '#eeffcc',
+                            opacity: 1,
+                            weight: 1})
+                        .bindPopup(bindPopup(value))
+                        .addTo(self.map);
+                    }
+                    
                     self.mapMarkers.push(mark); 
 
                     if (controller.filter !== ""){
@@ -136,13 +139,12 @@
                         if (match !== null){
                             mark = L.marker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
                                 {icon: L.divIcon({className: "tour-labels", html: match[1]})})
-                            .bindPopup("<a href='#itemDetail/marker" + value.id + "'>" + value.name+'</a><br>'+value.description)
+                            .bindPopup(bindPopup(value))
                             .addTo(self.map);
                             self.mapMarkers.push(mark);
                         }
                     }
                 }
-                
             });
         });
         
@@ -153,6 +155,21 @@
                 self.map.removeLayer(mark);
             }
         }
+
+        function bindPopup(value){
+            return "<div class='container-fluid'><div class='row'><div class='col-xs-3'><div class='thumbnail-div'><a href='#itemDetail/marker" + value.id + "'><img class='thumbnail-photo' src='"+getPhoto(value)+"'></a></div></div><div class='col-xs-9'><a href='#itemDetail/marker" + value.id + "'><h4>" + value.name+'</h4></a>'+shortenText(value.description, 80)+"<br>"+getAudioLength(value)+"</div></div></div>";
+        }
+
+        function getPhoto(value){
+            if (typeof value.photo_array === 'undefined' || value.photo_array === null){return "";};
+            return controller.itemDict['photo'+value.photo_array[0]]['path_small'];
+        }
+
+        function getAudioLength(value){
+            if (typeof value.audio_array === 'undefined' || value.audio_array === null){return "";};
+            return "<span class ='glyphicon glyphicon-volume-up'></span>"+"x"+String(value.audio_array.length);
+        }
+
     </script>
 
 </map>
