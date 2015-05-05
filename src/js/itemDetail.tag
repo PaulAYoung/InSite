@@ -37,7 +37,7 @@
         <!-- image slideshow -->
         <div show={ item.photo_array != null }> 
             <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
-                <div id="blueimp-gallery-carousel" name="gallery" class="blueimp-gallery blueimp-gallery-carousel">
+                <div id="blueimp-gallery-carousel" name="gallery" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
                     <div class="slides" name="slides"></div>
                         <h3 class="title"></h3>
                         <a class="prev">‹</a>
@@ -141,6 +141,7 @@
                         startSlideshow: false,
                         prevClass: 'prev',
                         nextClass: 'next',
+                        fullScreen: true,
                         onslide: function(index, slide){self.onSlide(index, slide);}
                     }
                 );
@@ -201,54 +202,6 @@
             console.log(item);
             controller.trigger("playAudio", item)
         }
-
-        // map thumbnail scripts
-        this.display=false;
-        var L = require('leaflet');
-        L.Icon.Default.imagePath = 'leaflet_images/'
-        var $ = require('jquery');
-        var controller = opts.controller;
-        var self = this;
-        var user_marker = false;
-        var startLatLng = L.latLng(opts.mapOpts.startLoc);
-        var setViewbyLocation = require('./setViewbyLocation');
-
-        self.mapMarkers = [];
-        self.userMarker = null;
-        
-        this.on('mount', function(e){
-            self.map = new L.Map(self.mapThumbnail);
-            var mapboxTiles = L.tileLayer(opts.mapOpts.tileUrl);
-            
-            self.map
-                .addLayer(mapboxTiles)
-                .setView(startLatLng, 16 );
-
-            self.update();
-            self.map.invalidateSize();
-        });  
-
-        controller.on("LocationUpdated", function(pos){
-
-            if (self.userMarker){
-                self.map.removeLayer(self.userMarker);
-            }
-            var crd = pos.coords;  
-            var radius = crd.accuracy / 2;
-            var user_location = L.latLng(crd.latitude,crd.longitude);
-            self.userMarker = L.circle(user_location, radius).addTo(self.map);
-            var distance_to_bulb = startLatLng.distanceTo(user_location);
-           
-            // self.map.setView(setViewbyLocation(1416, user_location, startLatLng), 16);
-          
-          console.log('Your current position is:');
-          console.log('Latitude : ' + crd.latitude);
-          console.log('Longitude: ' + crd.longitude);
-          console.log('More or less ' + crd.accuracy + ' meters.');
-          console.log("distance to bulb: "+ distance_to_bulb+"m");
-        });    
-
-        
     </script>
 </itemdetail>
 
