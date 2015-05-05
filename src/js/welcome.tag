@@ -1,7 +1,7 @@
 <welcome>
     <div id="welcome-header" if={ this.display }>
-        <h1>Welcome to the Albany Bulb</h1>
-        <p>Listen to audio stories and explore</p>
+        <h1>{ opts.appTitle }</h1>
+        <p>{ opts.appDescription }</p>
     </div>
     <div if={ this.display } onclick={ this.hideWelcome } id="exit-welcome"></div>
     <div id="welcome-footer" if={ this.display }>

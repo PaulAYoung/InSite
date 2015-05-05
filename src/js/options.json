@@ -1,5 +1,7 @@
 {
     url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?",
+    appTitle: "Welcome to the Albany Bulb",
+    appDescription: "Listen to audio stories and explore",
     tours: [
         {filter: 'generaltour', name:"Albany Bulb"},
         {filter: 'arttour',  name:"Art"},
