@@ -141,7 +141,7 @@
                         startSlideshow: false,
                         prevClass: 'prev',
                         nextClass: 'next',
-                        fullScreen: true,
+                        fullScreen: false,
                         onslide: function(index, slide){self.onSlide(index, slide);}
                     }
                 );
