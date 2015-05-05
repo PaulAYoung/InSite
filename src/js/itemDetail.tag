@@ -69,6 +69,7 @@
 
                 </div>
         </div>
+        <div >{ photoDescription }</div>
     
         <!-- tags -->
         <div id="tags"> 
@@ -139,10 +140,16 @@
                         carousel: true, 
                         startSlideshow: false,
                         prevClass: 'prev',
-                        nextClass: 'next'
+                        nextClass: 'next',
+                        onslide: function(index, slide){self.onSlide(index, slide);}
                     }
                 );
             }
+        }
+
+        onSlide(index, slide){
+            self.photoDescription = self.getPhotoList()[index].caption;
+            self.update();
         }
 
         controller.on('ActivateView', function(view, item){
