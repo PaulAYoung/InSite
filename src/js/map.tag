@@ -86,20 +86,21 @@
                     }
                     else if(value.description === "" && value.photo_array === null && value.audio_array === null){
                         // markers without content
-                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 6,
-                            fillColor: '#d3d7e3',
-                            fillOpacity: 1,
-                            color: '#d3d7e3',
-                            opacity: 1,
-                            weight: 1})
-                        .bindPopup(value.name+'<br>'+value.description)
-                        .addTo(self.map);
+                        return;
+                        // mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
+                        //     {radius: 6,
+                        //     fillColor: '#d3d7e3',
+                        //     fillOpacity: 1,
+                        //     color: '#d3d7e3',
+                        //     opacity: 1,
+                        //     weight: 1})
+                        // .bindPopup(value.name+'<br>'+value.description)
+                        // .addTo(self.map);
                     }
                     else if (value.tags.indexOf('People') !== -1){
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
                             {radius: 14,
-                            fillColor: '#64d3aa',
+                            fillColor: '#3AABA6',
                             fillOpacity: 1,
                             color: '#eeffcc',
                             opacity: 1,
@@ -110,7 +111,7 @@
                     else if (value.tags.indexOf('Art') !== -1){
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
                             {radius: 14,
-                            fillColor: '#8f4c54',
+                            fillColor: '#9495E8',
                             fillOpacity: 1,
                             color: '#eeffcc',
                             opacity: 1,
@@ -122,7 +123,7 @@
                         // markers with content
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
                             {radius: 14,
-                            fillColor: '#648ed3',
+                            fillColor: '#A5ABAD',
                             fillOpacity: 1,
                             color: '#eeffcc',
                             opacity: 1,
