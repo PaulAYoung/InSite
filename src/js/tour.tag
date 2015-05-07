@@ -11,7 +11,7 @@
             <span>Exit Tour</span>
         </div>
     </div>
-    <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Start { this.tourName() } Tour</button>
+    <!-- <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Start { this.tourName() } Tour</button> -->
 
     <script>
         var SimpleSet = require('./simpleSet.js');
@@ -25,12 +25,12 @@
         var self = this;
 
         // var tours = new SimpleSet(opts.tours.map(function(v){ return v.filter; }));
-        var tours = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.tour; }));
-        var tour_filter = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.filter; }));
-        var tourDict = {};
-        for (var i=0, l=opts.highlightedFilters.length, tour; i<l, tour=opts.highlightedFilters[i]; i++){
-            tourDict[tour.filter] = tour;
-        }
+        // var tours = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.tour; }));
+        // var tour_filter = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.filter; }));
+        // var tourDict = {};
+        // for (var i=0, l=opts.highlightedFilters.length, tour; i<l, tour=opts.highlightedFilters[i]; i++){
+        //     tourDict[tour.filter] = tour;
+        // }
 
         self.tourIndex = 0;
 
@@ -48,26 +48,26 @@
             self.update();
         });
 
-        controller.on('ItemsUpdated', function(){
-            self.display = false;
-            if (tour_filter.contains(controller.filter) && controller.filter!== ""){
-                self.tourButtonDisplay=true;
-            }
-            else{
-                self.tourButtonDisplay=false;
-            }
-            self.update();
-        })
+        // controller.on('ItemsUpdated', function(){
+        //     self.display = false;
+        //     if (tour_filter.contains(controller.filter) && controller.filter!== ""){
+        //         self.tourButtonDisplay=true;
+        //     }
+        //     else{
+        //         self.tourButtonDisplay=false;
+        //     }
+        //     self.update();
+        // })
 
-        startTour(){
-            if (controller.filter in tourDict){
-                previousFilter = controller.filter;
-                controller.trigger("UpdateFilter", tourDict[controller.filter].tour);
-            }
-            controller.trigger('StartTour',0);
-            self.tourButtonDisplay=false;
-            self.update()
-        }
+        // startTour(){
+        //     if (controller.filter in tourDict){
+        //         previousFilter = controller.filter;
+        //         controller.trigger("UpdateFilter", tourDict[controller.filter].tour);
+        //     }
+        //     controller.trigger('StartTour',0);
+        //     self.tourButtonDisplay=false;
+        //     self.update()
+        // }
 
         selectItem(index){
             controller.trigger("SetMapView", L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);
@@ -88,9 +88,9 @@
             }
         }
 
-        tourName(){
-            return tourDict[controller.filter].name;
-        }
+        // tourName(){
+        //     return tourDict[controller.filter].name;
+        // }
 
         displayTourStopNumber(){
             if (controller.markers !== null) {return 'Tour Stop '+String(self.tourIndex+1);}

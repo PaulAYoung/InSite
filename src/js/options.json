@@ -9,8 +9,10 @@
         ],
     mapOpts:{
         startLoc: {
-            lat: 37.8899,
-            lon: -122.324721
+            // lat: 37.8899,
+            // lon: -122.324721
+            lat: 37.890378, 
+            lon: -122.324725
         },
         startZoom: 16,
         tileUrl: 'https://{s}.tiles.mapbox.com/v4/ardnaseel.kfgj3f5l/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYXJkbmFzZWVsIiwiYSI6IkNpTXlHU0UifQ.M20m1nJ01_0olbOTdPJ1oQ'

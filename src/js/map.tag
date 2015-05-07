@@ -1,23 +1,33 @@
 <map>
     <div if={ this.display }>
         <div name="mapArea" class="mapArea"></div>
+        <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary tour-button" onclick={ this.startTour } type="submit">Start { this.tourName() } Tour</button>
     </div>
 
     <script>
         // scripts
         this.display=false;
         var L = require('leaflet');
+        var SimpleSet = require('./simpleSet.js');
         L.Icon.Default.imagePath = 'leaflet_images/'
         var $ = require('jquery');
         var controller = opts.controller;
         var self = this;
         var user_marker = false;
+        var tourButtonDisplay=false;
         var startLatLng = L.latLng(opts.mapOpts.startLoc);
         var setViewbyLocation = require('./setViewbyLocation');
         var shortenText = require('./shortenText');
 
         self.mapMarkers = [];
         self.userMarker = null;
+
+        var tours = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.tour; }));
+        var tour_filter = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.filter; }));
+        var tourDict = {};
+        for (var i=0, l=opts.highlightedFilters.length, tour; i<l, tour=opts.highlightedFilters[i]; i++){
+            tourDict[tour.filter] = tour;
+        }
 
         this.on('mount', function(e){
             self.map = new L.Map(self.mapArea);
@@ -71,6 +81,15 @@
         });
 
         controller.on('ItemsUpdated', function(item){
+            //display tourbutton
+            if (tour_filter.contains(controller.filter) && controller.filter!== ""){
+                self.tourButtonDisplay=true;
+            }
+            else{
+                self.tourButtonDisplay=false;
+            }
+            self.update();
+
             self.clearMarkers();
             var markers = controller.markers;
             console.log(markers);
@@ -87,15 +106,6 @@
                     else if(value.description === "" && value.photo_array === null && value.audio_array === null){
                         // markers without content
                         return;
-                        // mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                        //     {radius: 6,
-                        //     fillColor: '#d3d7e3',
-                        //     fillOpacity: 1,
-                        //     color: '#d3d7e3',
-                        //     opacity: 1,
-                        //     weight: 1})
-                        // .bindPopup(value.name+'<br>'+value.description)
-                        // .addTo(self.map);
                     }
                     else if (value.tags.indexOf('People') !== -1){
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
@@ -169,6 +179,20 @@
         function getAudioLength(value){
             if (typeof value.audio_array === 'undefined' || value.audio_array === null){return "";};
             return "<span class ='glyphicon glyphicon-volume-up'></span>"+"x"+String(value.audio_array.length);
+        }
+
+        startTour(){
+            if (controller.filter in tourDict){
+                previousFilter = controller.filter;
+                controller.trigger("UpdateFilter", tourDict[controller.filter].tour);
+            }
+            controller.trigger('StartTour',0);
+            self.tourButtonDisplay=false;
+            self.update()
+        }
+
+        tourName(){
+            return tourDict[controller.filter].name;
         }
 
     </script>
