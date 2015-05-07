@@ -22,10 +22,14 @@
                 <ul class="list-group">
                     <li  each={this.getAudio()} onclick={parent.playAudio} class="list-group-item audioItem">
                     <!-- <div class="col-md-12"> -->
-                        <span class="glyphicon glyphicon-volume-up"></span>
-                        <strong>{name}</strong> - {attribution}<br>
-                        <p style="margin-left:18px">{description}</p>
-                    <!-- </div> -->
+                        <div style="float:left;clear:both;">
+                            <span class="glyphicon glyphicon-volume-up"></span>
+                        </div>
+                        <div style="margin-left:20px;">
+                            <strong class="audio-name">{name} - </strong>  
+                            <span class="attribution" style="font-size:16px;">{attribution}</span>
+                            <p>{description}</p>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -146,11 +150,9 @@
             self.display = (view==self._viewID);
             self.loadItem(item);
             self.setPanelColor();
-            console.log('activate view');
         });
 
         controller.on('ItemSelected', function(item){
-            console.log('itemselected');
             self.loadItem(item);
             self.setPanelColor();
         });
@@ -180,16 +182,22 @@
         }
 
         setPanelColor(){
-           console.log(self.item.tags);
-           if (self.item.tags !== null && typeof self.item.tags !== 'undefined'){
+           if (self.item !== null && self.item.tags !== null && typeof self.item.tags !== 'undefined'){
                 if (self.item.tags.indexOf('People') !== -1){
-                    $('#title').css('background-color', '#3AABA6');
+                    $('#title').css('background-color', 'rgba(58, 171, 166, 0.7)');
+                    $('.audio-name').css('color', 'rgb(58, 171, 166)');
+                    $('.glyphicon-volume-up').css('color','rgb(58, 171, 166)');
+                    $('.attribution').css('color', 'rgb(151, 202, 199)')
                 } 
                 else if (self.item.tags.indexOf('Art') !== -1){
                     $('#title').css('background-color', '#9495E8');
+                    $('.audio-name').css('color', 'rgb(88, 90, 179)');
+                    $('.glyphicon-volume-up').css('color','rgb(88, 90, 179)');
+                    $('.attribution').css('color', '#9495E8')
                 } 
                 else{
                     $('#title').css('background-color', '#A5ABAD');
+                    $('.attribution').css('color', 'gray');
                 } 
            }
         }
