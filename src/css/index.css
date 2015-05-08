@@ -5,6 +5,7 @@ body html{
 
 body{
 	padding-top: 40px;
+  font-family: 'Muli', sans-serif;
   /*padding-left: 10px;
   text-align: left;
   background-color: ;*/
@@ -18,6 +19,7 @@ body{
 }
 .leaflet-popup-content{
   margin: 10px;
+  font-family: 'Muli', sans-serif;
 }
 .leaflet-popup-content{
   font-size:14px;
