@@ -1,13 +1,12 @@
 <welcome>
     <div id="welcome-header" if={ this.display }>
-        <h1>{ opts.appTitle }</h1>
-        <p>{ opts.appDescription }</p>
+        <h1 style="margin-bottom:5px;">{ opts.appTitle }</h1>
+        <p style="font-size:16px;">{ opts.appDescription }</p>
     </div>
     <div if={ this.display } onclick={ this.hideWelcome } id="exit-welcome"></div>
     <div id="welcome-footer" if={ this.display }>
         <div id="welcome-footer-content">
-            <button id="welcome-tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Take a Tour</button>  or  
-            <button class="btn btn-primary" onclick={ this.fullMap } type="submit">Explore Full Map</button>
+            <button class="btn btn-primary tour-button" onclick={ this.startTour } type="submit">Take a Tour</button><span style='margin:5px;'>or</span><button class="btn btn-primary tour-button" onclick={ this.fullMap } type="submit">Explore Full Map</button>
         </div>
     </div>
 

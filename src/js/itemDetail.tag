@@ -20,15 +20,17 @@
                 
             <!-- insert relevant stories -->
                 <ul class="list-group">
-                    <div each={this.getAudio()} onclick={parent.playAudio}>
-                        <li class="list-group-item audioItem">
-                        <!-- <div class="col-md-12"> -->
+                    <li  each={this.getAudio()} onclick={parent.playAudio} class="list-group-item audioItem">
+                    <!-- <div class="col-md-12"> -->
+                        <div style="float:left;clear:both;">
                             <span class="glyphicon glyphicon-volume-up"></span>
-                            <strong>{name}</strong> - {attribution}<br>
-                            <p style="margin-left:18px">{description}</p>
-                        <!-- </div> -->
-                        </li>
-                    </div>
+                        </div>
+                        <div style="margin-left:20px;">
+                            <strong class="audio-name">{name} - </strong>  
+                            <span class="attribution" style="font-size:16px;">{attribution}</span>
+                            <p>{description}</p>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -69,16 +71,12 @@
 
                 </div>
         </div>
-        <div >{ photoDescription }</div>
+        <div id="photo-description">{ photoDescription }</div>
     
         <!-- tags -->
         <div id="tags"> 
-            <h4>Tags</h4>
-            <div class="row">
-                <div class="col-md-4">
-                    <span each={ getTags() } class=item-tag onclick={ parent.setFilter }> { tag } </span>
-                </div>
-            </div>
+            <strong>Tags: </strong>
+            <span style="color:#337ab7;" each={ getTags() } class=item-tag onclick={ parent.setFilter }>{ tag } </span>
         </div>
     </div>
 
@@ -90,7 +88,6 @@
         this._viewID = "itemDetail";
         var controller = opts.controller;
         var tourMatcher = new RegExp("^(" + opts.tours.map(function(v){ return v.filter }).join("|") + ")\\d+$");
-        console.log(tourMatcher);
         var self = this;
         var riot = require('riot');
         var $ = require('jquery');
@@ -100,9 +97,7 @@
                 return [];
             }
             else{
-                var z = self.item.audio_array.map(function(id){ return controller.itemDict['audio'+id];})
-                console.log(z);
-                return z
+                return self.item.audio_array.map(function(id){ return controller.itemDict['audio'+id];})
             }
         }
 
@@ -112,8 +107,6 @@
                     tag = tag.trim();
                     var match = tag.match(tourMatcher);
                     if (match !== null){
-                        console.log("match found");
-                        console.log(match[1]);
                         tag =  match[1];
                     }
                     return {tag: tag};
@@ -155,10 +148,12 @@
         controller.on('ActivateView', function(view, item){
             self.display = (view==self._viewID);
             self.loadItem(item);
+            self.setPanelColor();
         });
 
         controller.on('ItemSelected', function(item){
             self.loadItem(item);
+            self.setPanelColor();
         });
 
 
@@ -181,9 +176,29 @@
             }else{
                 self.item = {name: "Not found", description: "not found"};
             }
-
             self.update();
             self.refreshGallery();
+        }
+
+        setPanelColor(){
+           if (self.item !== null && self.item.tags !== null && typeof self.item.tags !== 'undefined'){
+                if (self.item.tags.indexOf('People') !== -1){
+                    $('#title').css('background-color', 'rgba(58, 171, 166, 0.7)');
+                    $('.audio-name').css('color', 'rgb(58, 171, 166)');
+                    $('.glyphicon-volume-up').css('color','rgb(58, 171, 166)');
+                    $('.attribution').css('color', 'rgb(151, 202, 199)')
+                } 
+                else if (self.item.tags.indexOf('Art') !== -1){
+                    $('#title').css('background-color', '#9495E8');
+                    $('.audio-name').css('color', 'rgb(88, 90, 179)');
+                    $('.glyphicon-volume-up').css('color','rgb(88, 90, 179)');
+                    $('.attribution').css('color', '#9495E8')
+                } 
+                else{
+                    $('#title').css('background-color', '#A5ABAD');
+                    $('.attribution').css('color', 'gray');
+                } 
+           }
         }
 
         getPhotoList(){
@@ -198,7 +213,6 @@
 
         playAudio(e) {
             var item = e.item
-            console.log(item);
             controller.trigger("playAudio", item)
         }
     </script>

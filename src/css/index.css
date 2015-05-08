@@ -11,18 +11,37 @@ body{
 }
 #itemDetail{
   position:relative;
+  padding-bottom: 80px;
 }
 .leaflet-control-container{
   display:none;
 }
+.leaflet-popup-content{
+  margin: 10px;
+}
+.leaflet-popup-content{
+  font-size:14px;
+}
 #welcome-header{
   position: fixed;
   width: 100%;
-  height: 130px;
-  background-color:  #2dbd5e;  /*rgb(33, 207, 88); */
+  height: 140px;
+  background-color:  #01BB91;  
   padding:20px;
   color:white;
   z-index:1002;
+}
+.tour-button{
+  color:white;
+  background-color: #12886D;
+  border-color:#12886D;
+  font-weight: 450;
+}
+#map-tour-button{
+  position: fixed;
+  bottom: 0px;
+  z-index: 1001;
+  margin: 20px;
 }
 #exit-welcome{
   position: fixed;
@@ -37,7 +56,7 @@ body{
   height: 80px;
   bottom: 0px;
   z-index:1002;
-  background-color: #2dbd5e;
+  background-color: #01BB91;
   color: white;
   padding: 20px
 }
@@ -54,6 +73,10 @@ body{
   padding: 10px;
   padding-top: 10px;
 }
+#title{
+  background-color:#A5ABAD;
+  color: white;
+}
 
 .locateIcon{
   width: 25px;
@@ -65,21 +88,18 @@ body{
   position: relative;
   top: -2px;
 }
-#map-tour-button{
-  position: fixed;
-  bottom: 0px;
-  z-index: 1001;
-  margin: 20px;
-}
 
 .tourstop-info{
   position:fixed;
   width: 100%;
   height: 100px;
-  background-color: rgb(33, 207, 88);
+  background-color: #01BB91;
   padding:20px;
   color:white;
   z-index:1001;
+}
+.audio-name{
+  font-size: 16px;
 }
 
 /*Bootstrap edits*/
@@ -99,9 +119,14 @@ h4{
 
 .panel {
   padding-top: 10px;
-  margin-top: 10px;
+  border:none;
 }
-
+.panel-body{
+  padding:0px;
+}
+.list-group-item{
+  padding:10px;
+}
 .navbor-form{
   margin-top:0px;
 }
@@ -115,6 +140,9 @@ h4{
 .navbar-brand{
   height:auto;
   padding: 0px;
+}
+.nav>li>a{
+  padding: 10px 8px;
 }
 .form-group{
   margin-bottom: 0px;
@@ -197,7 +225,7 @@ h4{
     margin-left:0px;
   }
   .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
-    padding-right:0px;
+    padding-right:5px;
     padding-left:0px;
     display: inline-block;
     position: relative;
@@ -242,14 +270,30 @@ h4{
 .audiojs .play-pause{
   width: 15%;
   border-right: none;
+  padding: 10px;
 }
 .audiojs .scrubber{
-  width:60%;
+  width:75%;
+  height: 10px;
+  position: fixed;
+  bottom: 20px;
+  margin-left: 15%;
+}
+.audiojs .progress{
+  background-image: none;
+  background: #01BB91;
+}
+.audiojs .loaded{
+  background: #675F5F;
+  background-image: none;
 }
 .audiojs .time{
-  width:20%;
+  width:100%;
   border-left: none;
   padding: 0px;
+  position: fixed;
+  bottom: 0px;
+  margin-left: 15%
 }
 .list-details{
   position:fixed;
@@ -258,10 +302,29 @@ h4{
   left: 15%;
   margin: 10px;
 }
+.audio-details{
+  position: fixed;
+  color: white;
+  bottom: 50px;
+  margin-left: 15%;
+  padding: 0px;
+  font-size: 16px;
+}
+#audioplayer-circle{
+  position: fixed;
+  left: -15px;
+  bottom: 0px;
+}
 
 /*blueimp gallery edits*/
 .blueimp-gallery-carousel{
   box-shadow: none;
+  margin-bottom: 0px;
+}
+#photo-description{
+  text-align:center;
+  background-color: rgba(0,0,0,.76);
+  color:white;
 }
 
 .item-tag{
