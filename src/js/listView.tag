@@ -12,7 +12,7 @@
         var controller = opts.controller;
         var riot = require('riot');
         var self = this;
-        // var shortenText = require('./shortenText');
+        self.shortenText = require('./shortenText');
         var convertToUSDistance = require('./convertToUSDistance');
 
         controller.on('ActivateView', function(title){
@@ -44,22 +44,6 @@
         getPhoto(photo_array){
             if (typeof photo_array === 'undefined' || photo_array === null){return false};
             return controller.itemDict['photo'+photo_array[0]]['path_small'];
-        }
-
-      shortenText(text, characterCount){
-            if (text.length <= characterCount){
-                return text;
-            }
-            else{
-                var text_array = text.split(" ");
-                var shortened_text='';
-                for (var i=0; i<text_array.length; i++){
-                    if (shortened_text.length < characterCount && (shortened_text+text_array[i]).length <= characterCount){
-                        shortened_text=shortened_text+text_array[i]+" ";
-                    }
-                }
-                return shortened_text+"...";
-            }
         }
 
     </script>
