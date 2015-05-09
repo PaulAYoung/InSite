@@ -60,15 +60,14 @@ body{
   z-index:1002;
   background-color: #01BB91;
   color: white;
-  padding: 20px
+  padding: 20px;
+  text-align: center;
 }
 #welcome-footer-content{
-  margin: 0;
-  position: absolute;
   top: 50%;
   left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #title, #description, #tags{

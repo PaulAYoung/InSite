@@ -1,7 +1,7 @@
 <map>
     <div if={ this.display }>
         <div name="mapArea" class="mapArea"></div>
-        <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary tour-button" onclick={ this.startTour } type="submit">Start { this.tourName() } Tour</button>
+        <!-- <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary tour-button" onclick={ this.startTour } type="submit">Start { this.tourName() } Tour</button> -->
     </div>
 
     <script>
@@ -14,7 +14,7 @@
         var controller = opts.controller;
         var self = this;
         var user_marker = false;
-        var tourButtonDisplay=false;
+        // var tourButtonDisplay=false;
         var startLatLng = L.latLng(opts.mapOpts.startLoc);
         var setViewbyLocation = require('./setViewbyLocation');
         var shortenText = require('./shortenText');
@@ -80,15 +80,21 @@
             self.map.setView.apply(self.map, arguments);
         });
 
+        // controller.on("OnTour", function(bool){
+        //     if (bool === true){
+        //         self.tourButtonDisplay=false;
+        //     }
+        // });
+
         controller.on('ItemsUpdated', function(item){
             //display tourbutton
-            if (tour_filter.contains(controller.filter) && controller.filter!== ""){
-                self.tourButtonDisplay=true;
-            }
-            else{
-                self.tourButtonDisplay=false;
-            }
-            self.update();
+            // if (tour_filter.contains(controller.filter) && controller.filter!== ""){
+            //     self.tourButtonDisplay=true;
+            // }
+            // else{
+            //     self.tourButtonDisplay=false;
+            // }
+            // self.update();
 
             self.clearMarkers();
             var markers = controller.markers;
@@ -181,19 +187,19 @@
             return "<span class ='glyphicon glyphicon-volume-up'></span>"+"x"+String(value.audio_array.length);
         }
 
-        startTour(){
-            if (controller.filter in tourDict){
-                previousFilter = controller.filter;
-                controller.trigger("UpdateFilter", tourDict[controller.filter].tour);
-            }
-            controller.trigger('StartTour',0);
-            self.tourButtonDisplay=false;
-            self.update()
-        }
+        // startTour(){
+        //     if (controller.filter in tourDict){
+        //         previousFilter = controller.filter;
+        //         controller.trigger("UpdateFilter", tourDict[controller.filter].tour);
+        //     }
+        //     controller.trigger('StartTour',0);
+        //     self.tourButtonDisplay=false;
+        //     self.update()
+        // }
 
-        tourName(){
-            return tourDict[controller.filter].name;
-        }
+        // tourName(){
+        //     return tourDict[controller.filter].name;
+        // }
 
     </script>
 

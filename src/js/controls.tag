@@ -3,7 +3,7 @@
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle navbar-toggle-brand" data-toggle="collapse" data-target=".navbar-collapse1">
-            <a class="navbar-brand"><img src="fonts/InSite_logo1.png"></a>
+            <a class="navbar-brand"><img width="60" src="fonts/InSite_logo_web.png"></a>
             </button>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span style="color:white; margin-right:.5em;">{ this.filter }</span>
