@@ -1,7 +1,7 @@
 {
-    url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?",
-    appTitle: "Welcome to the Albany Bulb",
-    appDescription: "Listen to audio stories and explore",
+    url: "http://insite.localground.org/api/0/projects/12/?format=jsonp&callback=?",
+    appTitle: "Explore the I School",
+    appDescription: "Learn about student experiences",
     tours: [
         {filter: 'generaltour', name:"Albany Bulb"},
         {filter: 'arttour',  name:"Art"},
@@ -9,10 +9,8 @@
         ],
     mapOpts:{
         startLoc: {
-            // lat: 37.8899,
-            // lon: -122.324721
-            lat: 37.890378, 
-            lon: -122.324725
+            lat: 37.871293, 
+            lon: -122.258508
         },
         startZoom: 16,
         tileUrl: 'https://{s}.tiles.mapbox.com/v4/ardnaseel.kfgj3f5l/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYXJkbmFzZWVsIiwiYSI6IkNpTXlHU0UifQ.M20m1nJ01_0olbOTdPJ1oQ'
@@ -40,6 +38,6 @@
             // iconClass: "glyphicon glyphicon-home"
         }
     ],
-    startFilter: "generaltour",
-    aboutMarkerID: "marker467"
+    startFilter: "",
+    aboutMarkerID: ""
 };
