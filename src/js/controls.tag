@@ -75,7 +75,7 @@
             $(this.itemSearch2).collapse("hide");
 
             if (filter !== ""){
-                this.filter = "Filter: " + filter;
+                this.filter = ("Filter: " + filter).substring(0,16);
             }else{
                 this.filter = "";
             }
