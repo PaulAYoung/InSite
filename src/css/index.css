@@ -37,13 +37,16 @@ body{
   color:white;
   background-color: #12886D;
   border-color:#12886D;
-  font-weight: 450;
+  /*font-weight: 450;*/
 }
 #map-tour-button{
   position: fixed;
   bottom: 0px;
   z-index: 1001;
   margin: 20px;
+  background-color: #12886D;
+  border-color:#12886D;
+  font-weight: 450;
 }
 #exit-welcome{
   position: fixed;
