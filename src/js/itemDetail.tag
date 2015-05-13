@@ -141,7 +141,9 @@
         }
 
         onSlide(index, slide){
-            self.photoDescription = self.getPhotoList()[index].caption;
+            var photo = self.getPhotoList()[index];
+            self.photoDescription = photo.caption;
+            self.photoName = photo.name;
             self.update();
         }
 
@@ -206,7 +208,8 @@
             return self.item.photo_array.map(function(id){
                 return {
                     href:controller.itemDict["photo"+id].path_medium,
-                    caption: controller.itemDict["photo"+id].name
+                    name: controller.itemDict["photo"+id].name,
+                    caption: controller.itemDict["photo"+id].description
                 }
             });
         }
