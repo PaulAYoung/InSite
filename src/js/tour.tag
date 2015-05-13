@@ -1,7 +1,7 @@
 <tour>
     <div if={ this.display } class="tourstop-info">
         <h4 onclick={ this.itemDetailURL }>{ this.displayTourStopNumber()}: { this.displayTourStopName() }</h4>
-        <p style="float:right;" class="distance">{ this.distanceTo() }</p>
+        <p style="margin:0px;float:right;" class="distance">{ this.distanceTo() }</p>
         <div style="position:relative;float:left;clear:both;" onclick={ this.updateTour }>
             <span>Next Tour Stop</span>
             <span class="glyphicon glyphicon-chevron-right" ></span>
