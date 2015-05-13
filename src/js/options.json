@@ -1,7 +1,7 @@
 {
     url: "http://insite.localground.org/api/0/projects/12/?format=jsonp&callback=?",
-    appTitle: "Explore the I School",
-    appDescription: "Learn about student experiences",
+    appTitle: "Welcome to the I School",
+    appDescription: "As told by the students themselves",
     tours: [
         {filter: 'generaltour', name:"Albany Bulb"},
         {filter: 'arttour',  name:"Art"},
@@ -22,22 +22,10 @@
         },
         {
             name: "Highlights",
-            filter: "generaltour",
-            tour: "generaltour"
-        },
-        {
-            name: "Art",
-            filter: "Art",
-            tour: "arttour"
-            // iconClass: "glyphicon glyphicon-asterisk"
-        },
-        {
-            name: "Former Residents",
-            filter: "People",
-            tour: "peopletour"
-            // iconClass: "glyphicon glyphicon-home"
+            filter: "",
+            tour: "tour"
         }
     ],
-    startFilter: "",
+    startFilter: "tour",
     aboutMarkerID: ""
 };

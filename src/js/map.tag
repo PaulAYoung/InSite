@@ -139,7 +139,7 @@
                         // markers with content
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
                             {radius: 14,
-                            fillColor: '#A5ABAD',
+                            fillColor: '#E8B209',
                             fillOpacity: 1,
                             color: '#eeffcc',
                             opacity: 1,
