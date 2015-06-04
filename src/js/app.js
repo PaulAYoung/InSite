@@ -42,4 +42,5 @@ InSite.prototype.setup = function(){
     controller.trigger('StartApp');
 }
 
+// make InSite global
 window.InSite = InSite;
