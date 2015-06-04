@@ -21,23 +21,25 @@ window.$ = jQuery;
 var bootstrap = require('bootstrap');
 var blueimpgallery = require('./blueimp-gallery');
 
-var opts = require('./options.json');
-
-var controller = new Controller();
-controller.filter = opts.startFilter
-
-opts.controller = controller;
+function InSite(opts){
+    this.opts = opts;
+}
 
 
-var connector = new Connector(opts);
-var geoQuerier = new GeoQuerier(opts);
+InSite.prototype.setup = function(){
+    var controller = new Controller();
+    controller.filter = opts.startFilter
 
-function setup(){
+    opts.controller = controller;
+
+
+    var connector = new Connector(opts);
+    var geoQuerier = new GeoQuerier(opts);
+
     riot.mount('*', opts);
     
     // set initial view
     controller.trigger('StartApp');
 }
 
-document.addEventListener('deviceready', setup, false);
-document.addEventListener('DOMContentLoaded', setup, false);
+window.InSite = InSite;

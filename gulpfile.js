@@ -26,13 +26,19 @@ gulp.task('buildresources', function(){
     .pipe(gulp.dest('www'));
 });
 
-gulp.task('build', ['buildjs', 'buildhtml', 'buildcss', 'buildresources']); 
+gulp.task('buildconfig', function(){
+    return gulp.src('./src/config/*')
+    .pipe(gulp.dest('www/config'));
+});
+
+gulp.task('build', ['buildjs', 'buildhtml', 'buildcss', 'buildresources', 'buildconfig']); 
 
 gulp.task('watch', function(){
     gulp.watch('src/js/*.js', ['buildjs']);
     gulp.watch('src/js/*.tag', ['buildjs']);
     gulp.watch('src/*.html', ['buildhtml']);
     gulp.watch('src/css/*.css', ['buildcss']);
+    gulp.watch('src/config/*', ['buildconfig']);
 });
 
 gulp.task('default', ['build', 'watch']);
