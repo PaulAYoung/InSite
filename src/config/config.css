@@ -1,0 +1,21 @@
+/* Edit this file to stylize your deployment of InSite */
+
+/* COLORS  */
+
+#welcome-header, #welcome-footer, .tourstop-info, .audiojs .progress
+{
+  background-color:  #01BB91; /* Primary interface color */
+  color: white; /* interface text color */
+}
+
+.tour-button, #map-tour-button
+{
+  background-color: #12886D; /* Secondary interface color */
+  border-color:#12886D; /* Secondary interface color */
+}
+
+#welcome-header, #welcome-footer, .tourstop-info, .audiojs .progress,
+.tour-button, #map-tour-button
+{
+  color:white; /* interface text color */
+}

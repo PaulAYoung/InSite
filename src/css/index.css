@@ -28,15 +28,10 @@ body{
   position: fixed;
   width: 100%;
   height: 140px;
-  background-color:  #01BB91;  
   padding:20px;
-  color:white;
   z-index:1002;
 }
 .tour-button{
-  color:white;
-  background-color: #12886D;
-  border-color:#12886D;
   /*font-weight: 450;*/
 }
 #map-tour-button{
@@ -44,8 +39,6 @@ body{
   bottom: 0px;
   z-index: 1001;
   margin: 20px;
-  background-color: #12886D;
-  border-color:#12886D;
   font-weight: 450;
 }
 #exit-welcome{
@@ -61,8 +54,6 @@ body{
   height: 80px;
   bottom: 0px;
   z-index:1002;
-  background-color: #01BB91;
-  color: white;
   padding: 20px;
   text-align: center;
 }
@@ -97,9 +88,7 @@ body{
   position:fixed;
   width: 100%;
   height: 100px;
-  background-color: #01BB91;
   padding:20px;
-  color:white;
   z-index:1001;
 }
 .audio-name{
@@ -285,7 +274,6 @@ h4{
 }
 .audiojs .progress{
   background-image: none;
-  background: #01BB91;
 }
 .audiojs .loaded{
   background: #675F5F;
