@@ -2,13 +2,30 @@ var gulp = require('gulp');
 var riotify = require('riotify');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var gutil = require('gulp-util');
+
+
+function handleErrors(e){
+    // function to handle build errors graceflly
+    gutil.log(
+        gutil.colors.red('***************************************\n'),
+        gutil.colors.red('UNCAUGHT EXCEPTION:\n'),
+        gutil.colors.red('***************************************\n'),
+        e.toString()
+    );
+    this.emit('end');
+
+}
 
 gulp.task('buildjs', function(){
-    return browserify({ entries: ['./src/js/app.js'] })
+    var bundle = browserify({ entries: ['./src/js/app.js'] })
     .transform(riotify)
     .bundle()
+    .on('error', handleErrors)
     .pipe(source('app.js'))
     .pipe(gulp.dest('www/js'));
+
+    return bundle;
 });
 
 gulp.task('buildhtml', function(){
