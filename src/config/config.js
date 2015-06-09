@@ -1,11 +1,16 @@
 // InSite options
 // Here you can configure your instance of InSite
 var opts = {
-    url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?", // this should point to the local ground project api you are using. 
+    url: "http://localhost:7777/api/0/projects/3/?format=jsonp&callback=?", // this should point to the local ground project api you are using. 
     appTitle: "Welcome to the Albany Bulb", // This will be displayed on the splash page of the site.
     appDescription: "Listen to audio stories and explore", // This will be placed under the title
 
+    // tags that should have special styling applied to them
+
     // tags that have been used to identify tours. 
+    // See documentation on creating tours TODO: create documentation for creating tours
+    //      filter: the filter that will be used to identify markers in the touer
+    //      name: the name that should be displayed in the interface
     tours: [
         {filter: 'generaltour', name:"Albany Bulb"},
         {filter: 'arttour',  name:"Art"},
