@@ -1,7 +1,6 @@
 <map>
     <div if={ this.display }>
         <div name="mapArea" class="mapArea"></div>
-        <!-- <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary tour-button" onclick={ this.startTour } type="submit">Start { this.tourName() } Tour</button> -->
     </div>
 
     <script>
@@ -18,6 +17,10 @@
         var startLatLng = L.latLng(opts.mapOpts.startLoc);
         var setViewbyLocation = require('./setViewbyLocation');
         var shortenText = require('./shortenText');
+
+        // get tags that should have styles applied.
+        var Matcher = require('./stringMatcher')
+        var matcher = new Matcher(opts.tagStyles);
 
         self.mapMarkers = [];
         self.userMarker = null;
@@ -113,40 +116,22 @@
                         // markers without content
                         return;
                     }
-                    else if (value.tags.indexOf('People') !== -1){
-                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 14,
-                            fillColor: '#3AABA6',
-                            fillOpacity: 1,
-                            color: '#eeffcc',
-                            opacity: 1,
-                            weight: 1})
-                        .bindPopup(bindPopup(value))
-                        .addTo(self.map);
-                    }
-                    else if (value.tags.indexOf('Art') !== -1){
-                        mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 14,
-                            fillColor: '#9495E8',
-                            fillOpacity: 1,
-                            color: '#eeffcc',
-                            opacity: 1,
-                            weight: 1})
-                        .bindPopup(bindPopup(value))
-                        .addTo(self.map);
-                    }
                     else{
                         // markers with content
+                        var cssClass = "insite-map-marker";
+                        
+                        // check if marker is tagged for a certain style
+                        var tagged = matcher.firstMatch(value.tags);
+                        if (tagged){
+                            cssClass += " " + tagged
+                        }
+                        
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
-                            {radius: 14,
-                            fillColor: '#A5ABAD',
-                            fillOpacity: 1,
-                            color: '#eeffcc',
-                            opacity: 1,
-                            weight: 1})
+                            {className: cssClass})
                         .bindPopup(bindPopup(value))
                         .addTo(self.map);
                     }
+
                     
                     self.mapMarkers.push(mark); 
 

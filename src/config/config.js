@@ -6,6 +6,13 @@ var opts = {
     appDescription: "Listen to audio stories and explore", // This will be placed under the title
 
     // tags that should have special styling applied to them
+    // Markers and items that contain the tags listed here will have css classes applied to them.
+    // See config.css for examples.
+    // Only the first matching tag will have a class applied. 
+    //  eg if a marker is tagged both "art, people". Only the art classes will be used. 
+    tagStyles: [
+        'stuff'
+    ],
 
     // tags that have been used to identify tours. 
     // See documentation on creating tours TODO: create documentation for creating tours
