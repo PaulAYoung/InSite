@@ -95,6 +95,25 @@ body{
   font-size: 16px;
 }
 
+
+/* controls.tag */
+
+.controls a{
+    color: white;
+}
+
+.search-button{
+    float: right;
+}
+
+.insite-menu, .suggested-filters, .nav-buttons{
+    float: left;
+}
+
+.navbar button{
+    background-color: transparent;
+}
+
 /*Bootstrap edits*/
 .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
   padding-right:10px;
@@ -120,7 +139,10 @@ h4{
 .list-group-item{
   padding:10px;
 }
-.navbor-form{
+.navbar-header{
+    width: 100%;
+}
+.navbar-form{
   margin-top:0px;
 }
 .navbar-toggle{
@@ -141,8 +163,7 @@ h4{
   margin-bottom: 0px;
 }
 .form-control{
-  width: 80%;
-  float: left;
+  width: 20em;
 }
 .glypichon-search{
   float: right;

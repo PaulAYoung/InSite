@@ -1,51 +1,43 @@
 <controls>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle navbar-toggle-brand" data-toggle="collapse" data-target=".navbar-collapse1">
-            <a class="navbar-brand"><img width="60" src="fonts/InSite_logo_web.png"></a>
-            </button>
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span style="color:white; margin-right:.5em;">{ this.filter }</span>
-            <span style="color: white;" class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            <span class="sr-only">Search:</span>
-          </button>
-          
-            <ul class="nav nav-pills">
-                <li role="presentation"  ><a href='#Map'><img class="mapIcon" src="fonts/noun_24173_cc.svg"></img></a></li>
-                <li role="presentation"  ><a href='#List'><span style="color:white;" class="glyphicon glyphicon-list"></span></a></li>
-                <li role="presentation" onclick={ this.locateMe }><a href=""><img class="locateIcon" src="fonts/noun_40972_cc.svg"></img></a></li>
-            </ul>
-        </div>
-        <div class="navbar-collapse1 collapse" name="itemSearch2">
-            <ul class="nav navbar-nav">
-                <li><a href="index.html">Home</a><li>
-                <li><a href="#itemDetail/{opts.aboutMarkerID}">About</a></li>
-            </ul>
-        </div>
-        <div class="navbar-collapse collapse" name="itemSearch">
-            <form class="navbar-form navbar-left" role="search" onsubmit={ this.search }>
-                <ul class="nav navbar-nav">
+    <div class="navbar navbar-inverse navbar-fixed-top container-fluid controls-container" role="navigation">
+        <div class="row">
+            <div class="btn-group insite-menu">
+              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                  <a class="navbar-brand"><img width="60" src="fonts/InSite_logo_web.png"></a>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                  <li><a href="index.html">Home</a><li>
+                  <li><a href="#itemDetail/{opts.aboutMarkerID}">About</a></li>
+              </ul>
+            </div>
 
-                    <!-- <li onclick={ this.reset }><a href="">Full Map</a></li>
-                    <li onclick={ this.startTour }><a href="">Tour Highlights</a></li>
-                    <li onclick={ this.searchHistory }><a href="">History</a></li>
-                    <li onclick={ this.searchArt }><a href="">Art</a></li>
-                    <li onclick={ this.searchPeople }><a href="">People</a></li> -->
-                    <li each={ opts.highlightedFilters } onclick={ parent.applyFilter } >
-                        <a href="">
-                            <span if={ iconClass } class={ iconClass }></span>
-                            { name }
-                        </a>
-                    </li>
-                  </ul>
-                <div class="form-group">
-                    <input type="text" name="searchbox" class="form-control" placeholder="Search">
+                <div class="nav-buttons">
+                    <a href='#Map'><img class="mapIcon" src="fonts/noun_24173_cc.svg"></img></a>
+                    <a href='#List'><span style="color:white;" class="glyphicon glyphicon-list"></span></a>
+                    <a href="#"><img class="locateIcon" src="fonts/noun_40972_cc.svg"></img></a>
+                    <a href="#">Tours</a>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+            
+            <button type="button" class="btn btn-default search-button" data-toggle="collapse" data-target=".suggested-filters">
+                <span>Search</span>
+            </button>
         </div>
-      </div>
+
+        <div class="suggested-filters row collapse" name="itemSearch">
+            <ul class="">
+                <li class="list-unstyled" each={ opts.highlightedFilters } onclick={ parent.applyFilter } >
+                    <a href="">
+                        { name }
+                    </a>
+                </li>
+            </ul>
+            <div class="form-group">
+                <form onsubmit={ search }>
+                    <input type="text" name="searchbox" class="form-control" placeholder="Search">
+                    <button type=submit class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 
 
