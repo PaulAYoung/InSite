@@ -15,20 +15,18 @@
 {
     fill-opacity: 1;
     fill: #A5ABAD;
-    stroke: #A5ABAD;
+    stroke: #eeffcc;
 }
 
 /* this style is applied to the stuff tag because the stuff tag is marked in config.js */
 .insite-map-marker.people
 {
     fill: #3AABA6;
-    stroke: #3AABA6;
 }
 
 .insite-map-marker.art
 {
     fill: #9495E8;
-    stroke: #9495E8;
 }
 
 .tour-button, #map-tour-button

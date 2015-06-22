@@ -15,11 +15,11 @@
                     <a href='#Map'><img class="mapIcon" src="fonts/noun_24173_cc.svg"></img></a>
                     <a href='#List'><span style="color:white;" class="glyphicon glyphicon-list"></span></a>
                     <a href="#"><img class="locateIcon" src="fonts/noun_40972_cc.svg"></img></a>
-                    <a href="#">Tours</a>
+                    <a href="#">Tours</span></a>
                 </div>
             
             <button type="button" class="btn btn-default search-button" data-toggle="collapse" data-target=".suggested-filters">
-                <span>Search</span>
+                <span class="glyphicon glyphicon-search"></span>
             </button>
         </div>
 
