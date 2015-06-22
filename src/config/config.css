@@ -19,10 +19,16 @@
 }
 
 /* this style is applied to the stuff tag because the stuff tag is marked in config.js */
-.insite-map-marker.stuff
+.insite-map-marker.people
 {
-    fill: #CCC;
-    stroke: #CCC;
+    fill: #3AABA6;
+    stroke: #3AABA6;
+}
+
+.insite-map-marker.art
+{
+    fill: #9495E8;
+    stroke: #9495E8;
 }
 
 .tour-button, #map-tour-button

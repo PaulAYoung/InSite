@@ -1,7 +1,7 @@
 // InSite options
 // Here you can configure your instance of InSite
 var opts = {
-    url: "http://localhost:7777/api/0/projects/3/?format=jsonp&callback=?", // this should point to the local ground project api you are using. 
+    url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?", // this should point to the local ground project api you are using. 
     appTitle: "Welcome to the Albany Bulb", // This will be displayed on the splash page of the site.
     appDescription: "Listen to audio stories and explore", // This will be placed under the title
 
@@ -11,7 +11,8 @@ var opts = {
     // Only the first matching tag will have a class applied. 
     //  eg if a marker is tagged both "art, people". Only the art classes will be used. 
     tagStyles: [
-        'stuff'
+        'art',
+        'people'
     ],
 
     // tags that have been used to identify tours. 
