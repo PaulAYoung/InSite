@@ -123,7 +123,7 @@
                         // check if marker is tagged for a certain style
                         var tagged = matcher.firstMatch(value.tags);
                         if (tagged){
-                            cssClass += " " + tagged
+                            cssClass += " " + tagged;
                         }
                         
                         mark = L.circleMarker([value.geometry.coordinates[1],value.geometry.coordinates[0]], 
