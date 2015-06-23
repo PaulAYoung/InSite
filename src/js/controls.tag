@@ -1,27 +1,46 @@
 <controls>
     <div class="navbar navbar-inverse navbar-fixed-top container-fluid controls-container" role="navigation">
         <div class="row">
-            <div class="btn-group insite-menu">
-              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+            <div class="btn-group insite-menu-button">
+              <button type="button" class="btn btn-default insite-button" data-toggle="collapse" data-target=".insite-menu">
                   <a class="navbar-brand"><img width="60" src="fonts/InSite_logo_web.png"></a>
               </button>
-              <ul class="dropdown-menu" role="menu">
-                  <li><a href="index.html">Home</a><li>
-                  <li><a href="#itemDetail/{opts.aboutMarkerID}">About</a></li>
-              </ul>
             </div>
+
 
                 <div class="nav-buttons">
                     <a href='#Map'><img class="mapIcon" src="fonts/noun_24173_cc.svg"></img></a>
                     <a href='#List'><span style="color:white;" class="glyphicon glyphicon-list"></span></a>
                     <a href="#"><img class="locateIcon" src="fonts/noun_40972_cc.svg"></img></a>
-                    <a href="#">Tours</span></a>
+                    <button class="btn btn-default insite-button" data-toggle="collapse" data-target=".tour-list">
+                        <span>Tours</span>
+                    </button>
                 </div>
             
-            <button type="button" class="btn btn-default search-button" data-toggle="collapse" data-target=".suggested-filters">
+            <button type="button" class="btn btn-default insite-button float-right" data-toggle="collapse" data-target=".suggested-filters">
                 <span class="glyphicon glyphicon-search"></span>
             </button>
         </div>
+
+        <!-- expanding elements --!>
+
+        <div class="row collapse insite-menu">
+            <ul class="">
+              <li><a href="index.html">Home</a><li>
+              <li><a href="#itemDetail/{opts.aboutMarkerID}">About</a></li>
+          </ul>
+        </div>
+
+        <div class="tour-list row collapse">
+            <ul class="">
+                <li class="list-unstyled" each={ opts.tours }>
+                    <a href="">
+                        { name }
+                    </a>
+                </li>
+            </ul>
+        </div>
+
 
         <div class="suggested-filters row collapse" name="itemSearch">
             <ul class="">
@@ -39,7 +58,6 @@
             </div>
         </div>
     </div>
-
 
     <script>
         var controller = opts.controller;

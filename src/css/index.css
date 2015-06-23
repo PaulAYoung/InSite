@@ -103,11 +103,11 @@ body{
     text-decoration: none;
 }
 
-.search-button{
+.float-right{
     float: right;
 }
 
-.insite-menu, .suggested-filters, .nav-buttons{
+.insite-menu-button, .suggested-filters, .nav-buttons{
     float: left;
 }
 
