@@ -25,15 +25,15 @@
         <!-- expanding elements --!>
 
         <div class="row collapse insite-menu">
-            <ul class="">
-              <li><a href="index.html">Home</a><li>
+            <ul class="list-unstyled">
+              <li><a href="index.html">Home</a></li>
               <li><a href="#itemDetail/{opts.aboutMarkerID}">About</a></li>
           </ul>
         </div>
 
         <div class="tour-list row collapse" name="tourList">
-            <ul class="">
-                <li class="list-unstyled" each={ opts.tours }>
+            <ul class="list-unstyled ">
+                <li each={ opts.tours }>
                 <a onclick={ parent.startTour } href="">
                         { name }
                     </a>
@@ -43,8 +43,8 @@
 
 
         <div class="suggested-filters row collapse" name="itemSearch">
-            <ul class="">
-                <li class="list-unstyled" each={ opts.highlightedFilters } onclick={ parent.applyFilter } >
+            <ul class="list-unstyled">
+                <li each={ opts.highlightedFilters } onclick={ parent.applyFilter } >
                     <a href="">
                         { name }
                     </a>
