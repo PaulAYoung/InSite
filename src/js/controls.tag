@@ -31,10 +31,10 @@
           </ul>
         </div>
 
-        <div class="tour-list row collapse">
+        <div class="tour-list row collapse" name="tourList">
             <ul class="">
                 <li class="list-unstyled" each={ opts.tours }>
-                    <a href="">
+                <a onclick={ parent.startTour } href="">
                         { name }
                     </a>
                 </li>
@@ -89,6 +89,13 @@
             }else{
                 this.filter = "";
             }
+        }
+
+        startTour(e){
+            e.preventDefault();
+            var item = e.item;
+            controller.trigger("StartTour", item.filter);
+            $(this.tourList).collapse("hide");
         }
 
         locateMe(){

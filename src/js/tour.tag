@@ -11,7 +11,6 @@
             <span>Exit Tour</span>
         </div>
     </div>
-    <button if={ this.tourButtonDisplay } id="map-tour-button" class="btn btn-primary" onclick={ this.startTour } type="submit">Start { this.tourName() } Tour</button>
 
     <script>
         var SimpleSet = require('./simpleSet.js');
@@ -36,15 +35,16 @@
 
         this.on("mount", function(){console.log("tour tag loaded");});
 
-        controller.on('StartTour', function(index){
+        controller.on('StartTour', function(filter){
             controller.trigger('OnTour',true);
+            controller.trigger("UpdateFilter", filter);
             controller._tourSort();
             self.display=true;
             self.tourButtonDisplay=false;
-            self.tourIndex=index;
+            self.tourIndex=0;
             self.tourLength=controller.itemList.length;
             console.log(controller.markers.length);
-            self.selectItem(index);
+            self.selectItem(0);
             self.update();
         });
 
