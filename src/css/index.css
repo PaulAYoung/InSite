@@ -95,6 +95,15 @@ body{
   font-size: 16px;
 }
 
+/*********************************
+ * InSite UI element styles
+ * ******************************/
+
+/* listview.tag */
+
+.insite-listview{
+    padding-top: 1em;
+}
 
 /* controls.tag */
 
