@@ -98,7 +98,12 @@ body{
 
 /* controls.tag */
 
-.controls a, .navbar a{
+.insite-menu{
+    background-color: black;
+    color: white;
+}
+
+.controls a, .navbar a, .insite-menu li > a{
     color: white;
     text-decoration: none;
 }
@@ -114,6 +119,16 @@ body{
 .navbar button{
     background-color: transparent;
     color: white;
+}
+
+.nav-buttons a {
+    float: left;
+    padding: .5em .2em;
+}
+
+.float-right .dropdown-menu{
+    right: 0;
+    left: auto;
 }
 
 /*Bootstrap edits*/
