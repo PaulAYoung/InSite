@@ -159,7 +159,18 @@
         }
 
         function bindPopup(value){
-            return "<div class='container-fluid'><div class='row'><div class='col-xs-3'><div class='thumbnail-div'><a href='#itemDetail/marker" + value.id + "'><img class='thumbnail-photo' src='"+getPhoto(value)+"'></a></div></div><div class='col-xs-9'><a href='#itemDetail/marker" + value.id + "'><h4>" + value.name+'</h4></a>'+shortenText(value.description, 80)+"<br>"+getAudioLength(value)+"</div></div></div>";
+            return "<div class='insite-popup'>" + 
+                        "<div class='thumbnail-div'>" + 
+                            "<div style='height:auto'></div>" +
+                            "<a href='#itemDetail/marker" + value.id + "'><img class='thumbnail-photo' src='"+getPhoto(value)+"'></a>" + 
+                            "<div style='height:auto'></div>" +
+                        "</div>" + 
+                        "<div class='description'>" +
+                            "<a href='#itemDetail/marker" + value.id + "'><h4>" + value.name+'</h4></a>'+
+                            shortenText(value.description, 80)+
+                        "</div>" +
+                        "<div class='indicators'>"+getAudioLength(value)+"</div>" +
+                    "</div>";
         }
 
         function getPhoto(value){
