@@ -160,14 +160,10 @@
 
         function bindPopup(value){
             return "<div class='insite-popup'>" + 
-                        "<div class='thumbnail-div'>" + 
-                            "<div style='height:auto'></div>" +
-                            "<a href='#itemDetail/marker" + value.id + "'><img class='thumbnail-photo' src='"+getPhoto(value)+"'></a>" + 
-                            "<div style='height:auto'></div>" +
-                        "</div>" + 
+                        getPhoto(value) +
                         "<div class='description'>" +
                             "<a href='#itemDetail/marker" + value.id + "'><h4>" + value.name+'</h4></a>'+
-                            shortenText(value.description, 80)+
+                            shortenText(value.description, 80) +
                         "</div>" +
                         "<div class='indicators'>"+getAudioLength(value)+"</div>" +
                     "</div>";
@@ -175,8 +171,16 @@
 
         function getPhoto(value){
             if (typeof value.photo_array === 'undefined' || value.photo_array === null){return "";};
-            return controller.itemDict['photo'+value.photo_array[0]]['path_small'];
+            return "<div class='thumbnail-div'>" + 
+                            "<div style='height:auto'></div>" +
+                            "<a href='#itemDetail/marker" + value.id + "'>" + 
+                                "<img class='thumbnail-photo' src='" + controller.itemDict['photo'+value.photo_array[0]]['path_small'] + "'>" + 
+                            "</a>" +
+                            "<div style='height:auto'></div>" +
+                        "</div>";
+            
         }
+
 
         function getAudioLength(value){
             if (typeof value.audio_array === 'undefined' || value.audio_array === null){return "";};
