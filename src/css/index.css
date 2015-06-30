@@ -123,6 +123,24 @@ img.thumbnail-photo{
     max-height: 50px;
 }
 
+.map-legend{
+    position: absolute;
+    bottom: 2em;
+    left:2em;
+    background-color: black;
+    color: white;
+    padding: .5em;
+    border-radius: 1em;
+}
+
+.map-legend-items{
+    display: none;
+}
+
+.map-legend:focus .map-legend-items, .map-legend:hover .map-legend-items{
+    display: block;
+}
+
 .insite-popup{
     padding: .5em;
 }
