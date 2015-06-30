@@ -1,20 +1,22 @@
 <map>
     <div if={ this.display }>
         <div name="mapArea" class="mapArea"></div>
-        <div name="legend" class="map-legend">
-            <div class="map-legend-items">
-                <p each={ tag, i in opts.tagStyles }>
+        <div name="legend" class="map-legend dropup">
+            <button type="button" class="btn btn-default insite-button" data-toggle="dropdown">
+                Legend
+            </button>
+            <ul class="dropdown-menu map-legend-items">
+                <li each={ tag, i in opts.tagStyles }>
                     <svg height="20" width="20">
                         <circle cx="10" cy="10" r="10" class="insite-map-marker {tag}"/>
                     </svg> { tag }</li>
-                </p>
-                <p>
+                </li>
+                <li>
                     <svg height="20" width="20">
                         <circle cx="10" cy="10" r="10" class="insite-map-marker"/>
                     </svg> other</li>
-                </p>
-            </div>
-            <h4>Legend</h4>
+                </li>
+            </ul>
         </div>
     </div>
 

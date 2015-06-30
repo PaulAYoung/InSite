@@ -133,12 +133,16 @@ img.thumbnail-photo{
     border-radius: 1em;
 }
 
-.map-legend-items{
-    display: none;
+.map-legend button{
+    background-color: transparent;
+    color: white;
 }
 
-.map-legend:focus .map-legend-items, .map-legend:hover .map-legend-items{
-    display: block;
+.map-legend-items{
+    background-color: black;
+    color: white;
+    padding: .5em;
+    border-radius: 1em;
 }
 
 .insite-popup{
