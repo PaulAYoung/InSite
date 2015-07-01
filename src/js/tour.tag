@@ -1,6 +1,7 @@
 <tour>
     <div if={ this.display } class="tourstop-info">
-        <h4 onclick={ this.itemDetailURL }>{ this.displayTourStopNumber()}: { this.displayTourStopName() }</h4>
+        <h4 if={ tour } class="tour-title">{ tour.name } Tour</h4>
+        <span onclick={ this.itemDetailURL }>{ this.displayTourStopNumber()}: { this.displayTourStopName() }</span>
         <p style="margin:0px;float:right;" class="distance">{ this.distanceTo() }</p>
         <div style="position:relative;float:left;clear:both;" onclick={ this.updateTour }>
             <span>Next Tour Stop</span>
@@ -17,6 +18,7 @@
         var L = require('leaflet');
         var convertToUSDistance = require('./convertToUSDistance');
         this.display=false;
+        this.tour = null;
         var riot = require('riot');
         var controller = opts.controller;
         this.tourButtonDisplay=false;
@@ -37,8 +39,9 @@
 
         controller.on('StartTour', function(tour){
             var filter = tour.filter;
-            controller.trigger('OnTour',true);
+            self.tour = tour;
             controller.trigger("UpdateFilter", filter);
+            controller.trigger('OnTour',true);
             controller._tourSort();
             self.display=true;
             self.tourButtonDisplay=false;
@@ -94,7 +97,7 @@
         }
 
         displayTourStopNumber(){
-            if (controller.markers !== null) {return 'Tour Stop '+String(self.tourIndex+1);}
+            if (controller.markers !== null) {return 'Stop '+String(self.tourIndex+1);}
             else {return "";}
         }
 

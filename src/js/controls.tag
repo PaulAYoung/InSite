@@ -98,12 +98,16 @@
             self.update();
         });
 
+        controller.on("OnTour", function(){
+            self.message = "";
+            self.update();
+        });
+
         startTour(e){
             e.preventDefault();
             var tour = e.item;
             controller.trigger("StartTour", tour);
             $(this.tourList).collapse("hide");
-            this.message = "Tour: " + tour.name;
         }
 
         locateMe(){
