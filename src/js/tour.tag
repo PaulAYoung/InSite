@@ -25,14 +25,6 @@
         var previousFilter="";
         var self = this;
 
-        var tours = new SimpleSet(opts.tours.map(function(v){ return v.filter; }));
-        var tours = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.tour; }));
-        var tour_filter = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.filter; }));
-        var tourDict = {};
-        for (var i=0, l=opts.highlightedFilters.length, tour; i<l, tour=opts.highlightedFilters[i]; i++){
-            tourDict[tour.filter] = tour;
-        }
-
         self.tourIndex = 0;
 
         this.on("mount", function(){console.log("tour tag loaded");});
@@ -52,26 +44,6 @@
             self.update();
         });
 
-        controller.on('ItemsUpdated', function(){
-            self.display = false;
-            if (tour_filter.contains(controller.filter) && controller.filter!== ""){
-                self.tourButtonDisplay=true;
-            }
-            else{
-                self.tourButtonDisplay=false;
-            }
-            self.update();
-        })
-
-        startTour(){
-            if (controller.filter in tourDict){
-                previousFilter = controller.filter;
-                controller.trigger("UpdateFilter", tourDict[controller.filter].tour);
-            }
-            controller.trigger('StartTour',0);
-            self.tourButtonDisplay=false;
-            self.update()
-        }
 
         selectItem(index){
             controller.trigger("SetMapView", L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);

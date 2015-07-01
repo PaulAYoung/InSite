@@ -1,7 +1,8 @@
 // InSite options
 // Here you can configure your instance of InSite
+// All options are held in the opts object
 var opts = {
-    url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?", // this should point to the local ground project api you are using. 
+    url: "http://insite.localground.org/api/0/projects/8/?format=jsonp&callback=?", // this should point to the local ground project api you are using. You should use the jsonp datasource.
     appTitle: "Welcome to the Albany Bulb", // This will be displayed on the splash page of the site.
     appDescription: "Listen to audio stories and explore", // This will be placed under the title
 
@@ -48,18 +49,15 @@ var opts = {
         },
         {
             name: "Highlights",
-            filter: "generaltour",
-            tour: "generaltour"
+            filter: "generaltour"
         },
         {
             name: "Art",
-            filter: "Art",
-            tour: "arttour"
+            filter: "Art"
         },
         {
             name: "Former Residents",
-            filter: "People",
-            tour: "peopletour"
+            filter: "People"
         }
     ],
     startFilter: "generaltour", // the filter that will be applied on app start
