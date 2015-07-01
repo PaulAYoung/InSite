@@ -127,7 +127,7 @@ img.thumbnail-photo{
     position: absolute;
     bottom: 2em;
     left:2em;
-    background-color: black;
+    background-color: #222;
     color: white;
     padding: .5em;
     border-radius: 1em;
@@ -139,7 +139,7 @@ img.thumbnail-photo{
 }
 
 .map-legend-items{
-    background-color: black;
+    background-color: #222;
     color: white;
     padding: .5em;
     border-radius: 1em;
@@ -155,8 +155,16 @@ img.thumbnail-photo{
 
 /* controls.tag */
 
-.insite-menu{
-    background-color: black;
+.message-area{
+    position: absolute;
+    top: 100%;
+    right: 0%;
+    padding: .1em .5em;
+    border-radius: 0em 0em 1em 1em;
+}
+
+.insite-menu, .message-area{
+    background-color: #222;
     color: white;
 }
 

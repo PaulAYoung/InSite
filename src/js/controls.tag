@@ -56,13 +56,15 @@
             </div>
         </div>
 
-        <!-- expanding elements --!>
+        <div if={ message } class="message-area">
+            { message }
+        </div>
 
     </div>
 
     <script>
         var controller = opts.controller;
-        this.filter = "";
+        this.message = ""; // displayed in message area
         window.search = this.itemSearch;
 
         var self = this;
@@ -84,19 +86,24 @@
             controller.trigger("UpdateFilter", filter);
             $(this.itemSearch).collapse("hide");
             $(this.itemSearch2).collapse("hide");
-
-            if (filter !== ""){
-                this.filter = ("Filter: " + filter).substring(0,16);
-            }else{
-                this.filter = "";
-            }
         }
+        
+        controller.on("UpdateFilter", function(filter){
+            if (filter !== ""){
+                self.message = "Filter: " + filter;
+            }else{
+                self.message = "";
+            }
+
+            self.update();
+        });
 
         startTour(e){
             e.preventDefault();
-            var item = e.item;
-            controller.trigger("StartTour", item.filter);
+            var tour = e.item;
+            controller.trigger("StartTour", tour);
             $(this.tourList).collapse("hide");
+            this.message = "Tour: " + tour.name;
         }
 
         locateMe(){

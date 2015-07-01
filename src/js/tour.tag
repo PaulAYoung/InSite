@@ -35,7 +35,8 @@
 
         this.on("mount", function(){console.log("tour tag loaded");});
 
-        controller.on('StartTour', function(filter){
+        controller.on('StartTour', function(tour){
+            var filter = tour.filter;
             controller.trigger('OnTour',true);
             controller.trigger("UpdateFilter", filter);
             controller._tourSort();
