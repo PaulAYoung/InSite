@@ -1,0 +1,42 @@
+/* Edit this file to stylize your deployment of InSite */
+
+/* COLORS  */
+
+#welcome-header, #welcome-footer, .tourstop-info, .audiojs .progress
+{
+  background-color:  #01BB91; /* Primary interface color */
+  color: white; /* interface text color */
+}
+
+/* marker styles */
+
+/* these are defaults */
+.insite-map-marker
+{
+    fill-opacity: 1;
+    fill: #A5ABAD;
+    stroke: #eeffcc;
+}
+
+/* this style is applied to the stuff tag because the stuff tag is marked in config.js */
+.insite-map-marker.people
+{
+    fill: #3AABA6;
+}
+
+.insite-map-marker.art
+{
+    fill: #9495E8;
+}
+
+.tour-button, #map-tour-button
+{
+  background-color: #12886D; /* Secondary interface color */
+  border-color:#12886D; /* Secondary interface color */
+}
+
+#welcome-header, #welcome-footer, .tourstop-info, .audiojs .progress,
+.tour-button, #map-tour-button
+{
+  color:white; /* interface text color */
+}

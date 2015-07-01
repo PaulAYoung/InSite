@@ -1,0 +1,398 @@
+body html{
+  height: 100%;
+  width: 100%;
+}
+
+body{
+	padding-top: 40px;
+  font-family: 'Muli', sans-serif;
+  /*padding-left: 10px;
+  text-align: left;
+  background-color: ;*/
+}
+#itemDetail{
+  position:relative;
+  padding-bottom: 80px;
+}
+.leaflet-control-container{
+  display:none;
+}
+.leaflet-popup-content{
+  margin: 10px;
+  font-family: 'Muli', sans-serif;
+}
+.leaflet-popup-content{
+  font-size:14px;
+}
+#welcome-header{
+  position: fixed;
+  width: 100%;
+  height: 140px;
+  padding:20px;
+  z-index:1002;
+}
+.tour-button{
+  /*font-weight: 450;*/
+}
+#map-tour-button{
+  position: fixed;
+  bottom: 0px;
+  z-index: 1001;
+  margin: 20px;
+  font-weight: 450;
+}
+#exit-welcome{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,.4);
+  z-index: 1001;
+}
+#welcome-footer{
+  position:fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  z-index:1002;
+  padding: 20px;
+  text-align: center;
+}
+#welcome-footer-content{
+  top: 50%;
+  left: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#title, #description, #tags{
+  padding: 10px;
+  padding-top: 10px;
+}
+#title{
+  background-color:#A5ABAD;
+  color: white;
+}
+
+.locateIcon{
+  width: 25px;
+  position: relative;
+  top: -2px;
+}
+.mapIcon{
+  width: 28px;
+  position: relative;
+  top: -2px;
+}
+
+.tourstop-info{
+  position:fixed;
+  width: 100%;
+  height: 100px;
+  padding:20px;
+  z-index:1001;
+}
+.audio-name{
+  font-size: 16px;
+}
+
+/*********************************
+ * InSite UI element styles
+ * ******************************/
+
+/* listview.tag */
+
+.insite-listview{
+    padding-top: 1em;
+}
+
+/* map.tag */
+
+.leaflet-popup-content .thumbnail-div{
+    float: left;
+    margin-right: .5em;
+}
+
+.thumbnail-div{
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    text-align: center;
+}
+
+img.thumbnail-photo{
+    max-height: 50px;
+}
+
+.map-legend{
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    background-color: #222;
+    color: white;
+    padding: .5em;
+    border-radius: 1em;
+}
+
+.map-legend button{
+    background-color: transparent;
+    color: white;
+}
+
+.map-legend-items{
+    background-color: #222;
+    color: white;
+    padding: .5em;
+    border-radius: 1em;
+}
+
+.insite-popup{
+    padding: .5em;
+}
+
+.insite-popup .indicators{
+    text-align: right;
+}
+
+/* controls.tag */
+
+.message-area{
+    position: absolute;
+    top: 100%;
+    right: 0%;
+    padding: .1em .5em;
+    border-radius: 0em 0em 1em 1em;
+}
+
+.insite-menu, .message-area{
+    background-color: #222;
+    color: white;
+}
+
+.controls a, .navbar a, .insite-menu li > a{
+    color: white;
+    text-decoration: none;
+}
+
+.float-right{
+    float: right;
+}
+
+.insite-menu-button, .suggested-filters, .nav-buttons{
+    float: left;
+}
+
+.navbar button{
+    background-color: transparent;
+    color: white;
+}
+
+.nav-buttons a {
+    float: left;
+    padding: .5em .2em;
+}
+
+.float-right .dropdown-menu{
+    right: 0;
+    left: auto;
+}
+
+/*Bootstrap edits*/
+.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+  padding-right:10px;
+  padding-left:10px;
+}
+h1{
+  margin-bottom:0px;
+  margin-top: 0px;
+}
+h4{
+  margin-top: 0px;
+  margin-bottom:3px;
+  /*padding-left: 20px;*/
+}
+
+.panel {
+  padding-top: 10px;
+  border:none;
+}
+.panel-body{
+  padding:0px;
+}
+.list-group-item{
+  padding:10px;
+}
+.navbar-header{
+    width: 100%;
+}
+.navbar-form{
+  margin-top:0px;
+}
+.navbar-toggle{
+  border-color: "";
+  margin: 0px;
+}
+.navbar-toggle-brand{
+  float: left;
+}
+.navbar-brand{
+  height:auto;
+  padding: 0px;
+}
+.nav>li>a{
+  padding: 10px 8px;
+}
+.form-group{
+  margin-bottom: 0px;
+}
+.form-control{
+  width: 20em;
+}
+.glypichon-search{
+  float: right;
+}
+.houseIcon{
+  color: rgb(27, 247, 247);
+  font-size: 1.6em;
+  -webkit-text-stroke: 1px white;
+}
+.artIcon{
+  color: rgb(237, 96, 253);
+  font-size: 1.6em;
+}
+
+#mapThumbnail {
+  height: 10%;
+  width: 60%;
+  margin-right: 50px;
+  margin-left: 50px; 
+  position: relative;
+  border-color:black;
+  border-radius: 1px;
+
+}
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: right;
+    margin: 0;
+  }
+}
+
+/*Other edits*/
+.mapArea {
+     background-color: #aaaaaa;
+     height: 100vh;
+     margin-left: auto;
+     margin-right: auto;
+     width: 100%;
+}
+.map-labels{
+  color:white;
+  width:100px !important;
+}
+
+
+@media (max-width: 400px){
+  .container-fluid{
+    padding-right:0px;
+    padding-left: 0px;
+  }
+  .row{
+    margin-right:0px;
+    margin-left:0px;
+  }
+  .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    padding-right:5px;
+    padding-left:0px;
+    display: inline-block;
+    position: relative;
+  }
+  .description-row{
+    padding-left:5px;
+  }
+}
+
+/* Welcome edits*/
+#welcome{
+  position:fixed;
+  height: 30%;
+  width: 100%;
+  background-color: black;
+}
+
+/*Audio Player edits*/
+.audiojs{
+  position:fixed;
+  bottom: 0px;
+  height: 80px;
+  width: 100%;
+  background-image: none;
+}
+.audiojs .play-pause{
+  width: 15%;
+  border-right: none;
+  padding: 10px;
+}
+.audiojs .scrubber{
+  width:75%;
+  height: 10px;
+  position: fixed;
+  bottom: 20px;
+  margin-left: 15%;
+}
+.audiojs .progress{
+  background-image: none;
+}
+.audiojs .loaded{
+  background: #675F5F;
+  background-image: none;
+}
+.audiojs .time{
+  width:100%;
+  border-left: none;
+  padding: 0px;
+  position: fixed;
+  bottom: 0px;
+  margin-left: 15%
+}
+.list-details{
+  position:fixed;
+  bottom: 24px;
+  color: white;
+  left: 15%;
+  margin: 10px;
+}
+.audio-details{
+  position: fixed;
+  color: white;
+  bottom: 50px;
+  margin-left: 15%;
+  padding: 0px;
+  font-size: 16px;
+}
+#audioplayer-circle{
+  position: fixed;
+  left: -15px;
+  bottom: 0px;
+}
+
+/*blueimp gallery edits*/
+.blueimp-gallery-carousel{
+  box-shadow: none;
+  margin-bottom: 0px;
+}
+#photo-description{
+  text-align:center;
+  background-color: rgba(0,0,0,.76);
+  color:white;
+}
+
+.item-tag{
+    margin: 0em .2em;
+}
+
+.tour-labels{
+    text-align: center;
+    color: white;
+    top: -2px;
+}

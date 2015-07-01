@@ -1,0 +1,350 @@
+body html{
+  height: 100%;
+  width: 100%;
+}
+
+body{
+	padding-top: 40px;
+  font-family: 'Muli', sans-serif;
+  /*padding-left: 10px;
+  text-align: left;
+  background-color: ;*/
+}
+#itemDetail{
+  position:relative;
+  padding-bottom: 80px;
+}
+.leaflet-control-container{
+  display:none;
+}
+.leaflet-popup-content{
+  margin: 10px;
+  font-family: 'Muli', sans-serif;
+}
+.leaflet-popup-content{
+  font-size:14px;
+}
+#welcome-header{
+  position: fixed;
+  width: 100%;
+  height: 140px;
+  padding:20px;
+  z-index:1002;
+}
+.tour-button{
+  /*font-weight: 450;*/
+}
+#map-tour-button{
+  position: fixed;
+  bottom: 0px;
+  z-index: 1001;
+  margin: 20px;
+  font-weight: 450;
+}
+#exit-welcome{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,.4);
+  z-index: 1001;
+}
+#welcome-footer{
+  position:fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  z-index:1002;
+  padding: 20px;
+  text-align: center;
+}
+#welcome-footer-content{
+  top: 50%;
+  left: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#title, #description, #tags{
+  padding: 10px;
+  padding-top: 10px;
+}
+#title{
+  background-color:#A5ABAD;
+  color: white;
+}
+
+.locateIcon{
+  width: 25px;
+  position: relative;
+  top: -2px;
+}
+.mapIcon{
+  width: 28px;
+  position: relative;
+  top: -2px;
+}
+
+.tourstop-info{
+  position:fixed;
+  width: 100%;
+  height: 100px;
+  padding:20px;
+  z-index:1001;
+}
+.audio-name{
+  font-size: 16px;
+
+
+/* controls.tag */
+
+.controls a{
+    color: white;
+}
+
+.search-button{
+    float: right;
+}
+
+.insite-menu, .suggested-filters, .nav-buttons{
+    float: left;
+}
+
+.navbar button{
+    background-color: transparent;
+}
+
+/*Bootstrap edits*/
+.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+  padding-right:10px;
+  padding-left:10px;
+}
+h1{
+  margin-bottom:0px;
+  margin-top: 0px;
+}
+h4{
+  margin-top: 0px;
+  margin-bottom:3px;
+  /*padding-left: 20px;*/
+}
+
+.panel {
+  padding-top: 10px;
+  border:none;
+}
+.panel-body{
+  padding:0px;
+}
+.list-group-item{
+  padding:10px;
+}
+.navbar-header{
+    width: 100%;
+}
+.navbar-form{
+  margin-top:0px;
+}
+.navbar-toggle{
+  border-color: "";
+  margin: 0px;
+}
+.navbar-toggle-brand{
+  float: left;
+}
+.navbar-brand{
+  height:auto;
+  padding: 0px;
+}
+.nav>li>a{
+  padding: 10px 8px;
+}
+.form-group{
+  margin-bottom: 0px;
+}
+.form-control{
+  width: 20em;
+}
+.glypichon-search{
+  float: right;
+}
+.houseIcon{
+  color: rgb(27, 247, 247);
+  font-size: 1.6em;
+  -webkit-text-stroke: 1px white;
+}
+.artIcon{
+  color: rgb(237, 96, 253);
+  font-size: 1.6em;
+}
+
+#mapThumbnail {
+  height: 10%;
+  width: 60%;
+  margin-right: 50px;
+  margin-left: 50px; 
+  position: relative;
+  border-color:black;
+  border-radius: 1px;
+
+}
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: right;
+    margin: 0;
+  }
+}
+
+/*Other edits*/
+.mapArea {
+     background-color: #aaaaaa;
+     height: 100vh;
+     margin-left: auto;
+     margin-right: auto;
+     width: 100%;
+}
+.map-labels{
+  color:white;
+  width:100px !important;
+}
+
+@media (min-width: 401px){
+  .thumbnail-div{
+    width:90px;
+    height: 90px;
+    overflow:hidden;
+    position:relative;
+    display:inline-block;
+    padding:0px;
+  }
+  .thumbnail-photo{
+      position:absolute;
+      top:50%;
+      min-height:100%;
+      display:block;
+      left:50%;
+      -webkit-transform: translate(-50%, -50%);
+      min-width:100%;
+  }
+}
+
+@media (max-width: 400px){
+  .container-fluid{
+    padding-right:0px;
+    padding-left: 0px;
+  }
+  .row{
+    margin-right:0px;
+    margin-left:0px;
+  }
+  .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    padding-right:5px;
+    padding-left:0px;
+    display: inline-block;
+    position: relative;
+  }
+  .thumbnail-div{
+    width:100%;
+    overflow:hidden;
+    position:relative;
+    display:inline-block;
+    padding-top: 100%;
+  }
+  .thumbnail-photo{
+    position:absolute;
+    top:50%;
+    min-height:100%;
+    display:block;
+    left:50%;
+    -webkit-transform: translate(-50%, -50%);
+    min-width:100%;
+  }
+  .description-row{
+    padding-left:5px;
+  }
+}
+
+/* Welcome edits*/
+#welcome{
+  position:fixed;
+  height: 30%;
+  width: 100%;
+  background-color: black;
+}
+
+/*Audio Player edits*/
+.audiojs{
+  position:fixed;
+  bottom: 0px;
+  height: 80px;
+  width: 100%;
+  background-image: none;
+}
+.audiojs .play-pause{
+  width: 15%;
+  border-right: none;
+  padding: 10px;
+}
+.audiojs .scrubber{
+  width:75%;
+  height: 10px;
+  position: fixed;
+  bottom: 20px;
+  margin-left: 15%;
+}
+.audiojs .progress{
+  background-image: none;
+}
+.audiojs .loaded{
+  background: #675F5F;
+  background-image: none;
+}
+.audiojs .time{
+  width:100%;
+  border-left: none;
+  padding: 0px;
+  position: fixed;
+  bottom: 0px;
+  margin-left: 15%
+}
+.list-details{
+  position:fixed;
+  bottom: 24px;
+  color: white;
+  left: 15%;
+  margin: 10px;
+}
+.audio-details{
+  position: fixed;
+  color: white;
+  bottom: 50px;
+  margin-left: 15%;
+  padding: 0px;
+  font-size: 16px;
+}
+#audioplayer-circle{
+  position: fixed;
+  left: -15px;
+  bottom: 0px;
+}
+
+/*blueimp gallery edits*/
+.blueimp-gallery-carousel{
+  box-shadow: none;
+  margin-bottom: 0px;
+}
+#photo-description{
+  text-align:center;
+  background-color: rgba(0,0,0,.76);
+  color:white;
+}
+
+.item-tag{
+    margin: 0em .2em;
+}
+
+.tour-labels{
+    text-align: center;
+    color: white;
+    top: -2px;
+}
