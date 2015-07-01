@@ -125,8 +125,8 @@ img.thumbnail-photo{
 
 .map-legend{
     position: absolute;
-    bottom: 2em;
-    left:2em;
+    bottom: 2%;
+    left: 2%;
     background-color: #222;
     color: white;
     padding: .5em;
