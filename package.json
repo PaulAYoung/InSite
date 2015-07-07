@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "start": "http-server www/ -p 8080",
-    "build": "gulp build"
+    "build": "gulp build",
+    "watch": "gulp"
   },
   "repository": {
     "type": "git",
