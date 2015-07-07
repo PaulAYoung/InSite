@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "start": "http-server www/ -p 8080",
-    "build": "gulp build"
+    "build": "gulp build",
+    "watch": "gulp"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "browserify": "^9.0.3",
     "chai": "^2.1.2",
     "gulp": "^3.8.11",
+    "gulp-util": "^3.0.5",
     "http-server": "^0.8.0",
     "mocha": "^2.2.1",
     "mock-browser": "^0.90.33",

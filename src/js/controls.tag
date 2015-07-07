@@ -1,57 +1,70 @@
 <controls>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle navbar-toggle-brand" data-toggle="collapse" data-target=".navbar-collapse1">
-            <a class="navbar-brand"><img width="60" src="fonts/InSite_logo_web.png"></a>
-            </button>
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span style="color:white; margin-right:.5em;">{ this.filter }</span>
-            <span style="color: white;" class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            <span class="sr-only">Search:</span>
-          </button>
-          
-            <ul class="nav nav-pills">
-                <li role="presentation"  ><a href='#Map'><img class="mapIcon" src="fonts/noun_24173_cc.svg"></img></a></li>
-                <li role="presentation"  ><a href='#List'><span style="color:white;" class="glyphicon glyphicon-list"></span></a></li>
-                <li role="presentation" onclick={ this.locateMe }><a href=""><img class="locateIcon" src="fonts/noun_40972_cc.svg"></img></a></li>
-            </ul>
-        </div>
-        <div class="navbar-collapse1 collapse" name="itemSearch2">
-            <ul class="nav navbar-nav">
-                <li><a href="index.html">Home</a><li>
-                <li><a href="#itemDetail/{opts.aboutMarkerID}">About</a></li>
-            </ul>
-        </div>
-        <div class="navbar-collapse collapse" name="itemSearch">
-            <form class="navbar-form navbar-left" role="search" onsubmit={ this.search }>
-                <ul class="nav navbar-nav">
+    <div class="navbar navbar-inverse navbar-fixed-top container-fluid controls-container" role="navigation">
+        <div class="row">
+            <div class="insite-menu-button dropdown">
+              <button type="button" class="btn btn-default insite-button" data-toggle="dropdown">
+                  <img width="60" src="fonts/InSite_logo_web.png">
+              </button>
 
-                    <!-- <li onclick={ this.reset }><a href="">Full Map</a></li>
-                    <li onclick={ this.startTour }><a href="">Tour Highlights</a></li>
-                    <li onclick={ this.searchHistory }><a href="">History</a></li>
-                    <li onclick={ this.searchArt }><a href="">Art</a></li>
-                    <li onclick={ this.searchPeople }><a href="">People</a></li> -->
+              <ul class="dropdown-menu insite-menu">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="#itemDetail/{opts.aboutMarkerID}">About</a></li>
+              </ul>
+            </div>
+
+
+                <div class="nav-buttons">
+                    <a href='#Map'><img class="mapIcon" src="fonts/noun_24173_cc.svg"></img></a>
+                    <a href='#List'><span style="color:white;" class="glyphicon glyphicon-list"></span></a>
+                    <a href="#"><img class="locateIcon" src="fonts/noun_40972_cc.svg"></img></a>
+
+                    <div class="insite-menu-button dropdown">
+                        <button class="btn btn-default insite-button" data-toggle="dropdown">
+                            <span>Tours</span>
+                        </button>
+
+                        <ul class="dropdown-menu insite-menu">
+                            <li each={ opts.tours }>
+                            <a onclick={ parent.startTour } href="">
+                                    { name }
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            
+            <div class="dropdown float-right">
+                <button type="button" class="btn btn-default insite-button" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+
+                <ul class="dropdown-menu insite-menu">
                     <li each={ opts.highlightedFilters } onclick={ parent.applyFilter } >
                         <a href="">
-                            <span if={ iconClass } class={ iconClass }></span>
                             { name }
                         </a>
                     </li>
-                  </ul>
-                <div class="form-group">
-                    <input type="text" name="searchbox" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+                    <li>
+                        <div class="form-group">
+                            <form onsubmit={ search }>
+                                <input type="text" name="searchbox" class="form-control" placeholder="Search">
+                                <button type=submit class="btn btn-default">Submit</button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </div>
 
+        <div if={ message } class="message-area">
+            { message }
+        </div>
+
+    </div>
 
     <script>
         var controller = opts.controller;
-        this.filter = "";
+        this.message = ""; // displayed in message area
         window.search = this.itemSearch;
 
         var self = this;
@@ -73,12 +86,28 @@
             controller.trigger("UpdateFilter", filter);
             $(this.itemSearch).collapse("hide");
             $(this.itemSearch2).collapse("hide");
-
+        }
+        
+        controller.on("UpdateFilter", function(filter){
             if (filter !== ""){
-                this.filter = ("Filter: " + filter).substring(0,16);
+                self.message = "Filter: " + filter;
             }else{
-                this.filter = "";
+                self.message = "";
             }
+
+            self.update();
+        });
+
+        controller.on("OnTour", function(){
+            self.message = "";
+            self.update();
+        });
+
+        startTour(e){
+            e.preventDefault();
+            var tour = e.item;
+            controller.trigger("StartTour", tour);
+            $(this.tourList).collapse("hide");
         }
 
         locateMe(){

@@ -6,7 +6,11 @@ function DataFilter(data){
 DataFilter.prototype = {
     filter: function(filter){
         out = [];
-        filter = filter.toLowerCase();
+        if (typeof filter === 'undefined'){
+            filter = ''; // default value
+        }else{
+            filter = filter.toLowerCase();
+        }
         for (var i=0; i< this._data.length; i++){
             if (this._data[i].tags.toLowerCase().indexOf(filter) !== -1 ||
                 this._data[i].name.toLowerCase().indexOf(filter) !== -1

@@ -30,7 +30,7 @@
         }
 
         startTour(){
-            controller.trigger('StartTour',0)
+            controller.trigger('StartTour', opts.tours[0])
             self.display=false;
         }
 

@@ -93,107 +93,24 @@ body{
 }
 .audio-name{
   font-size: 16px;
-}
 
-/*********************************
- * InSite UI element styles
- * ******************************/
-
-/* listview.tag */
-
-.insite-listview{
-    padding-top: 1em;
-}
-
-/* map.tag */
-
-.leaflet-popup-content .thumbnail-div{
-    float: left;
-    margin-right: .5em;
-}
-
-.thumbnail-div{
-    height: 50px;
-    width: 50px;
-    overflow: hidden;
-    text-align: center;
-}
-
-img.thumbnail-photo{
-    max-height: 50px;
-}
-
-.map-legend{
-    position: absolute;
-    bottom: 2%;
-    left: 2%;
-    background-color: #222;
-    color: white;
-    padding: .5em;
-    border-radius: 1em;
-}
-
-.map-legend button{
-    background-color: transparent;
-    color: white;
-}
-
-.map-legend-items{
-    background-color: #222;
-    color: white;
-    padding: .5em;
-    border-radius: 1em;
-}
-
-.insite-popup{
-    padding: .5em;
-}
-
-.insite-popup .indicators{
-    text-align: right;
-}
 
 /* controls.tag */
 
-.message-area{
-    position: absolute;
-    top: 100%;
-    right: 0%;
-    padding: .1em .5em;
-    border-radius: 0em 0em 1em 1em;
-}
-
-.insite-menu, .message-area{
-    background-color: #222;
+.controls a{
     color: white;
 }
 
-.controls a, .navbar a, .insite-menu li > a{
-    color: white;
-    text-decoration: none;
-}
-
-.float-right{
+.search-button{
     float: right;
 }
 
-.insite-menu-button, .suggested-filters, .nav-buttons{
+.insite-menu, .suggested-filters, .nav-buttons{
     float: left;
 }
 
 .navbar button{
     background-color: transparent;
-    color: white;
-}
-
-.nav-buttons a {
-    float: left;
-    padding: .5em .2em;
-}
-
-.float-right .dropdown-menu{
-    right: 0;
-    left: auto;
 }
 
 /*Bootstrap edits*/
@@ -291,6 +208,25 @@ h4{
   width:100px !important;
 }
 
+@media (min-width: 401px){
+  .thumbnail-div{
+    width:90px;
+    height: 90px;
+    overflow:hidden;
+    position:relative;
+    display:inline-block;
+    padding:0px;
+  }
+  .thumbnail-photo{
+      position:absolute;
+      top:50%;
+      min-height:100%;
+      display:block;
+      left:50%;
+      -webkit-transform: translate(-50%, -50%);
+      min-width:100%;
+  }
+}
 
 @media (max-width: 400px){
   .container-fluid{
@@ -306,6 +242,22 @@ h4{
     padding-left:0px;
     display: inline-block;
     position: relative;
+  }
+  .thumbnail-div{
+    width:100%;
+    overflow:hidden;
+    position:relative;
+    display:inline-block;
+    padding-top: 100%;
+  }
+  .thumbnail-photo{
+    position:absolute;
+    top:50%;
+    min-height:100%;
+    display:block;
+    left:50%;
+    -webkit-transform: translate(-50%, -50%);
+    min-width:100%;
   }
   .description-row{
     padding-left:5px;

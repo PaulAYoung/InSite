@@ -38,6 +38,11 @@ describe('DataFilter', function(){
         var filtered = filter.filter("q");
         assert.equal(1, filtered[0].id);
     });
+    
+    it("should return full list if no arguments", function(){
+        var filtered = filter.filter();
+        assert.equal(testData.length, filtered.length);
+    });
 })
 
 
