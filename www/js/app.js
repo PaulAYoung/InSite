@@ -24363,7 +24363,7 @@ module.exports=Matcher;
 
 },{}],34:[function(require,module,exports){
 var riot = require('riot');
-riot.tag('tour', '<div if="{ this.display }" class="tourstop-info"> <h4 if="{ tour }" class="tour-title">{ tour.name } Tour</h4> <span onclick="{ this.itemDetailURL }">{ this.displayTourStopNumber()}: { this.displayTourStopName() }</span> <p style="margin:0px;float:right;" class="distance">{ this.distanceTo() }</p> <div style="position:relative;float:left;clear:both;" onclick="{ this.updateTour }"> <span>Next Tour Stop</span> <span class="glyphicon glyphicon-chevron-right" ></span> </div> <div style="float:right;position:relative;" onclick="{ this.endTour }"> <span class="glyphicon glyphicon-remove"></span> <span>Exit Tour</span> </div> </div>', function(opts) {
+riot.tag('tour', '<div if="{ this.display }" class="tourstop-info"> <h4 if="{ tour }" class="tour-title">{ tour.name } Tour</h4> <span onclick="{ this.itemDetailURL }">{ this.displayTourStopNumber()}: { this.displayTourStopName() } - { this.distanceTo() }</span> <div style="float:right;position:relative;" onclick="{ this.endTour }"> <span class="glyphicon glyphicon-remove"></span> <span>Exit Tour</span> </div> <div style="position:relative;float:left;clear:both;width:100%;margin:.5em;"> <div style="position:relative;float:left;" onclick="{ this.back }"> <span class="glyphicon glyphicon-chevron-left" ></span> <span>Back</span> </div> <div style="position:relative;float:right;" onclick="{ this.next }"> <span>Next</span> <span class="glyphicon glyphicon-chevron-right" ></span> </div> </div> </div>', function(opts) {
         var SimpleSet = require('./simpleSet.js');
         var L = require('leaflet');
         var convertToUSDistance = require('./convertToUSDistance');
@@ -24406,13 +24406,26 @@ riot.tag('tour', '<div if="{ this.display }" class="tourstop-info"> <h4 if="{ to
             riot.route("#itemDetail/marker" + controller.markers[self.tourIndex].id);
         }.bind(this);
 
-        this.updateTour = function() {
+        this.next = function() {
             if (self.tourIndex<self.tourLength-1){
                 self.tourIndex++;
-                self.selectItem(self.tourIndex);
-                self.update();
+            } else {
+                self.tourIndex = 0;
             }
+            self.selectItem(self.tourIndex);
+            self.update();
         }.bind(this);
+
+        this.back = function() {
+            if (self.tourIndex>0){
+                self.tourIndex--;
+            }else {
+                self.tourIndex = self.tourLength-1;
+            }
+            self.selectItem(self.tourIndex);
+            self.update();
+        }.bind(this);
+
 
         this.tourName = function() {
             return tourDict[controller.filter].name;

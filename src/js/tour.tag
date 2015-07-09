@@ -1,15 +1,20 @@
 <tour>
     <div if={ this.display } class="tourstop-info">
         <h4 if={ tour } class="tour-title">{ tour.name } Tour</h4>
-        <span onclick={ this.itemDetailURL }>{ this.displayTourStopNumber()}: { this.displayTourStopName() }</span>
-        <p style="margin:0px;float:right;" class="distance">{ this.distanceTo() }</p>
-        <div style="position:relative;float:left;clear:both;" onclick={ this.updateTour }>
-            <span>Next Tour Stop</span>
-            <span class="glyphicon glyphicon-chevron-right" ></span>
-        </div>
+        <span onclick={ this.itemDetailURL }>{ this.displayTourStopNumber()}: { this.displayTourStopName() } - { this.distanceTo() }</span>
         <div style="float:right;position:relative;" onclick={ this.endTour }>
             <span class="glyphicon glyphicon-remove"></span>
             <span>Exit Tour</span>
+        </div>
+        <div style="position:relative;float:left;clear:both;width:100%;margin:.5em;">
+            <div style="position:relative;float:left;" onclick={ this.back }>
+                <span class="glyphicon glyphicon-chevron-left" ></span>
+                <span>Back</span>
+            </div>
+            <div style="position:relative;float:right;" onclick={ this.next }>
+                <span>Next</span>
+                <span class="glyphicon glyphicon-chevron-right" ></span>
+            </div>
         </div>
     </div>
 
@@ -56,13 +61,26 @@
             riot.route("#itemDetail/marker" + controller.markers[self.tourIndex].id);
         }
 
-        updateTour(){
+        next(){
             if (self.tourIndex<self.tourLength-1){
                 self.tourIndex++;
-                self.selectItem(self.tourIndex);
-                self.update();
+            } else {
+                self.tourIndex = 0;
             }
+            self.selectItem(self.tourIndex);
+            self.update();
         }
+
+        back(){
+            if (self.tourIndex>0){
+                self.tourIndex--;
+            }else {
+                self.tourIndex = self.tourLength-1;
+            }
+            self.selectItem(self.tourIndex);
+            self.update();
+        }
+
 
         tourName(){
             return tourDict[controller.filter].name;
