@@ -34,8 +34,10 @@ function Controller(){
         riot.route.exec(self._router.bind(self));
     });
 
-    this.on('UpdateFilter', function(filter){
-        self.onTour = false;
+    this.on('UpdateFilter', function(filter, tour){
+        if (tour){self.onTour = true}
+        else {self.onTour = false}
+        console.log("onTour: " + self.onTour);
         self._filterItems(filter);
         self.trigger("ItemsUpdated", this.itemList);
     });

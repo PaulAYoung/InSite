@@ -37,10 +37,7 @@
         controller.on('StartTour', function(tour){
             var filter = tour.filter;
             self.tour = tour;
-            controller.trigger("UpdateFilter", filter);
-            controller.trigger('OnTour',true);
-            controller._tourSort();
-            self.display=true;
+            controller.trigger("UpdateFilter", filter, true);
             self.tourButtonDisplay=false;
             self.tourIndex=0;
             self.tourLength=controller.itemList.length;
@@ -49,9 +46,14 @@
             self.update();
         });
 
+        controller.on("UpdateFilter", function(filter, tour){
+            self.display = tour;
+            self.update();
+        });
+
 
         selectItem(index){
-            controller.trigger("SetMapView", L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);
+            controller.trigger("SelectMapItem", index, 18);
             controller.trigger("ItemSelected", "marker" + controller.markers[self.tourIndex].id);
             //if listview is active
             // riot.route("#itemDetail/marker" + controller.markers[self.tourIndex].id);

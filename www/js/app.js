@@ -23474,8 +23474,10 @@ function Controller(){
         riot.route.exec(self._router.bind(self));
     });
 
-    this.on('UpdateFilter', function(filter){
-        self.onTour = false;
+    this.on('UpdateFilter', function(filter, tour){
+        if (tour){self.onTour = true}
+        else {self.onTour = false}
+        console.log("onTour: " + self.onTour);
         self._filterItems(filter);
         self.trigger("ItemsUpdated", this.itemList);
     });
@@ -24038,6 +24040,7 @@ riot.tag('map', '<div if="{ this.display }"> <div name="mapArea" class="mapArea"
         var matcher = new Matcher(opts.tagStyles);
 
         self.mapMarkers = [];
+        self.tourNumbers = [];
         self.userMarker = null;
 
         var tours = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.tour; }));
@@ -24095,6 +24098,12 @@ riot.tag('map', '<div if="{ this.display }"> <div name="mapArea" class="mapArea"
 
         controller.on("SetMapView", function(){
             self.map.setView.apply(self.map, arguments);
+        });
+
+        controller.on("SelectMapItem", function(index, zoom){
+            var marker = self.mapMarkers[index];
+            self.map.setView(marker.getLatLng(), zoom);
+            marker.openPopup();
         });
 
 
@@ -24155,7 +24164,7 @@ riot.tag('map', '<div if="{ this.display }"> <div name="mapArea" class="mapArea"
                                 {icon: L.divIcon({className: "tour-labels", html: match[1]})})
                             .bindPopup(bindPopup(value))
                             .addTo(self.map);
-                            self.mapMarkers.push(mark);
+                            self.tourNumbers.push(mark);
                         }
                     }
                 }
@@ -24166,6 +24175,10 @@ riot.tag('map', '<div if="{ this.display }"> <div name="mapArea" class="mapArea"
             var mark;
             while (self.mapMarkers.length > 0){
                 mark = self.mapMarkers.pop();
+                self.map.removeLayer(mark);
+            }
+            while (self.tourNumbers.length > 0){
+                mark = self.tourNumbers.pop();
                 self.map.removeLayer(mark);
             }
         }.bind(this);
@@ -24382,10 +24395,7 @@ riot.tag('tour', '<div if="{ this.display }" class="tourstop-info"> <h4 if="{ to
         controller.on('StartTour', function(tour){
             var filter = tour.filter;
             self.tour = tour;
-            controller.trigger("UpdateFilter", filter);
-            controller.trigger('OnTour',true);
-            controller._tourSort();
-            self.display=true;
+            controller.trigger("UpdateFilter", filter, true);
             self.tourButtonDisplay=false;
             self.tourIndex=0;
             self.tourLength=controller.itemList.length;
@@ -24394,9 +24404,14 @@ riot.tag('tour', '<div if="{ this.display }" class="tourstop-info"> <h4 if="{ to
             self.update();
         });
 
+        controller.on("UpdateFilter", function(filter, tour){
+            self.display = tour;
+            self.update();
+        });
+
 
         this.selectItem = function(index) {
-            controller.trigger("SetMapView", L.latLng(controller.markers[index].geometry.coordinates[1],controller.markers[index].geometry.coordinates[0]), 18);
+            controller.trigger("SelectMapItem", index, 18);
             controller.trigger("ItemSelected", "marker" + controller.markers[self.tourIndex].id);
 
 

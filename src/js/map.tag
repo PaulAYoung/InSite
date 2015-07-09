@@ -40,6 +40,7 @@
         var matcher = new Matcher(opts.tagStyles);
 
         self.mapMarkers = [];
+        self.tourNumbers = [];
         self.userMarker = null;
 
         var tours = new SimpleSet(opts.highlightedFilters.map(function(v){ return v.tour; }));
@@ -98,6 +99,12 @@
 
         controller.on("SetMapView", function(){
             self.map.setView.apply(self.map, arguments);
+        });
+
+        controller.on("SelectMapItem", function(index, zoom){
+            var marker = self.mapMarkers[index];
+            self.map.setView(marker.getLatLng(), zoom);
+            marker.openPopup();
         });
 
         // controller.on("OnTour", function(bool){
@@ -160,7 +167,7 @@
                                 {icon: L.divIcon({className: "tour-labels", html: match[1]})})
                             .bindPopup(bindPopup(value))
                             .addTo(self.map);
-                            self.mapMarkers.push(mark);
+                            self.tourNumbers.push(mark);
                         }
                     }
                 }
@@ -171,6 +178,10 @@
             var mark;
             while (self.mapMarkers.length > 0){
                 mark = self.mapMarkers.pop();
+                self.map.removeLayer(mark);
+            }
+            while (self.tourNumbers.length > 0){
+                mark = self.tourNumbers.pop();
                 self.map.removeLayer(mark);
             }
         }
